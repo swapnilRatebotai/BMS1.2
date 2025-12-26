@@ -14,7 +14,7 @@ public class HotelLogoPage extends BasePage{
 	
 	
 	//Elements
-		@FindBy(xpath="//div[text()='Hotel Logo'][@class='form-header']")
+		@FindBy(xpath="//div[text()='Hotel Logo'][@class='form-headerrr']")
 		WebElement hotelLogoPgConf;
 		
 		
