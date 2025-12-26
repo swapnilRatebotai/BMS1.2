@@ -16,6 +16,8 @@ public class UserProfilePage extends BasePage{
 		super(driver);
 	}
 	
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	
 	//Elements
 	@FindBy(xpath="//h1[@class='user-page-header'][text()='User Profile']")
 	WebElement userProfilePgConf;
@@ -47,6 +49,7 @@ public class UserProfilePage extends BasePage{
 	
 	//Actions
 	public boolean userProfilePageConfirmation() {
+		wait.until(ExpectedConditions.visibilityOf(userProfilePgConf));
 		return userProfilePgConf.isDisplayed();
 	}
 	
