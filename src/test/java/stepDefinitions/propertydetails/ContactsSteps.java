@@ -4,6 +4,7 @@ import org.junit.Assert;
 
 import factory.BaseClass;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import pageObjects.ContactsPage;
 
 public class ContactsSteps {
@@ -15,5 +16,15 @@ public class ContactsSteps {
 
 		boolean contactsPageStatus = contactsPage.contactsPageConfirmation();
 		Assert.assertTrue(contactsPageStatus);
+	}
+	
+	@When("user updates contact details")
+	public void user_updates_contact_details() {
+	    
+	}
+
+	@When("user clicks on update contact button")
+	public void user_clicks_on_update_contact_button() {
+	    
 	}
 }

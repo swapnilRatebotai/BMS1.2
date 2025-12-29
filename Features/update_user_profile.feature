@@ -6,5 +6,4 @@ Feature: User profile management
     And user clicks on Edit Profile
     And user updates profile details
     And user clicks on Save Changes
-    Then profile details should be updated successfully
-    And user navigates back from the profile page
+    Then user navigates back from the profile page

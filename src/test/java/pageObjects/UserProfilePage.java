@@ -38,10 +38,10 @@ public class UserProfilePage extends BasePage{
 	WebElement secondaryNumberInput;
 	
 	@FindBy(xpath="//button[text()='Save Changes'][@type='submit']")
-	WebElement saveChangesBtn;
+	WebElement saveChangesButton;
 	
 	@FindBy(xpath="//button[text()='Cancel'][@type='button']")
-	WebElement cancelBtn;
+	WebElement cancelButton;
 	
 	@FindBy(xpath="//div[@class='snackbar success']")
 	WebElement successPopup;
@@ -78,11 +78,11 @@ public class UserProfilePage extends BasePage{
 	}
 	
 	public void clickOnSaveChangesButton() {
-		saveChangesBtn.click();
+		saveChangesButton.click();
 	}
 	
 	public void clickOnCancelButton() {
-		cancelBtn.click();
+		cancelButton.click();
 	}
 	
 	public String waitAndGetSuccessMessage() {

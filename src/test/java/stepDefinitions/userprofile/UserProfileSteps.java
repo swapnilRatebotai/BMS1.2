@@ -55,23 +55,19 @@ public class UserProfileSteps {
 	}
 
 	@When("user clicks on Save Changes")
-	public void user_clicks_on_save_changes() {
+	public void user_clicks_on_save_changes() throws IOException {
 		
 	    userProfilePage.clickOnSaveChangesButton();
-	}
-
-	@Then("profile details should be updated successfully")
-	public void profile_details_should_be_updated_successfully() throws IOException {
 	    
-		 String actualMessage = userProfilePage.waitAndGetSuccessMessage();
+	    String actualMessage = userProfilePage.waitAndGetSuccessMessage();
 
-//		    Assert.assertTrue(
-//		        actualMessage.contains(expectedMessage),
-//		        "Expected success message not shown"
-//		    );
-		 
-		 	String popupMsg = BaseClass.getProperties().getProperty("userProfilePopupMessage");
-		 	Assert.assertEquals(actualMessage, popupMsg);
+//	    Assert.assertTrue(
+//	        actualMessage.contains(expectedMessage),
+//	        "Expected success message not shown"
+//	    );
+	 
+	 	String popupMsg = BaseClass.getProperties().getProperty("userprofilepopupmessage");
+	 	Assert.assertEquals(actualMessage, popupMsg);
 	}
 
 	@Then("user navigates back from the profile page")
