@@ -41,17 +41,17 @@ public class UserProfileSteps {
 	@When("user updates profile details")
 	public void user_updates_profile_details() throws IOException {
 	    
-		String firstName = BaseClass.getProperties().getProperty("firstname");
-		userProfilePage.enterFirstName(firstName);
+		String firstname = BaseClass.getProperties().getProperty("firstName");
+		userProfilePage.enterFirstName(firstname);
 		
-		String lastName = BaseClass.getProperties().getProperty("lastname");
-		userProfilePage.enterLastName(lastName);
+		String lastname = BaseClass.getProperties().getProperty("lastName");
+		userProfilePage.enterLastName(lastname);
 		
-		String primaryNumber = BaseClass.getProperties().getProperty("primarynumber");
-		userProfilePage.enterPrimaryNumber(primaryNumber);
+		String primarynumber = BaseClass.getProperties().getProperty("primaryNumber");
+		userProfilePage.enterPrimaryNumber(primarynumber);
 		
-		String secondaryNumber = BaseClass.getProperties().getProperty("secondarynumber");
-		userProfilePage.enterSecondaryNumber(secondaryNumber);
+		String secondarynumber = BaseClass.getProperties().getProperty("secondaryNumber");
+		userProfilePage.enterSecondaryNumber(secondarynumber);
 	}
 
 	@When("user clicks on Save Changes")
@@ -66,7 +66,7 @@ public class UserProfileSteps {
 //	        "Expected success message not shown"
 //	    );
 	 
-	 	String popupMsg = BaseClass.getProperties().getProperty("userprofilepopupmessage");
+	 	String popupMsg = BaseClass.getProperties().getProperty("userProfilePopupMessage");
 	 	Assert.assertEquals(actualMessage, popupMsg);
 	}
 

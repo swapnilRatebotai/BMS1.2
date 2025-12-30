@@ -26,20 +26,20 @@ public class BasicInfoSteps {
 		String description = BaseClass.getProperties().getProperty("description");
 		basicInfoPage.updateDescription(description);
 		
-		String builtYear = BaseClass.getProperties().getProperty("builtyear");
-		basicInfoPage.updateBuiltYear(builtYear);
+		String builtyear = BaseClass.getProperties().getProperty("builtYear");
+		basicInfoPage.updateBuiltYear(builtyear);
 		
-		String numberOfRooms = BaseClass.getProperties().getProperty("numberofrooms");
-		basicInfoPage.updateNumberOfRooms(numberOfRooms);
+		String numberofrooms = BaseClass.getProperties().getProperty("numberOfRooms");
+		basicInfoPage.updateNumberOfRooms(numberofrooms);
 		
-		String numberOfFloors = BaseClass.getProperties().getProperty("numberoffloors");
-		basicInfoPage.updateNumberOfFloors(numberOfFloors);
+		String numberoffloors = BaseClass.getProperties().getProperty("numberOfFloors");
+		basicInfoPage.updateNumberOfFloors(numberoffloors);
 		
-		String checkInTime = BaseClass.getProperties().getProperty("checkintime");
-		basicInfoPage.updateCheckInTime(checkInTime);
+		String checkintime = BaseClass.getProperties().getProperty("checkInTime");
+		basicInfoPage.updateCheckInTime(checkintime);
 		
-		String checkOutTime = BaseClass.getProperties().getProperty("checkouttime");
-		basicInfoPage.updateCheckOutTime(checkOutTime);
+		String checkouttime = BaseClass.getProperties().getProperty("checkOutTime");
+		basicInfoPage.updateCheckOutTime(checkouttime);
 	}
 
 	@When("user clicks on save property details button")
@@ -48,7 +48,7 @@ public class BasicInfoSteps {
 		basicInfoPage.clickOnSaveButton();
 		
 		String actualMessage = basicInfoPage.waitAndGetSuccessMessage();
-		String popupMsg = BaseClass.getProperties().getProperty("basicinfopopupmessage");
+		String popupMsg = BaseClass.getProperties().getProperty("basicInfoPopupMessage");
 	 	Assert.assertEquals(actualMessage, popupMsg);
 	 	
 	 	basicInfoPage.waitForSuccessPopupToDisappear();

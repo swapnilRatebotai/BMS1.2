@@ -125,6 +125,6 @@ public class ContactsPage extends BasePage {
 	
 	public void waitForSuccessPopupToDisappear() {
 		
-	    wait.until(ExpectedConditions.invisibilityOf(successPopup));
+		wait.until(ExpectedConditions.invisibilityOf(successPopup));
 	}
 }
