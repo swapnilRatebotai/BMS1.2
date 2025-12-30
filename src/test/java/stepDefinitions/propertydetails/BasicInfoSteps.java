@@ -24,22 +24,22 @@ public class BasicInfoSteps {
 	public void user_updates_property_details() throws IOException {
 	    
 		String description = BaseClass.getProperties().getProperty("description");
-		basicInfoPage.enterDescription(description);
+		basicInfoPage.updateDescription(description);
 		
 		String builtYear = BaseClass.getProperties().getProperty("builtyear");
-		basicInfoPage.selectBuiltYear(builtYear);
+		basicInfoPage.updateBuiltYear(builtYear);
 		
 		String numberOfRooms = BaseClass.getProperties().getProperty("numberofrooms");
-		basicInfoPage.enterNumberOfRooms(numberOfRooms);
+		basicInfoPage.updateNumberOfRooms(numberOfRooms);
 		
 		String numberOfFloors = BaseClass.getProperties().getProperty("numberoffloors");
-		basicInfoPage.enterNumberOfFloors(numberOfFloors);
+		basicInfoPage.updateNumberOfFloors(numberOfFloors);
 		
 		String checkInTime = BaseClass.getProperties().getProperty("checkintime");
-		basicInfoPage.selectCheckInTime(checkInTime);
+		basicInfoPage.updateCheckInTime(checkInTime);
 		
 		String checkOutTime = BaseClass.getProperties().getProperty("checkouttime");
-		basicInfoPage.selectCheckOutTime(checkOutTime);
+		basicInfoPage.updateCheckOutTime(checkOutTime);
 	}
 
 	@When("user clicks on save property details button")
@@ -50,5 +50,7 @@ public class BasicInfoSteps {
 		String actualMessage = basicInfoPage.waitAndGetSuccessMessage();
 		String popupMsg = BaseClass.getProperties().getProperty("basicinfopopupmessage");
 	 	Assert.assertEquals(actualMessage, popupMsg);
+	 	
+	 	basicInfoPage.waitForSuccessPopupToDisappear();
 	}
 }
