@@ -10,8 +10,8 @@ import io.cucumber.junit.CucumberOptions;
 //					features = "Features",
 //					features = {".//Features/update_user_profile.feature"},
 //					features = {".//Features/page_navigation.feature"},
-					features = {".//Features/update_property_details.feature"},
-//					features = {".//Features/page_navigation.feature",".//Features/update_user_profile.feature"},
+//					features = {".//Features/update_property_details.feature"},
+					features = {".//Features/page_navigation.feature",".//Features/update_user_profile.feature",".//Features/update_property_details.feature"},
 //					features = {"@target/rerun.txt"},  //only run fail scenarios
 					glue={"stepDefinitions","hooks"},
 					plugin= {"pretty","html:reports/myreport.html",
