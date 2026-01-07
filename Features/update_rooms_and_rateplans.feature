@@ -9,7 +9,6 @@ Feature: Rooms and rate plan management
     Then user clicks on update room button
 
     When user opens rate plans section
-    And user clicks on edit rate plan
     And user updates rate plan details
     Then user clicks on update rate plan button
 

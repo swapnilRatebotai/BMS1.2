@@ -1,12 +1,16 @@
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import factory.BaseClass;
 
 public class RoomsPage extends BasePage {
 
@@ -48,11 +52,44 @@ public class RoomsPage extends BasePage {
 	@FindBy(xpath = "//input[@placeholder=' Room Type']")
 	WebElement roomTypeDropDown;
 
+	@FindBy(xpath = "//li[normalize-space()='Deluxe']")
+	WebElement selectRoomTypeDeluxe;
+
 	@FindBy(xpath = "//li[normalize-space()='Standard']")
 	WebElement selectRoomTypeStandard;
 
+	@FindBy(xpath = "//li[normalize-space()='Luxury']")
+	WebElement selectRoomTypeLuxury;
+
 	@FindBy(xpath = "//li[normalize-space()='Master']")
 	WebElement selectRoomTypeMaster;
+
+	@FindBy(xpath = "//li[normalize-space()='Common']")
+	WebElement selectRoomTypeCommon;
+
+	@FindBy(xpath = "//li[normalize-space()='Tent']")
+	WebElement selectRoomTypeTent;
+
+	@FindBy(xpath = "//li[normalize-space()='Family room']")
+	WebElement selectRoomTypeFamilyRoom;
+
+	@FindBy(xpath = "//li[normalize-space()='Water Villa']")
+	WebElement selectRoomTypeWaterVilla;
+
+	@FindBy(xpath = "//li[normalize-space()='Beach Villa']")
+	WebElement selectRoomTypeBeachVilla;
+
+	@FindBy(xpath = "//li[normalize-space()='For Honeymooners']")
+	WebElement selectRoomTypeForHoneymooners;
+
+	@FindBy(xpath = "//li[normalize-space()='Garden villa']")
+	WebElement selectRoomTypeGardenVilla;
+
+	@FindBy(xpath = "//li[normalize-space()='Suite']")
+	WebElement selectRoomTypeSuite;
+
+	@FindBy(xpath = "//li[normalize-space()='Other']")
+	WebElement selectRoomTypeOther;
 
 	@FindBy(xpath = "//input[@placeholder=' Room View']")
 	WebElement roomViewDropDown;
@@ -116,7 +153,7 @@ public class RoomsPage extends BasePage {
 
 	@FindBy(xpath = "//input[@name='rate_plan_name']")
 	WebElement ratePlanNameInput;
-	
+
 	@FindBy(xpath = "//button[normalize-space()='Cancel']")
 	WebElement cancelRateplanButton;
 
@@ -139,112 +176,121 @@ public class RoomsPage extends BasePage {
 	WebElement updateRateplanButton;
 
 	@FindBy(xpath = "//div[@class='snackbar success']")
-	WebElement successPopupForRoom;
-	
+	WebElement successPopupOfUpdateRoom;
+
 	@FindBy(xpath = "//div[@class='snackbar info']")
-	WebElement discardedPopupForRoom;
-	
+	WebElement discardedPopupOfRoom;
+
 	@FindBy(xpath = "//div[@class='snackbar success']")
-	WebElement successPopupForRateplan;
+	WebElement successPopupOfUpdateRateplan;
 
 	// Actions
 	public boolean roomsPageConfirmation() {
 
 		return roomsPgConf.isDisplayed();
 	}
-	
+
 	public void clickOnCreateNewRoomButton() {
 		createNewRoomButton.click();
 	}
 
-	public void updateDisplayName(String displayname) {
+	public void updateDisplayName() throws IOException {
 
-		displayNameInput.clear();
-		displayNameInput.sendKeys(displayname);
+		displayNameInput.click();
+		displayNameInput.sendKeys(Keys.CONTROL + "a");
+		displayNameInput.sendKeys(Keys.DELETE);
+		String displayName = BaseClass.getProperties().getProperty("DisplayName");
+		displayNameInput.sendKeys(displayName);
 	}
 
-	public void updateDescription(String description) {
+	public void updateDescription() throws IOException {
 
 		descriptionInput.clear();
+		String description = BaseClass.getProperties().getProperty("Description");
 		descriptionInput.sendKeys(description);
 	}
 
-	public void updateNumberOfRooms(String numberofrooms) {
+	public void updateNumberOfRooms() throws IOException {
+
 		numberOfRoomsInput.clear();
-		numberOfRoomsInput.sendKeys(numberofrooms);
+		String numberOfRooms = BaseClass.getProperties().getProperty("NumberOfRooms");
+		numberOfRoomsInput.sendKeys(numberOfRooms);
 	}
 
-	public void updateRoomTypeToStandard() {
+	public void updateRoomType() throws IOException {
 
-		roomTypeDropDown.click();
-		selectRoomTypeStandard.click();
+		roomTypeDropDown.clear();
+
+		String roomType = BaseClass.getProperties().getProperty("RoomType");
+		roomTypeDropDown.sendKeys(roomType);
+		roomTypeDropDown.sendKeys(Keys.DOWN);
+		roomTypeDropDown.sendKeys(Keys.ENTER);
+
 	}
 
-	public void updateRoomTypeToMaster() {
+	public void updateRoomView() throws IOException {
 
-		roomTypeDropDown.click();
-		selectRoomTypeMaster.click();
+		roomViewDropDown.clear();
+
+		String roomView = BaseClass.getProperties().getProperty("RoomView");
+		roomViewDropDown.sendKeys(roomView);
+		roomViewDropDown.sendKeys(Keys.DOWN);
+		roomViewDropDown.sendKeys(Keys.ENTER);
 	}
 
-	public void updateRoomViewToSea() {
-		roomViewDropDown.click();
-		selectRoomViewSea.click();
+	public void updateBedType() throws IOException {
+		
+		bedTypeDropDown.clear();
+
+		String bedType = BaseClass.getProperties().getProperty("BedType");
+		bedTypeDropDown.sendKeys(bedType);
+		bedTypeDropDown.sendKeys(Keys.DOWN);
+		bedTypeDropDown.sendKeys(Keys.ENTER);
+	}
+	
+	public void updateExtraBedType() throws IOException {
+		extraBedTypeDropDown.clear();
+
+		String extraBedType = BaseClass.getProperties().getProperty("ExtraBedType");
+		extraBedTypeDropDown.sendKeys(extraBedType);
+		extraBedTypeDropDown.sendKeys(Keys.DOWN);
+		extraBedTypeDropDown.sendKeys(Keys.ENTER);
 	}
 
-	public void updateRoomViewToValley() {
-		roomViewDropDown.click();
-		selectRoomViewValley.click();
-	}
-
-	public void updateBedTypeToKing() {
-		bedTypeDropDown.click();
-		selectBedTypeKing.click();
-	}
-
-	public void updateBedTypeToQueen() {
-		bedTypeDropDown.click();
-		selectBedTypeQueen.click();
-	}
-
-	public void updateExtraBedTypeToMattress() {
-		extraBedTypeDropDown.click();
-		selectExtraBedTypeMattress.click();
-	}
-
-	public void updateExtraBedTypeToSofacumbed() {
-		extraBedTypeDropDown.click();
-		selectExtraBedTypeSofacumbed.click();
-	}
-
-	public void updateBaseAdults(String baseadults) {
+	public void updateBaseAdults() throws IOException {
 		baseAdultsInput.clear();
-		baseAdultsInput.sendKeys(baseadults);
+		String baseAdults = BaseClass.getProperties().getProperty("BaseAdults");
+		baseAdultsInput.sendKeys(baseAdults);
 	}
 
-	public void updateMaximumAdults(String maximumadults) {
+	public void updateMaximumAdults() throws IOException {
 		maxAdultsInput.clear();
-		maxAdultsInput.sendKeys(maximumadults);
+		String maximumAdults = BaseClass.getProperties().getProperty("MaximumAdults");
+		maxAdultsInput.sendKeys(maximumAdults);
 	}
 
-	public void updateChildBase(String childbase) {
+	public void updateChildBase() throws IOException {
 		childBaseInput.clear();
-		childBaseInput.sendKeys(childbase);
+		String childBase = BaseClass.getProperties().getProperty("ChildBase");
+		childBaseInput.sendKeys(childBase);
 	}
 
-	public void updateMaximumChildren(String maximumchildren) {
+	public void updateMaximumChildren() throws IOException {
 		maxChildrenInput.clear();
-		maxChildrenInput.sendKeys(maximumchildren);
+		String maximumChildren = BaseClass.getProperties().getProperty("MaximumChildren");
+		maxChildrenInput.sendKeys(maximumChildren);
 	}
 
-	public void updateMaxPax(String maxpax) {
+	public void updateMaxPax() throws IOException {
 		maxPaxInput.clear();
-		maxPaxInput.sendKeys(maxpax);
+		String maxPax = BaseClass.getProperties().getProperty("MaxPax");
+		maxPaxInput.sendKeys(maxPax);
 	}
 
 	public void clickOnCancelRoomButton() {
 		cancelRoomButton.click();
 	}
-	
+
 	public void clickOnCreateRoomButton() {
 		createRoomSubmitButton.click();
 	}
@@ -252,17 +298,23 @@ public class RoomsPage extends BasePage {
 	public void clickOnUpdateRoomButton() {
 		updateRoomButton.click();
 	}
-
-	public void waitForSuccessPopupForRoomToDisappear() {
-
-		wait.until(ExpectedConditions.invisibilityOf(successPopupForRoom));
-	}
 	
-	public void waitForChangesDiscardedPopupForRoomToDisappear() {
+	public String waitAndGetSuccessMessageOfRoom() {
 
-		wait.until(ExpectedConditions.invisibilityOf(discardedPopupForRoom));
+		WebElement roomPopup = wait.until(ExpectedConditions.visibilityOf(successPopupOfUpdateRoom));
+		return roomPopup.getText().trim();
 	}
-	
+
+	public void waitForSuccessPopupOfRoomToDisappear() {
+
+		wait.until(ExpectedConditions.invisibilityOf(successPopupOfUpdateRoom));
+	}
+
+	public void waitForChangesDiscardedPopupOfRoomToDisappear() {
+
+		wait.until(ExpectedConditions.invisibilityOf(discardedPopupOfRoom));
+	}
+
 	public void clickOnRoomStatusToggle() {
 		testRoomStatusToggle.click();
 	}
@@ -271,61 +323,67 @@ public class RoomsPage extends BasePage {
 
 		editTestRoomButton.click();
 	}
-	
+
 	public void clickOnCreateRateplanButton() {
 		createTestRatePlanButton.click();
 	}
-	
+
 	public void updateMealPlanToEP() {
 		mealPlanDropDown.click();
 		selectMealPlanEP.click();
 	}
-	
+
 	public void updateMealPlanToCP() {
 		mealPlanDropDown.click();
 		selectMealPlanCP.click();
 	}
-	
-	public void updateRatePlanName(String rateplanname) {
+
+	public void updateRatePlanName() throws IOException {
 		ratePlanNameInput.clear();
-		ratePlanNameInput.sendKeys(rateplanname);
+		String RateplanName = BaseClass.getProperties().getProperty("RatePlanName");
+		ratePlanNameInput.sendKeys(RateplanName);
 	}
-	
+
 	public void clickOnCancelRateplanButton() {
 		cancelRateplanButton.click();
 	}
-	
+
 	public void clickOnCreateRateplanSubmitButton() {
 		createRatePlanSubmitButton.click();
 	}
 	
+	public void clickOnUpdateRateplanButton() {
+		updateRateplanButton.click();
+	}
+
 	public void clickOnShowRateplanButton() {
 		showHideTestRatePlansButton.click();
 	}
-	
+
 	public void clickOnHideRateplanButton() {
 		showHideTestRatePlansButton.click();
 	}
-	
+
 	public void clickOnEPRateplanStatusToggle() {
 		epRateplanStatusButton.click();
 	}
-	
+
 	public void clickOnCPRateplanStatusToggle() {
 		cpRateplanStatusButton.click();
 	}
-	
+
 	public void clickOnEPRateplanEditButton() {
 		epRateplanEditButton.click();
 	}
-	
+
 	public void clickOnCPRateplanEditButton() {
 		cpRateplanEditButton.click();
 	}
-	
-	public void waitForSuccessPopupForRateplanToDisappear() {
 
-		wait.until(ExpectedConditions.invisibilityOf(successPopupForRateplan));
+	public String waitAndGetSuccessMessageOfRateplan() {
+
+		WebElement rateplanPopup = wait.until(ExpectedConditions.visibilityOf(successPopupOfUpdateRateplan));
+		return rateplanPopup.getText().trim();
 	}
 
 }
