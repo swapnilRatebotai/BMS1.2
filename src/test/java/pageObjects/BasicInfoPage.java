@@ -49,7 +49,7 @@ public class BasicInfoPage extends BasePage {
 	@FindBy(xpath = "//div[@class='snackbar success']")
 	WebElement successPopup;
 
-	// Actions
+	// Actionsssss
 	public boolean basicInfoPageConfirmation() {
 		return basicInfoPgConf.isDisplayed();
 	}
