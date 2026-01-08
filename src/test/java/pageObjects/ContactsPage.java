@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.Keys;
@@ -8,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import factory.BaseClass;
 
 public class ContactsPage extends BasePage {
 
@@ -63,55 +66,86 @@ public class ContactsPage extends BasePage {
 		return contactsPgConf.isDisplayed();
 	}
 
-	public void updateHotelPhone(String hotelPhone) {
+	public void updateHotelPhone() throws IOException {
 		hotelPhoneInput.click();
 		hotelPhoneInput.sendKeys(Keys.CONTROL + "a");
 		hotelPhoneInput.sendKeys(Keys.DELETE);
+		String hotelPhone = BaseClass.getProperties().getProperty("HotelPhone");
 		hotelPhoneInput.sendKeys(hotelPhone);
 	}
 
-	public void updateHotelMobile(String hotelMobile) {
+	public void updateHotelMobile() throws IOException {
 		hotelMobileInput.clear();
+		String hotelMobile = BaseClass.getProperties().getProperty("HotelMobile");
 		hotelMobileInput.sendKeys(hotelMobile);
 	}
 
-	public void updateHotelEmail(String hotelEmail) {
+	public void updateHotelEmail() throws IOException {
 		hotelEmailInput.clear();
+		String hotelEmail = BaseClass.getProperties().getProperty("HotelEmail");
 		hotelEmailInput.sendKeys(hotelEmail);
 	}
 
-	public void updatePhoneList(String phoneList) {
+	public void updatePhoneList() throws IOException {
 		phoneListInput.clear();
+		String phoneList = BaseClass.getProperties().getProperty("PhoneList");
 		phoneListInput.sendKeys(phoneList);
 	}
 
-	public void updateWebsite(String webSite) {
+	public void updateWebsite() throws IOException {
 		websiteInput.clear();
-		websiteInput.sendKeys(webSite);
+		String website = BaseClass.getProperties().getProperty("HotelWebsite");
+		websiteInput.sendKeys(website);
 	}
 
-	public void updateEmailList(String emailList) {
+	public void updateEmailList() throws IOException {
 		emailListInput.clear();
+		String emailList = BaseClass.getProperties().getProperty("EmailList");
 		emailListInput.sendKeys(emailList);
 	}
 
-	public void updateCustomerCareNumber(String customerCareNumber) {
+	public void updateCustomerCareNumber() throws IOException {
 		customerCareNumberInput.clear();
+		String customerCareNumber = BaseClass.getProperties().getProperty("CustomerCareNumber");
 		customerCareNumberInput.sendKeys(customerCareNumber);
 	}
-
-	public void selectUseCustomerCareAsWhatsappYes() {
-		useCustomerCareAsWhatsappTrue.click();
+	
+	public void updateWhatsappNumber() throws IOException {
+		
+		String customerCareAsWhatsappnumber = BaseClass.getProperties().getProperty("UseCustomerCareAsWhatsappNumber");
+		String whatsappNumber = BaseClass.getProperties().getProperty("WhatsappNumber");
+		
+		if(customerCareAsWhatsappnumber.equalsIgnoreCase("Yes")) {
+			
+			useCustomerCareAsWhatsappTrue.click();
+		}
+		else {
+			
+			useCustomerCareAsWhatsappFalse.click();
+			whatsappNumberInput.clear();
+			whatsappNumberInput.sendKeys(whatsappNumber);
+		}
 	}
+	
+	
+	
+	
+	
+	
+	
 
-	public void selectUseCustomerCareAsWhatsappNo() {
-		useCustomerCareAsWhatsappFalse.click();
-	}
-
-	public void updateWhatsappNumber(String whatsappNumber) {
-		whatsappNumberInput.clear();
-		whatsappNumberInput.sendKeys(whatsappNumber);
-	}
+//	public void selectUseCustomerCareAsWhatsappYes() {
+//		useCustomerCareAsWhatsappTrue.click();
+//	}
+//
+//	public void selectUseCustomerCareAsWhatsappNo() {
+//		useCustomerCareAsWhatsappFalse.click();
+//	}
+//
+//	public void updateWhatsappNumber(String whatsappNumber) {
+//		whatsappNumberInput.clear();
+//		whatsappNumberInput.sendKeys(whatsappNumber);
+//	}
 
 	public void clickOnUpdateContactButton() {
 		updateButton.click();

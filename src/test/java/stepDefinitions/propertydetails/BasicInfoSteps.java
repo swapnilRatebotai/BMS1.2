@@ -23,23 +23,12 @@ public class BasicInfoSteps {
 	@When("user updates property details")
 	public void user_updates_property_details() throws IOException {
 	    
-		String description = BaseClass.getProperties().getProperty("description");
-		basicInfoPage.updateDescription(description);
-		
-		String builtyear = BaseClass.getProperties().getProperty("builtYear");
-		basicInfoPage.updateBuiltYear(builtyear);
-		
-		String numberofrooms = BaseClass.getProperties().getProperty("numberOfRooms");
-		basicInfoPage.updateNumberOfRooms(numberofrooms);
-		
-		String numberoffloors = BaseClass.getProperties().getProperty("numberOfFloors");
-		basicInfoPage.updateNumberOfFloors(numberoffloors);
-		
-		String checkintime = BaseClass.getProperties().getProperty("checkInTime");
-		basicInfoPage.updateCheckInTime(checkintime);
-		
-		String checkouttime = BaseClass.getProperties().getProperty("checkOutTime");
-		basicInfoPage.updateCheckOutTime(checkouttime);
+		basicInfoPage.updateDescription();
+		basicInfoPage.updateBuiltYear();
+		basicInfoPage.updateNumberOfRooms();
+		basicInfoPage.updateNumberOfFloors();
+		basicInfoPage.updateCheckInTime();
+		basicInfoPage.updateCheckOutTime();
 	}
 
 	@When("user clicks on save property details button")
@@ -48,7 +37,7 @@ public class BasicInfoSteps {
 		basicInfoPage.clickOnSaveButton();
 		
 		String actualMessage = basicInfoPage.waitAndGetSuccessMessage();
-		String popupMsg = BaseClass.getProperties().getProperty("basicInfoPopupMessage");
+		String popupMsg = BaseClass.getProperties().getProperty("BasicInfoPopupMessage");
 	 	Assert.assertEquals(actualMessage, popupMsg);
 	 	
 	 	basicInfoPage.waitForSuccessPopupToDisappear();

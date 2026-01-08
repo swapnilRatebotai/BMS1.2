@@ -52,71 +52,14 @@ public class RoomsPage extends BasePage {
 	@FindBy(xpath = "//input[@placeholder=' Room Type']")
 	WebElement roomTypeDropDown;
 
-	@FindBy(xpath = "//li[normalize-space()='Deluxe']")
-	WebElement selectRoomTypeDeluxe;
-
-	@FindBy(xpath = "//li[normalize-space()='Standard']")
-	WebElement selectRoomTypeStandard;
-
-	@FindBy(xpath = "//li[normalize-space()='Luxury']")
-	WebElement selectRoomTypeLuxury;
-
-	@FindBy(xpath = "//li[normalize-space()='Master']")
-	WebElement selectRoomTypeMaster;
-
-	@FindBy(xpath = "//li[normalize-space()='Common']")
-	WebElement selectRoomTypeCommon;
-
-	@FindBy(xpath = "//li[normalize-space()='Tent']")
-	WebElement selectRoomTypeTent;
-
-	@FindBy(xpath = "//li[normalize-space()='Family room']")
-	WebElement selectRoomTypeFamilyRoom;
-
-	@FindBy(xpath = "//li[normalize-space()='Water Villa']")
-	WebElement selectRoomTypeWaterVilla;
-
-	@FindBy(xpath = "//li[normalize-space()='Beach Villa']")
-	WebElement selectRoomTypeBeachVilla;
-
-	@FindBy(xpath = "//li[normalize-space()='For Honeymooners']")
-	WebElement selectRoomTypeForHoneymooners;
-
-	@FindBy(xpath = "//li[normalize-space()='Garden villa']")
-	WebElement selectRoomTypeGardenVilla;
-
-	@FindBy(xpath = "//li[normalize-space()='Suite']")
-	WebElement selectRoomTypeSuite;
-
-	@FindBy(xpath = "//li[normalize-space()='Other']")
-	WebElement selectRoomTypeOther;
-
 	@FindBy(xpath = "//input[@placeholder=' Room View']")
 	WebElement roomViewDropDown;
-
-	@FindBy(xpath = "//li[normalize-space()='Sea view']")
-	WebElement selectRoomViewSea;
-
-	@FindBy(xpath = "//li[normalize-space()='Valley view']")
-	WebElement selectRoomViewValley;
 
 	@FindBy(xpath = "//input[@placeholder=' Bed Type']")
 	WebElement bedTypeDropDown;
 
-	@FindBy(xpath = "//li[normalize-space()='King Bed']")
-	WebElement selectBedTypeKing;
-
-	@FindBy(xpath = "//li[normalize-space()='Queen Bed']")
-	WebElement selectBedTypeQueen;
-
 	@FindBy(xpath = "//input[@placeholder=' Extra Bed Type']")
 	WebElement extraBedTypeDropDown;
-
-	@FindBy(xpath = "//li[normalize-space()='Mattress']")
-	WebElement selectExtraBedTypeMattress;
-
-	@FindBy(xpath = "//li[normalize-space()='Sofa cum bed']")
-	WebElement selectExtraBedTypeSofacumbed;
 
 	@FindBy(xpath = "//input[@name='no_of_base_adults']")
 	WebElement baseAdultsInput;
@@ -144,12 +87,6 @@ public class RoomsPage extends BasePage {
 
 	@FindBy(xpath = "//input[@placeholder=' Meal Plan']")
 	WebElement mealPlanDropDown;
-
-	@FindBy(xpath = "//li[normalize-space()='Accommodation only']")
-	WebElement selectMealPlanEP;
-
-	@FindBy(xpath = "//li[normalize-space()='FREE Breakfast']")
-	WebElement selectMealPlanCP;
 
 	@FindBy(xpath = "//input[@name='rate_plan_name']")
 	WebElement ratePlanNameInput;
@@ -327,15 +264,13 @@ public class RoomsPage extends BasePage {
 	public void clickOnCreateRateplanButton() {
 		createTestRatePlanButton.click();
 	}
-
-	public void updateMealPlanToEP() {
-		mealPlanDropDown.click();
-		selectMealPlanEP.click();
-	}
-
-	public void updateMealPlanToCP() {
-		mealPlanDropDown.click();
-		selectMealPlanCP.click();
+	
+	public void updateMealPlan() throws IOException {
+		
+		String mealPlan = BaseClass.getProperties().getProperty("MealPlan");
+		mealPlanDropDown.sendKeys(mealPlan);
+		mealPlanDropDown.sendKeys(Keys.DOWN);
+		mealPlanDropDown.sendKeys(Keys.ENTER);
 	}
 
 	public void updateRatePlanName() throws IOException {
@@ -384,6 +319,11 @@ public class RoomsPage extends BasePage {
 
 		WebElement rateplanPopup = wait.until(ExpectedConditions.visibilityOf(successPopupOfUpdateRateplan));
 		return rateplanPopup.getText().trim();
+	}
+	
+	public void waitForSuccessPopupOfRateplanToDisappear() {
+
+		wait.until(ExpectedConditions.invisibilityOf(successPopupOfUpdateRateplan));
 	}
 
 }

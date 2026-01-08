@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.Keys;
@@ -8,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import factory.BaseClass;
 
 public class BasicInfoPage extends BasePage {
 
@@ -27,9 +30,6 @@ public class BasicInfoPage extends BasePage {
 
 	@FindBy(xpath = "//input[@placeholder=' Built Year']")
 	WebElement builtYearInput;
-
-	@FindBy(xpath = "//ul[@class='full-page-dropdown-list']")
-	WebElement dropdown;
 
 	@FindBy(xpath = "//input[@id='Number of Rooms']")
 	WebElement numberOfRoomsInput;
@@ -54,47 +54,55 @@ public class BasicInfoPage extends BasePage {
 		return basicInfoPgConf.isDisplayed();
 	}
 
-	public void updateDescription(String description) {
+	public void updateDescription() throws IOException {
 		descriptionInput.click();
 		descriptionInput.sendKeys(Keys.CONTROL + "a");
 		descriptionInput.sendKeys(Keys.DELETE);
+		String description = BaseClass.getProperties().getProperty("Description");
 		descriptionInput.sendKeys(description);
 	}
 
-	public void updateBuiltYear(String builtYear) {
+	public void updateBuiltYear() throws IOException {
 
 		builtYearInput.click();
 		builtYearInput.sendKeys(Keys.CONTROL + "a");
 		builtYearInput.sendKeys(Keys.DELETE);
+		String builtYear = BaseClass.getProperties().getProperty("BuiltYear");
 		builtYearInput.sendKeys(builtYear);
-		dropdown.click();
-
+		builtYearInput.sendKeys(Keys.DOWN);
+		builtYearInput.sendKeys(Keys.ENTER);
 	}
 
-	public void updateNumberOfRooms(String noOfRooms) {
+	public void updateNumberOfRooms() throws IOException {
 		numberOfRoomsInput.clear();
-		numberOfRoomsInput.sendKeys(noOfRooms);
+		String numberOfRooms = BaseClass.getProperties().getProperty("NumberOfRooms");
+		numberOfRoomsInput.sendKeys(numberOfRooms);
 	}
 
-	public void updateNumberOfFloors(String noOfFloors) {
+	public void updateNumberOfFloors() throws IOException {
 		numberOfFloorsInput.clear();
-		numberOfFloorsInput.sendKeys(noOfFloors);
+		String numberOfFloors = BaseClass.getProperties().getProperty("NumberOfFloors");
+		numberOfFloorsInput.sendKeys(numberOfFloors);
 	}
 
-	public void updateCheckInTime(String checkIn) {
+	public void updateCheckInTime() throws IOException {
 		checkInInput.click();
 		checkInInput.sendKeys(Keys.CONTROL + "a");
 		checkInInput.sendKeys(Keys.DELETE);
-		checkInInput.sendKeys(checkIn);
-		dropdown.click();
+		String checkInTime = BaseClass.getProperties().getProperty("CheckInTime");
+		checkInInput.sendKeys(checkInTime);
+		checkInInput.sendKeys(Keys.DOWN);
+		checkInInput.sendKeys(Keys.ENTER);
 	}
 
-	public void updateCheckOutTime(String checkOut) {
+	public void updateCheckOutTime() throws IOException {
 		checkOutInput.click();
 		checkOutInput.sendKeys(Keys.CONTROL + "a");
 		checkOutInput.sendKeys(Keys.DELETE);
-		checkOutInput.sendKeys(checkOut);
-		dropdown.click();
+		String checkOutTime = BaseClass.getProperties().getProperty("CheckOutTime");
+		checkOutInput.sendKeys(checkOutTime);
+		checkOutInput.sendKeys(Keys.DOWN);
+		checkOutInput.sendKeys(Keys.ENTER);
 	}
 
 	public void clickOnSaveButton() {

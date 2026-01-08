@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
@@ -7,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import factory.BaseClass;
 
 public class UserProfilePage extends BasePage{
 	
@@ -57,24 +60,28 @@ public class UserProfilePage extends BasePage{
 		editProfileBtn.click();
 	}
 	
-	public void enterFirstName(String firstname) {
+	public void enterFirstName() throws IOException {
 		firstNameInput.clear();
-		firstNameInput.sendKeys(firstname);
+		String firstName = BaseClass.getProperties().getProperty("FirstName");
+		firstNameInput.sendKeys(firstName);
 	}
 	
-	public void enterLastName(String lastname) {
+	public void enterLastName() throws IOException {
 		lastNameInput.clear();
-		lastNameInput.sendKeys(lastname);
+		String lastName = BaseClass.getProperties().getProperty("LastName");
+		lastNameInput.sendKeys(lastName);
 	}
 	
-	public void enterPrimaryNumber(String primarynumber) {
+	public void enterPrimaryNumber() throws IOException {
 		primaryNumberInput.clear();
-		primaryNumberInput.sendKeys(primarynumber);
+		String primaryNumber = BaseClass.getProperties().getProperty("PrimaryNumber");
+		primaryNumberInput.sendKeys(primaryNumber);
 	}
 	
-	public void enterSecondaryNumber(String secondarynumber) {
+	public void enterSecondaryNumber() throws IOException {
 		secondaryNumberInput.clear();
-		secondaryNumberInput.sendKeys(secondarynumber);
+		String secondaryNumber = BaseClass.getProperties().getProperty("SecondaryNumber");
+		secondaryNumberInput.sendKeys(secondaryNumber);
 	}
 	
 	public void clickOnSaveChangesButton() {

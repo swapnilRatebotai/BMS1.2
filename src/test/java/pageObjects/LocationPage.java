@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.Keys;
@@ -8,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import factory.BaseClass;
 
 public class LocationPage extends BasePage{
 
@@ -41,8 +44,10 @@ public class LocationPage extends BasePage{
 		return locationPgConf.isDisplayed();
 	}
 	
-	public void updateStreetAddress(String streetAddress) throws InterruptedException {
+	public void updateStreetAddress() throws InterruptedException, IOException {
+		
 		streetAddressInput.clear();
+		String streetAddress = BaseClass.getProperties().getProperty("StreetAddress");
 		streetAddressInput.sendKeys(streetAddress);
 		Thread.sleep(800);
 		streetAddressInput.sendKeys(Keys.DOWN);
@@ -51,8 +56,9 @@ public class LocationPage extends BasePage{
 		Thread.sleep(800);
 	}
 	
-	public void updateLocality(String locality) {
+	public void updateLocality() throws IOException {
 		localityInput.clear();
+		String locality = BaseClass.getProperties().getProperty("Locality");
 		localityInput.sendKeys(locality);
 	}
 	

@@ -23,12 +23,8 @@ public class LocationSteps {
 	@When("user updates location details")
 	public void user_updates_location_details() throws IOException, InterruptedException {
 	    
-		String streetaddress = BaseClass.getProperties().getProperty("streetAddress");
-		locationPage.updateStreetAddress(streetaddress);
-		
-		
-		String locality = BaseClass.getProperties().getProperty("locality");
-		locationPage.updateLocality(locality);
+		locationPage.updateStreetAddress();
+		locationPage.updateLocality();
 		
 	}
 
@@ -38,7 +34,7 @@ public class LocationSteps {
 		locationPage.clickOnUpdateLocationButton();
 		
 		String actualMessage = locationPage.waitAndGetSuccessMessage();
-		String popupMsg = BaseClass.getProperties().getProperty("locationPopupMessage");
+		String popupMsg = BaseClass.getProperties().getProperty("LocationPopupMessage");
 	 	Assert.assertEquals(actualMessage, popupMsg);
 	 	
 	 	locationPage.waitForSuccessPopupToDisappear();

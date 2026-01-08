@@ -72,5 +72,7 @@ public class RoomsSteps {
 		String actualMessageForRateplan = roomsPage.waitAndGetSuccessMessageOfRateplan();
 		String popupMsgForRateplan = BaseClass.getProperties().getProperty("UpdateRateplanPopupMessage");
 	 	Assert.assertEquals(actualMessageForRateplan, popupMsgForRateplan);
+	 	
+	 	roomsPage.waitForSuccessPopupOfRateplanToDisappear();
 	}
 }
