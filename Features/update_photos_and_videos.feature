@@ -1,4 +1,4 @@
-Feature: Photos and videos management
+Feature: Update Photos and videos
 
   Scenario: Verify user can upload and delete cover and room photos successfully
     Given user logs into the BMS application

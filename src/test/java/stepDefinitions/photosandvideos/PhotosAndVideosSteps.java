@@ -1,5 +1,7 @@
 package stepDefinitions.photosandvideos;
 
+import java.io.IOException;
+
 import org.junit.Assert;
 
 import factory.BaseClass;
@@ -19,20 +21,26 @@ public class PhotosAndVideosSteps {
 	}
 	
 	@When("user uploads cover photo")
-	public void user_uploads_cover_photo() {
+	public void user_uploads_cover_photo() throws IOException {
 	    
 		photosAndVideosPage.uploadCoverPhoto();
 		photosAndVideosPage.clickOnCoverPhotoCheckbox();
+		
+		String actualMessageForCoverPhoto = photosAndVideosPage.waitAndGetSuccessMessageForImageUpdate();
+		String popupMessageForCoverPhoto = BaseClass.getProperties().getProperty("CoverPhotoPopupMessage");
+		Assert.assertEquals(actualMessageForCoverPhoto, popupMessageForCoverPhoto);
+		
+		photosAndVideosPage.waitForSuccessPopupOfImageUpdateToDisappear();
 	}
 
 	@Then("user clicks on save photos button")
-	public void user_clicks_on_save_photos_button() {
+	public void user_clicks_on_save_photos_button() throws IOException {
 	    
 		photosAndVideosPage.clickOnSaveButton();
 		
 		String actualMessageForRoom = photosAndVideosPage.waitAndGetSuccessMessageForImageUpdate();
-		String popupMsgForRoom = "Images updated successfully";
-		Assert.assertEquals(actualMessageForRoom, popupMsgForRoom);
+		String popupMessageForRoom = BaseClass.getProperties().getProperty("RoomPhotoPopupMessage");
+		Assert.assertEquals(actualMessageForRoom, popupMessageForRoom);
 		
 		photosAndVideosPage.waitForSuccessPopupOfImageUpdateToDisappear();
 	}
@@ -49,10 +57,13 @@ public class PhotosAndVideosSteps {
 	public void user_deletes_uploaded_room_photo() {
 	    
 		photosAndVideosPage.deleteRoomImage();
+		photosAndVideosPage.cancelRoomActionsButton();
 	}
 
 	@When("user deletes uploaded cover photo")
 	public void user_deletes_uploaded_cover_photo() {
 	    
+		photosAndVideosPage.deleteCoverPhoto();
+		photosAndVideosPage.cancelRoomActionsButton();
 	}
 }

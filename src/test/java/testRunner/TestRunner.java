@@ -7,11 +7,13 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-//					features = "Features",
+					features = "Features",
 //					features = {".//Features/update_user_profile.feature"},
-					features = {".//Features/page_navigation.feature"},
+//					features = {".//Features/page_navigation.feature"},
 //					features = {".//Features/update_property_details.feature"},
 //					features = {".//Features/update_rooms_and_rateplans.feature"},
+//					features = {".//Features/update_photos_and_videos.feature"},
+//					features = {".//Features/update_hotel_logo.feature"},
 //					features = {".//Features/page_navigation.feature",".//Features/update_user_profile.feature",".//Features/update_property_details.feature"},
 //					features = {"@target/rerun.txt"},  //only run fail scenarios
 					glue={"stepDefinitions","hooks"},

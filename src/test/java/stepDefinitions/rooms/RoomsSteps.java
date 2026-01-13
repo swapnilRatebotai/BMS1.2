@@ -44,8 +44,8 @@ public class RoomsSteps {
 		roomsPage.clickOnUpdateRoomButton();
 		
 		String actualMessageForRoom = roomsPage.waitAndGetSuccessMessageOfRoom();
-		String popupMsgForRoom = BaseClass.getProperties().getProperty("UpdateRoomPopupMessage");
-	 	Assert.assertEquals(actualMessageForRoom, popupMsgForRoom);
+		String popupMessageForRoom = BaseClass.getProperties().getProperty("UpdateRoomPopupMessage");
+	 	Assert.assertEquals(actualMessageForRoom, popupMessageForRoom);
 	 	
 	 	roomsPage.waitForSuccessPopupOfRoomToDisappear();
 	 	
@@ -70,8 +70,8 @@ public class RoomsSteps {
 		roomsPage.clickOnUpdateRateplanButton();
 		
 		String actualMessageForRateplan = roomsPage.waitAndGetSuccessMessageOfRateplan();
-		String popupMsgForRateplan = BaseClass.getProperties().getProperty("UpdateRateplanPopupMessage");
-	 	Assert.assertEquals(actualMessageForRateplan, popupMsgForRateplan);
+		String popupMessageForRateplan = BaseClass.getProperties().getProperty("UpdateRateplanPopupMessage");
+	 	Assert.assertEquals(actualMessageForRateplan, popupMessageForRateplan);
 	 	
 	 	roomsPage.waitForSuccessPopupOfRateplanToDisappear();
 	}

@@ -37,8 +37,8 @@ public class BasicInfoSteps {
 		basicInfoPage.clickOnSaveButton();
 		
 		String actualMessage = basicInfoPage.waitAndGetSuccessMessage();
-		String popupMsg = BaseClass.getProperties().getProperty("BasicInfoPopupMessage");
-	 	Assert.assertEquals(actualMessage, popupMsg);
+		String popupMessage = BaseClass.getProperties().getProperty("BasicInfoPopupMessage");
+	 	Assert.assertEquals(actualMessage, popupMessage);
 	 	
 	 	basicInfoPage.waitForSuccessPopupToDisappear();
 	}

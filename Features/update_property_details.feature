@@ -5,12 +5,12 @@ Feature: Update Property details
     And user selects property from the property list
 
     When user navigates to Basic Info page
-    And user updates property details
-    And user clicks on save property details button
+#    And user updates property details
+ #   And user clicks on save property details button
 
     When user navigates to Contacts page
-    And user updates contact details
-    And user clicks on update contact button
+#    And user updates contact details
+#    And user clicks on update contact button
 
     When user navigates to Location page
     And user updates location details

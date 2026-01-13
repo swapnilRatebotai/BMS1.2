@@ -53,8 +53,8 @@ public class ContactsSteps {
 		contactsPage.clickOnUpdateContactButton();
 		
 		String actualMessage = contactsPage.waitAndGetSuccessMessage();
-		String popupMsg = BaseClass.getProperties().getProperty("ContactsPopupMessage");
-	 	Assert.assertEquals(actualMessage, popupMsg);
+		String popupMessage = BaseClass.getProperties().getProperty("ContactsPopupMessage");
+	 	Assert.assertEquals(actualMessage, popupMessage);
 	 	
 	 	contactsPage.waitForSuccessPopupToDisappear();
 	}

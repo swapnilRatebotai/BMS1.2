@@ -34,8 +34,8 @@ public class LocationSteps {
 		locationPage.clickOnUpdateLocationButton();
 		
 		String actualMessage = locationPage.waitAndGetSuccessMessage();
-		String popupMsg = BaseClass.getProperties().getProperty("LocationPopupMessage");
-	 	Assert.assertEquals(actualMessage, popupMsg);
+		String popupMessage = BaseClass.getProperties().getProperty("LocationPopupMessage");
+	 	Assert.assertEquals(actualMessage, popupMessage);
 	 	
 	 	locationPage.waitForSuccessPopupToDisappear();
 	}

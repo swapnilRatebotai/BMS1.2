@@ -13,10 +13,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class PhotosAndVideosPage extends BasePage{
 
 	WebDriver driver;
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+//	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+	 WebDriverWait wait;
 
 	public PhotosAndVideosPage(WebDriver driver) {
 		super(driver);
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
 	}
 	
 	
@@ -26,6 +29,9 @@ public class PhotosAndVideosPage extends BasePage{
 		
 		@FindBy(xpath="//button[@class='upload-button']")
 		WebElement uploadButton;
+		
+		@FindBy(xpath="//input[@type='file']")
+		WebElement photoUploadInputBox;
 		
 		@FindBy(xpath="//input[@type='checkbox']")
 		WebElement coverPhotoCheckbox;
@@ -57,10 +63,10 @@ public class PhotosAndVideosPage extends BasePage{
 		@FindBy(xpath = "//div[@class='snackbar success']")
 		WebElement successPopupOfImageUpdate;
 		
-		@FindBy(xpath="//div[normalize-space()='Test Room']")
-		WebElement testRoomImage;
+		@FindBy(xpath="//div[normalize-space()='Room']")
+		WebElement roomImage;
 		
-		@FindBy(xpath="//div[normalize-space()='Untagged']")
+		@FindBy(xpath="//div[contains(text(),'Untagged')]")
 		WebElement coverPhoto;
 		
 		
@@ -72,8 +78,9 @@ public class PhotosAndVideosPage extends BasePage{
 		public void uploadCoverPhoto() {
 			
 			String projectPath = System.getProperty("user.dir");
-			String imagePath = projectPath + File.separator + "image" + File.separator + "hotel_bg_1.jpg";
-			uploadButton.sendKeys(imagePath);
+			String imagePath = projectPath + File.separator + "images" + File.separator + "hotel_bg_1.jpg";
+			uploadButton.click();
+			photoUploadInputBox.sendKeys(imagePath);
 		}
 		
 		public void clickOnCoverPhotoCheckbox() {
@@ -84,8 +91,9 @@ public class PhotosAndVideosPage extends BasePage{
 		public void uploadRoomPhoto() {
 			
 			String projectPath = System.getProperty("user.dir");
-			String imagePath = projectPath + File.separator + "image" + File.separator + "hotel_bg_1.jpg";
-			uploadButton.sendKeys(imagePath);
+			String imagePath = projectPath + File.separator + "images" + File.separator + "room_1.jpg";
+			uploadButton.click();
+			photoUploadInputBox.sendKeys(imagePath);
 		}
 		
 		public void selectTags() {
@@ -111,7 +119,7 @@ public class PhotosAndVideosPage extends BasePage{
 		
 		public void deleteRoomImage() {
 			
-			testRoomImage.click();
+			roomImage.click();
 			deleteImageButton.click();
 		}
 		

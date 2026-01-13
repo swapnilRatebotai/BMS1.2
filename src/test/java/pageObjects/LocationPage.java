@@ -15,10 +15,12 @@ import factory.BaseClass;
 public class LocationPage extends BasePage{
 
 	WebDriver driver;
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+//	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+	WebDriverWait wait;
 
 	public LocationPage(WebDriver driver) {
 		super(driver);
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 	}
 	
 	
@@ -51,9 +53,9 @@ public class LocationPage extends BasePage{
 		streetAddressInput.sendKeys(streetAddress);
 		Thread.sleep(800);
 		streetAddressInput.sendKeys(Keys.DOWN);
-		Thread.sleep(800);
+		Thread.sleep(900);
 		streetAddressInput.sendKeys(Keys.ENTER);
-		Thread.sleep(800);
+		Thread.sleep(900);
 	}
 	
 	public void updateLocality() throws IOException {

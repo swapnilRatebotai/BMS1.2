@@ -53,8 +53,8 @@ public class UserProfileSteps {
 	    userProfilePage.clickOnSaveChangesButton();
 	    
 	    String actualMessage = userProfilePage.waitAndGetSuccessMessage();
-	 	String popupMsg = BaseClass.getProperties().getProperty("UserProfilePopupMessage");
-	 	Assert.assertEquals(actualMessage, popupMsg);
+	 	String popupMessage = BaseClass.getProperties().getProperty("UserProfilePopupMessage");
+	 	Assert.assertEquals(actualMessage, popupMessage);
 	}
 
 	@Then("user navigates back from the profile page")
