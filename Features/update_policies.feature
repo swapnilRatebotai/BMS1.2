@@ -12,7 +12,7 @@ Feature: Update Policies
     And user deletes custom cancellation policy
 
     When user navigates to Payment Policy page
- #   And user creates payment policy
- #   Then user deletes payment policy
+    And user creates payment policy
+    Then user deletes payment policy
 
     And user logs out from the BMS application

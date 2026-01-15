@@ -1,6 +1,8 @@
 package pageObjects;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.openqa.selenium.Keys;
@@ -78,8 +80,10 @@ public class CancellationPolicyPage extends BasePage {
 
 	public void selectStartDate() throws IOException {
 
-		String startdate = BaseClass.getProperties().getProperty("StartDateOfCancellationPolicy");
-		startDateInput.sendKeys(startdate);
+		LocalDate today = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		String todayDate = today.format(formatter);
+		startDateInput.sendKeys(todayDate);
 	}
 
 	public void selectEndDate() throws IOException {
@@ -112,43 +116,93 @@ public class CancellationPolicyPage extends BasePage {
 	
 	public void enterCancellationCharges() throws IOException {
 		
-		String cancellationchargesfirst = BaseClass.getProperties().getProperty("CancellationChargesInPercentageFirst");
-		String daysbeforecheckindatefirst = BaseClass.getProperties().getProperty("DaysBeforeCheckinDateFirst");
+//		String cancellationchargesfirst = BaseClass.getProperties().getProperty("CancellationChargesInPercentageFirst");
+//		String daysbeforecheckindatefirst = BaseClass.getProperties().getProperty("DaysBeforeCheckinDateFirst");
+//		
+//		cancellationChargesInputs.get(0).sendKeys(cancellationchargesfirst);
+//		daysBeforeCheckinDateInputs.get(0).sendKeys(daysbeforecheckindatefirst);
+//		daysBeforeCheckinDateInputs.get(0).sendKeys(Keys.DOWN);
+//		daysBeforeCheckinDateInputs.get(0).sendKeys(Keys.ENTER);
+//		
+//		if(!daysbeforecheckindatefirst.equalsIgnoreCase(cancellationchargesfornoshow)) {
+//			
+//			String cancellationchargessecond = BaseClass.getProperties().getProperty("CancellationChargesInPercentageSecond");
+//			String daysbeforecheckindatesecond = BaseClass.getProperties().getProperty("DaysBeforeCheckinDateSecond");
+//			
+//			cancellationChargesInputs.get(1).sendKeys(cancellationchargessecond);
+//			daysBeforeCheckinDateInputs.get(1).sendKeys(daysbeforecheckindatesecond);
+//			daysBeforeCheckinDateInputs.get(1).sendKeys(Keys.DOWN);
+//			daysBeforeCheckinDateInputs.get(1).sendKeys(Keys.ENTER);
+//			
+//			if(!daysbeforecheckindatesecond.equalsIgnoreCase(cancellationchargesfornoshow)) {
+//				
+//				String cancellationchargesthird = BaseClass.getProperties().getProperty("CancellationChargesInPercentageThird");
+//				String daysbeforecheckindatethird = BaseClass.getProperties().getProperty("DaysBeforeCheckinDateThird");
+//				
+//				cancellationChargesInputs.get(2).sendKeys(cancellationchargesthird);
+//				daysBeforeCheckinDateInputs.get(2).sendKeys(daysbeforecheckindatethird);
+//				daysBeforeCheckinDateInputs.get(2).sendKeys(Keys.DOWN);
+//				daysBeforeCheckinDateInputs.get(2).sendKeys(Keys.ENTER);
+//			}
+//			else {
+//				saveButton.click();
+//			}
+//		}
+//		else {
+//			
+//			saveButton.click();
+//		}
 		
-		cancellationChargesInputs.get(0).sendKeys(cancellationchargesfirst);
-		daysBeforeCheckinDateInputs.get(0).sendKeys(daysbeforecheckindatefirst);
-		daysBeforeCheckinDateInputs.get(0).sendKeys(Keys.DOWN);
-		daysBeforeCheckinDateInputs.get(0).sendKeys(Keys.ENTER);
 		
-		if(!daysbeforecheckindatefirst.equalsIgnoreCase(cancellationchargesfornoshow)) {
-			
-			String cancellationchargessecond = BaseClass.getProperties().getProperty("CancellationChargesInPercentageSecond");
-			String daysbeforecheckindatesecond = BaseClass.getProperties().getProperty("DaysBeforeCheckinDateSecond");
-			
-			cancellationChargesInputs.get(1).sendKeys(cancellationchargessecond);
-			daysBeforeCheckinDateInputs.get(1).sendKeys(daysbeforecheckindatesecond);
-			daysBeforeCheckinDateInputs.get(1).sendKeys(Keys.DOWN);
-			daysBeforeCheckinDateInputs.get(1).sendKeys(Keys.ENTER);
-			
-			if(!daysbeforecheckindatesecond.equalsIgnoreCase(cancellationchargesfornoshow)) {
-				
-				String cancellationchargesthird = BaseClass.getProperties().getProperty("CancellationChargesInPercentageThird");
-				String daysbeforecheckindatethird = BaseClass.getProperties().getProperty("DaysBeforeCheckinDateThird");
-				
-				cancellationChargesInputs.get(2).sendKeys(cancellationchargesthird);
-				daysBeforeCheckinDateInputs.get(2).sendKeys(daysbeforecheckindatethird);
-				daysBeforeCheckinDateInputs.get(2).sendKeys(Keys.DOWN);
-				daysBeforeCheckinDateInputs.get(2).sendKeys(Keys.ENTER);
-			}
-			else {
-				saveButton.click();
-			}
+		
+		
+		String cancellationchargesfornoshow =
+		        BaseClass.getProperties().getProperty("CancellationChargesForNoShow");
+
+		// Max rows you want to handle (based on UI / config)
+		int maxRows = 3;
+
+		for (int i = 0; i < maxRows; i++) {
+
+		    // Read values dynamically based on index
+		    String cancellationCharge =
+		            BaseClass.getProperties()
+		                    .getProperty("CancellationChargesInPercentage" + getOrder(i));
+
+		    String daysBeforeCheckin =
+		            BaseClass.getProperties()
+		                    .getProperty("DaysBeforeCheckinDate" + getOrder(i));
+
+		    // Fill cancellation charges
+		    cancellationChargesInputs.get(i).sendKeys(cancellationCharge);
+
+		    // Fill days before check-in
+		    daysBeforeCheckinDateInputs.get(i).sendKeys(daysBeforeCheckin);
+		    daysBeforeCheckinDateInputs.get(i).sendKeys(Keys.DOWN);
+		    daysBeforeCheckinDateInputs.get(i).sendKeys(Keys.ENTER);
+
+		    // ✅ STOP condition (No-show)
+		    if (daysBeforeCheckin.equalsIgnoreCase(cancellationchargesfornoshow)) {
+		        break;
+		    }
 		}
-		else {
-			
-			saveButton.click();
-		}
+
+		// Save after loop
+		saveButton.click();
+
 	}
+	
+	
+	private String getOrder(int index) {
+	    switch (index) {
+	        case 0: return "First";
+	        case 1: return "Second";
+	        case 2: return "Third";
+	        case 3: return "Fourth";
+	        default: throw new IllegalArgumentException("Unsupported index: " + index);
+	    }
+	}
+
 	
 	
 	public void clickOnSaveButton() {
