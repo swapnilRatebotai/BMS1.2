@@ -116,55 +116,13 @@ public class CancellationPolicyPage extends BasePage {
 	
 	public void enterCancellationCharges() throws IOException {
 		
-//		String cancellationchargesfirst = BaseClass.getProperties().getProperty("CancellationChargesInPercentageFirst");
-//		String daysbeforecheckindatefirst = BaseClass.getProperties().getProperty("DaysBeforeCheckinDateFirst");
-//		
-//		cancellationChargesInputs.get(0).sendKeys(cancellationchargesfirst);
-//		daysBeforeCheckinDateInputs.get(0).sendKeys(daysbeforecheckindatefirst);
-//		daysBeforeCheckinDateInputs.get(0).sendKeys(Keys.DOWN);
-//		daysBeforeCheckinDateInputs.get(0).sendKeys(Keys.ENTER);
-//		
-//		if(!daysbeforecheckindatefirst.equalsIgnoreCase(cancellationchargesfornoshow)) {
-//			
-//			String cancellationchargessecond = BaseClass.getProperties().getProperty("CancellationChargesInPercentageSecond");
-//			String daysbeforecheckindatesecond = BaseClass.getProperties().getProperty("DaysBeforeCheckinDateSecond");
-//			
-//			cancellationChargesInputs.get(1).sendKeys(cancellationchargessecond);
-//			daysBeforeCheckinDateInputs.get(1).sendKeys(daysbeforecheckindatesecond);
-//			daysBeforeCheckinDateInputs.get(1).sendKeys(Keys.DOWN);
-//			daysBeforeCheckinDateInputs.get(1).sendKeys(Keys.ENTER);
-//			
-//			if(!daysbeforecheckindatesecond.equalsIgnoreCase(cancellationchargesfornoshow)) {
-//				
-//				String cancellationchargesthird = BaseClass.getProperties().getProperty("CancellationChargesInPercentageThird");
-//				String daysbeforecheckindatethird = BaseClass.getProperties().getProperty("DaysBeforeCheckinDateThird");
-//				
-//				cancellationChargesInputs.get(2).sendKeys(cancellationchargesthird);
-//				daysBeforeCheckinDateInputs.get(2).sendKeys(daysbeforecheckindatethird);
-//				daysBeforeCheckinDateInputs.get(2).sendKeys(Keys.DOWN);
-//				daysBeforeCheckinDateInputs.get(2).sendKeys(Keys.ENTER);
-//			}
-//			else {
-//				saveButton.click();
-//			}
-//		}
-//		else {
-//			
-//			saveButton.click();
-//		}
-		
-		
-		
-		
-		String cancellationchargesfornoshow =
+		String noShowValue =
 		        BaseClass.getProperties().getProperty("CancellationChargesForNoShow");
 
-		// Max rows you want to handle (based on UI / config)
-		int maxRows = 3;
+		int totalRows = cancellationChargesInputs.size(); // 
 
-		for (int i = 0; i < maxRows; i++) {
+		for (int i = 0; i < totalRows; i++) {
 
-		    // Read values dynamically based on index
 		    String cancellationCharge =
 		            BaseClass.getProperties()
 		                    .getProperty("CancellationChargesInPercentage" + getOrder(i));
@@ -173,25 +131,20 @@ public class CancellationPolicyPage extends BasePage {
 		            BaseClass.getProperties()
 		                    .getProperty("DaysBeforeCheckinDate" + getOrder(i));
 
-		    // Fill cancellation charges
 		    cancellationChargesInputs.get(i).sendKeys(cancellationCharge);
 
-		    // Fill days before check-in
 		    daysBeforeCheckinDateInputs.get(i).sendKeys(daysBeforeCheckin);
 		    daysBeforeCheckinDateInputs.get(i).sendKeys(Keys.DOWN);
 		    daysBeforeCheckinDateInputs.get(i).sendKeys(Keys.ENTER);
 
-		    // ✅ STOP condition (No-show)
-		    if (daysBeforeCheckin.equalsIgnoreCase(cancellationchargesfornoshow)) {
+		    if (daysBeforeCheckin.equalsIgnoreCase(noShowValue)) {
 		        break;
 		    }
 		}
 
-		// Save after loop
-		saveButton.click();
+		clickOnSaveButton();
 
 	}
-	
 	
 	private String getOrder(int index) {
 	    switch (index) {

@@ -64,8 +64,8 @@ public class HotelLogoPage extends BasePage{
 		
 		public String waitAndGetSuccessMessageForHotelLogoUpdate() {
 
-			WebElement rateplanPopup = wait.until(ExpectedConditions.visibilityOf(successPopupOfLogoUpdate));
-			return rateplanPopup.getText().trim();
+			WebElement hotellogoPopup = wait.until(ExpectedConditions.visibilityOf(successPopupOfLogoUpdate));
+			return hotellogoPopup.getText().trim();
 		}
 		
 		public void waitForSuccessPopupOfHotelLogoUpdateToDisappear() {

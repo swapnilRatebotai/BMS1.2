@@ -33,8 +33,8 @@ public class HotelLogoSteps {
 		hotelLogoPage.clickOnSubmitButton();
 		
 		String actualMessageForHotelLogo = hotelLogoPage.waitAndGetSuccessMessageForHotelLogoUpdate();
-		String popupMessageForHotelLogo = BaseClass.getProperties().getProperty("HotelLogoPopupMessage");
-		Assert.assertEquals(actualMessageForHotelLogo, popupMessageForHotelLogo);
+		String expectedMessageForHotelLogo = BaseClass.getProperties().getProperty("HotelLogoPopupMessage");
+		Assert.assertEquals(actualMessageForHotelLogo, expectedMessageForHotelLogo);
 		
 		hotelLogoPage.waitForSuccessPopupOfHotelLogoUpdateToDisappear();
 	}

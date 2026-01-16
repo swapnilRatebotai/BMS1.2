@@ -42,7 +42,6 @@ public class CancellationPolicySteps {
 		cancellationPolicyPage.selectCreateCancellationCharges();
 		cancellationPolicyPage.enterCancellationChargesForNoShow();
 		cancellationPolicyPage.enterCancellationCharges();
-//		cancellationPolicyPage.clickOnSaveButton();
 		
 	}
 

@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">BMS Regression Suite</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">15-01-2026 14:35:05</span></a>
+<a href="#"><span class="badge badge-primary">16-01-2026 19:43:54</span></a>
 </li>
 </ul>
 </div>
@@ -84,9 +84,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">Update Policies</p>
+            <p class="name">Update Email configuration</p>
             <p class="text-sm">
-              <span>2:35:06 pm</span> / <span>00:00:06:075</span>
+              <span>7:43:55 pm</span> / <span>00:00:26:497</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -94,10 +94,10 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">Update Policies</h5>
-<span class='badge badge-success'>01.15.2026 2:35:06 pm</span>
-<span class='badge badge-danger'>01.15.2026 2:35:12 pm</span>
-<span class='badge badge-default'>00:00:06:075</span>
+<h5 class="test-status text-fail">Update Email configuration</h5>
+<span class='badge badge-success'>01.16.2026 7:43:55 pm</span>
+<span class='badge badge-danger'>01.16.2026 7:44:22 pm</span>
+<span class='badge badge-default'>00:00:26:497</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -109,7 +109,7 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log fail-bg mr-2">Fail</span>Verify user can manage cancellation and payment policies successfully</div>
+        <div class="node" id="2"><span class="badge log fail-bg mr-2">Fail</span>Verify user can update email configuration successfully</div>
           <div class="status-avatar float-right mr-4">
             <i class="fa fa-paperclip"></i>
           </div>
@@ -127,37 +127,56 @@
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_cancellation_policy_page()">
-                <span>When user navigates to Cancellation Policy page</span>
+              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_email_configuration_page()">
+                <span>When user navigates to Email Configuration page</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.policy.CancellationPolicySteps.user_creates_a_simple_cancellation_policy()">
-                <span>And user creates a simple cancellation policy</span>
+              <div class="step pass-bg" title="stepDefinitions.emailconfiguration.EmailConfigurationSteps.user_updates_email_configuration_details()">
+                <span>And user updates email configuration details</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.policy.CancellationPolicySteps.user_deletes_simple_cancellation_policy()">
-                <span>And user deletes simple cancellation policy</span>
+              <div class="step fail-bg" title="stepDefinitions.emailconfiguration.EmailConfigurationSteps.user_clicks_on_update_email_configuration_button()">
+                <span>And user clicks on update email configuration button</span>
       <div>
-      </div>
-              </div>
-              <div class="step fail-bg" title="stepDefinitions.policy.CancellationPolicySteps.user_creates_a_custom_cancellation_policy()">
-                <span>Then user creates a custom cancellation policy</span>
-      <div>
-        <textarea disabled class="code-block">java.lang.IndexOutOfBoundsException: Index 2 out of bounds for length 2
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:106)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:302)
-	at java.base/java.util.Objects.checkIndex(Objects.java:385)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementListHandler.invoke(LocatingElementListHandler.java:39)
-	at jdk.proxy2/jdk.proxy2.$Proxy40.get(Unknown Source)
-	at pageObjects.CancellationPolicyPage.enterCancellationCharges(CancellationPolicyPage.java:177)
-	at stepDefinitions.policy.CancellationPolicySteps.user_creates_a_custom_cancellation_policy(CancellationPolicySteps.java:44)
-	at ✽.user creates a custom cancellation policy(file:///C:/Users/Admin%20-1/eclipse-workspace/BMS1.2/./Features/update_policies.feature:11)
+        <textarea disabled class="code-block">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //div[@class='snackbar success']' (tried for 5 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at pageObjects.EmailConfigurationPage.waitAndGetSuccessMessageForEmailConfigurationUpdate(EmailConfigurationPage.java:132)
+	at stepDefinitions.emailconfiguration.EmailConfigurationSteps.user_clicks_on_update_email_configuration_button(EmailConfigurationSteps.java:42)
+	at ✽.user clicks on update email configuration button(file:///C:/Users/Admin%20-1/eclipse-workspace/BMS1.2/./Features/update_email_configuration.feature:9)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class='snackbar success']"}
+  (Session info: chrome=143.0.7499.193)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Build info: version: '4.38.0', revision: '6b412e825c*'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.9'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [5a3882c4d3a5c4cafd0b2a57f48a3e64, findElement {value=//div[@class='snackbar success'], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.193, chrome: {chromedriverVersion: 143.0.7499.192 (be2c1f4fd45..., userDataDir: C:\Users\ADMIN-~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57972}, goog:processID: 15264, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57972/devtoo..., se:cdpVersion: 143.0.7499.193, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 5a3882c4d3a5c4cafd0b2a57f48a3e64
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:557)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:380)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:374)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy24.isDisplayed(Unknown Source)
+	at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:308)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:294)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:291)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
+	... 3 more
 </textarea>
       
       </div>
@@ -171,26 +190,6 @@
     </div></div>
 </div>
       <div>
-      </div>
-              </div>
-              <div class="step skip-bg" title="stepDefinitions.policy.CancellationPolicySteps.user_deletes_custom_cancellation_policy()">
-                <span>And user deletes custom cancellation policy</span>
-      <div>Step skipped
-      </div>
-              </div>
-              <div class="step skip-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_payment_policy_page()">
-                <span>When user navigates to Payment Policy page</span>
-      <div>Step skipped
-      </div>
-              </div>
-              <div class="step skip-bg" title="stepDefinitions.policy.PaymentPolicy.user_creates_payment_policy()">
-                <span>And user creates payment policy</span>
-      <div>Step skipped
-      </div>
-              </div>
-              <div class="step skip-bg" title="stepDefinitions.policy.PaymentPolicy.user_deletes_payment_policy()">
-                <span>Then user deletes payment policy</span>
-      <div>Step skipped
       </div>
               </div>
               <div class="step skip-bg" title="stepDefinitions.common.HeaderSteps.user_logs_out_from_the_bms_application()">
@@ -226,12 +225,12 @@
 <span class="meta">
 <span class='badge log badge-danger'>1</span>
 </span>
-<p class="name">java.lang.IndexOutOfBoundsException</p>
+<p class="name">org.openqa.selenium.TimeoutException</p>
 <p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>java.lang.IndexOutOfBoundsException</h4>
+<h4>org.openqa.selenium.TimeoutException</h4>
 <span status="fail" class='badge log badge-danger'>1 failed</span>
 </div>
 <table class='table table-sm mt-4'>
@@ -245,11 +244,11 @@
 <tbody>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>14:35:11 pm</td>
+<td>19:44:00 pm</td>
 <td>
-<a href="#" class="linked" test-id='1' id='14'>Then user creates a custom cancellation policy</a>
+<a href="#" class="linked" test-id='1' id='12'>And user clicks on update email configuration button</a>
 <div class="">
-<span class="badge badge-default">Update Policies.Verify user can manage cancellation and payment policies successfully.Then user creates a custom cancellation policy</span>
+<span class="badge badge-default">Update Email configuration.Verify user can update email configuration successfully.And user clicks on update email configuration button</span>
 </div>
 </td>
 </tr>
@@ -270,13 +269,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>15-01-2026 14:35:05</h3>
+<h3>16-01-2026 19:43:54</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>15-01-2026 14:35:12</h3>
+<h3>16-01-2026 19:44:22</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -347,10 +346,10 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='50%'><b>6</b> steps passed</small></div>
+<div><small data-tooltip='71%'><b>5</b> steps passed</small></div>
 <div>
-<small data-tooltip='8%'><b>1</b> steps failed,
-<b>5</b> skipped, <b data-tooltip='%'>0</b> others
+<small data-tooltip='14%'><b>1</b> steps failed,
+<b>1</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
 </div>
@@ -366,7 +365,7 @@
 </div></div>
 <script>
 var timeline = {
-"Update Policies":6.075
+"Update Email configuration":26.497
 };
 </script>
 <div class="row">
@@ -386,10 +385,10 @@ warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 6,
+passGrandChild: 5,
 failGrandChild: 1,
 warningGrandChild: 0,
-skipGrandChild: 5,
+skipGrandChild: 1,
 infoGrandChild: 0,
 eventsCount: 5,
 };
