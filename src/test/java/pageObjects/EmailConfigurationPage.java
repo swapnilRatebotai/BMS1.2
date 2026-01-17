@@ -3,6 +3,7 @@ package pageObjects;
 import java.io.IOException;
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +19,7 @@ public class EmailConfigurationPage extends BasePage {
 
 	public EmailConfigurationPage(WebDriver driver) {
 		super(driver);
+		this.driver = driver;
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 	}
 
@@ -127,10 +129,21 @@ public class EmailConfigurationPage extends BasePage {
 		saveButton.click();
 	}
 
+//	public String waitAndGetSuccessMessageForEmailConfigurationUpdate() {
+//
+//		WebElement emailconfigpopup = wait.until(ExpectedConditions.visibilityOf(successPopupOfEmailConfiguration));
+//		return emailconfigpopup.getText().trim();
+//	}
+	
 	public String waitAndGetSuccessMessageForEmailConfigurationUpdate() {
 
-		WebElement emailconfigpopup = wait.until(ExpectedConditions.visibilityOf(successPopupOfEmailConfiguration));
-		return emailconfigpopup.getText().trim();
+//	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    By snackbarLocator = By.xpath("//*[contains(@class,'snackbar')]");
+
+	    WebElement snackbar =
+	        wait.until(ExpectedConditions.presenceOfElementLocated(snackbarLocator));
+
+	    return snackbar.getText().trim();
 	}
 
 	public void waitForSuccessPopupOfEmailConfigurationDisappear() {

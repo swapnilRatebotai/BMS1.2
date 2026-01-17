@@ -48,5 +48,8 @@ Feature: all page navigation
     When user navigates to Hotel Logo page
     Then user is on the Hotel Logo page
     
+    When user navigates to Channel Manager page
+    Then user is on the Channel Manager page
+    
     When user logs out from the BMS application
     Then user is on the login page

@@ -88,4 +88,10 @@ public class MenuSteps {
 
 		menuPage.clickOnHotelLogoFromMenu();
 	}
+	
+	@When("user navigates to Channel Manager page")
+	public void user_navigates_to_Channel_Manager_page() {
+
+		menuPage.clickOnChannelManagerFromMenu();
+	}
 }
