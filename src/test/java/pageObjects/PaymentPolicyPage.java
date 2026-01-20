@@ -58,7 +58,7 @@ public class PaymentPolicyPage extends BasePage{
 			createPaymentPolicyButton.click();
 		}
 		
-		public void selectStartDate() throws IOException {
+		public void selectStartDate() {
 			
 			LocalDate today = LocalDate.now();
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
