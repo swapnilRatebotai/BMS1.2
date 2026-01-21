@@ -1,21 +1,31 @@
 package pageObjects;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import factory.BaseClass;
 
 public class RateAndInventoryPage extends BasePage {
 
 	WebDriver driver;
+	WebDriverWait wait;
+	JavascriptExecutor js;
 
 	public RateAndInventoryPage(WebDriver driver) {
 		super(driver);
+		this.driver = driver;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		this.js = (JavascriptExecutor) driver;
 	}
 
 	// Elements
@@ -133,12 +143,12 @@ public class RateAndInventoryPage extends BasePage {
 		return rateAndInventoryPgConf.isDisplayed();
 	}
 
-	public void clickOnShowRateplans() {
+	public void clickOnShowAllRateplans() {
 
 		showRateplanButton.click();
 	}
 
-	public void clickOnHideRateplans() {
+	public void clickOnHideAllRateplans() {
 
 		hideRateplanButton.click();
 	}
@@ -164,7 +174,13 @@ public class RateAndInventoryPage extends BasePage {
 	public void selectDateOfCalenderChart() throws IOException {
 
 		String customdate = BaseClass.getProperties().getProperty("DateOfRateAndInventory");
-		calenderInput.sendKeys(customdate);
+//		calenderInput.sendKeys(customdate);
+
+		js.executeScript("arguments[0].value = arguments[1];" +
+		        "arguments[0].dispatchEvent(new Event('input', { bubbles: true }));" +
+		        "arguments[0].dispatchEvent(new Event('change', { bubbles: true }));",
+				calenderInput, customdate);
+		driver.findElement(By.tagName("body")).click();
 	}
 
 	public void clickOnBackButtonOfCalenderChart() {
@@ -208,12 +224,18 @@ public class RateAndInventoryPage extends BasePage {
 
 	public void selectToDate() throws IOException {
 
-		String customdate = BaseClass.getProperties().getProperty("ToDateOfRateAndInventory");
-		toDateInput.sendKeys(customdate);
+		String todate = BaseClass.getProperties().getProperty("ToDateOfRateAndInventory");
+//		toDateInput.sendKeys(todate);
+
+//		js.executeScript("arguments[0].value=arguments[1]; arguments[0].dispatchEvent(new Event('change'));",
+		js.executeScript("arguments[0].value = arguments[1];" +
+		        "arguments[0].dispatchEvent(new Event('input', { bubbles: true }));" +
+		        "arguments[0].dispatchEvent(new Event('change', { bubbles: true }));",
+				toDateInput, todate);
+		driver.findElement(By.tagName("body")).click();
 	}
 
 	public void selectRoomTypeAsTestRoom() {
-
 		roomTypeDropdown.click();
 		testRoom.click();
 	}
@@ -224,9 +246,45 @@ public class RateAndInventoryPage extends BasePage {
 		numberOfRoomsToSellInput.sendKeys(numberofrooms);
 	}
 
-	public void selectDays() {
+	public void selectDays() throws IOException {
 
-		
+		String monday = BaseClass.getProperties().getProperty("Monday");
+		String tuesday = BaseClass.getProperties().getProperty("Tuesday");
+		String wednesday = BaseClass.getProperties().getProperty("Wednesday");
+		String thursday = BaseClass.getProperties().getProperty("Thursday");
+		String friday = BaseClass.getProperties().getProperty("Friday");
+		String saturday = BaseClass.getProperties().getProperty("Saturday");
+		String sunday = BaseClass.getProperties().getProperty("Sunday");
+
+		if (monday.equalsIgnoreCase("no")) {
+
+			mondayButton.click();
+		}
+		if (tuesday.equalsIgnoreCase("no")) {
+
+			tuesdayButton.click();
+		}
+		if (wednesday.equalsIgnoreCase("no")) {
+
+			wednesdayButton.click();
+		}
+		if (thursday.equalsIgnoreCase("no")) {
+
+			thursdayButton.click();
+		}
+		if (friday.equalsIgnoreCase("no")) {
+
+			fridayButton.click();
+		}
+		if (saturday.equalsIgnoreCase("no")) {
+
+			saturdayButton.click();
+		}
+		if (sunday.equalsIgnoreCase("no")) {
+
+			sundayButton.click();
+		}
+
 	}
 
 	public void selectRatePlanType() throws IOException {
@@ -284,7 +342,7 @@ public class RateAndInventoryPage extends BasePage {
 	public void enterExtraChildRate() throws IOException {
 
 		String extrachild = BaseClass.getProperties().getProperty("ExtraChildRate");
-		extraAdultRateInput.sendKeys(extrachild);
+		extraChildRateInput.sendKeys(extrachild);
 	}
 
 	public void clickOnCancelButton() {

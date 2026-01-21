@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">BMS Regression Suite</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">20-01-2026 20:00:34</span></a>
+<a href="#"><span class="badge badge-primary">21-01-2026 19:56:25</span></a>
 </li>
 </ul>
 </div>
@@ -79,9 +79,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">Bookings Page Workflow</p>
+            <p class="name">Update Rate and Inventory</p>
             <p class="text-sm">
-              <span>8:00:35 pm</span> / <span>00:00:07:682</span>
+              <span>7:56:26 pm</span> / <span>00:00:39:257</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -89,10 +89,10 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">Bookings Page Workflow</h5>
-<span class='badge badge-success'>01.20.2026 8:00:35 pm</span>
-<span class='badge badge-danger'>01.20.2026 8:00:43 pm</span>
-<span class='badge badge-default'>00:00:07:682</span>
+<h5 class="test-status text-pass">Update Rate and Inventory</h5>
+<span class='badge badge-success'>01.21.2026 7:56:26 pm</span>
+<span class='badge badge-danger'>01.21.2026 7:57:05 pm</span>
+<span class='badge badge-default'>00:00:39:257</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -104,7 +104,7 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Verify bookings can be filtered by status and WhatsApp connection works</div>
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Verify user can manage inventory and rates</div>
       </div>
     </div>
         <div class="collapse">
@@ -119,48 +119,63 @@
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_bookings_page()">
-                <span>When user navigates to Bookings page</span>
+              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_rate_and_inventory_page()">
+                <span>When user navigates to Rate and Inventory page</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.bookings.BookingsSteps.user_selects_from_date_and_to_date()">
-                <span>And user selects from date and to date</span>
+              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_opens_all_rooms_rate_plans()">
+                <span>And user opens all rooms rate plans</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.bookings.BookingsSteps.user_selects_booking_status_as_confirmed()">
-                <span>When user selects booking status as confirmed</span>
+              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_closes_a_single_room_rate_plan()">
+                <span>When user closes a single room rate plan</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.bookings.BookingsSteps.user_clicks_on_whats_app_connect_to_contact_customer()">
-                <span>And user clicks on WhatsApp connect to contact customer</span>
+              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_opens_the_single_room_rate_plan()">
+                <span>And user opens the single room rate plan</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.bookings.BookingsSteps.user_selects_booking_status_as_cancelled()">
-                <span>When user selects booking status as cancelled</span>
+              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_clicks_on_bulk_update()">
+                <span>When user clicks on bulk update</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.bookings.BookingsSteps.user_clicks_on_whats_app_connect_to_contact_customer()">
-                <span>And user clicks on WhatsApp connect to contact customer</span>
+              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_updates_inventory_details()">
+                <span>And user updates inventory details</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.bookings.BookingsSteps.user_selects_booking_filter_as_check_in()">
-                <span>When user selects booking filter as check-in</span>
+              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_updates_rate_details()">
+                <span>And user updates rate details</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.bookings.BookingsSteps.user_selects_booking_filter_as_check_out()">
-                <span>And user selects booking filter as check-out</span>
+              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_selects_a_date_from_the_calendar()">
+                <span>When user selects a date from the calendar</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_navigates_to_previous_calender_chart()">
+                <span>And user navigates to previous calender chart</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_navigates_to_next_calender_chart()">
+                <span>And user navigates to next calender chart</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_close_all_rooms_rate_plans()">
+                <span>Then user close all rooms rate plans</span>
       <div>
       </div>
               </div>
               <div class="step pass-bg" title="stepDefinitions.common.HeaderSteps.user_logs_out_from_the_bms_application()">
-                <span>Then user logs out from the BMS application</span>
+                <span>And user logs out from the BMS application</span>
       <div>
       </div>
               </div>
@@ -184,13 +199,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>20-01-2026 20:00:34</h3>
+<h3>21-01-2026 19:56:25</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>20-01-2026 20:00:43</h3>
+<h3>21-01-2026 19:57:05</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -261,7 +276,7 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>11</b> steps passed</small></div>
+<div><small data-tooltip='100%'><b>14</b> steps passed</small></div>
 <div>
 <small data-tooltip='0%'><b>0</b> steps failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
@@ -280,7 +295,7 @@
 </div></div>
 <script>
 var timeline = {
-"Bookings Page Workflow":7.682
+"Update Rate and Inventory":39.257
 };
 </script>
 <div class="row">
@@ -300,7 +315,7 @@ warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 11,
+passGrandChild: 14,
 failGrandChild: 0,
 warningGrandChild: 0,
 skipGrandChild: 0,
