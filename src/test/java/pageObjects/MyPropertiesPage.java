@@ -14,10 +14,10 @@ public class MyPropertiesPage extends BasePage{
 	
 	//Elements
 	@FindBy(xpath="//h1[normalize-space()='My Properties']")
-	WebElement myPropPgConf;
+	WebElement myPropPageConf;
 	
 	@FindBy(xpath="//button[@class='full-page-button ']")
-	WebElement createPropBtn;
+	WebElement createPropButton;
 	
 	@FindBy(xpath="//div[contains(text(),'Hilton Stays')]")
 	WebElement propertyHiltonStays;
@@ -37,11 +37,11 @@ public class MyPropertiesPage extends BasePage{
 	//Actions
 	public boolean myPropertiesPageConfirmation() {
 		
-		return(myPropPgConf.isDisplayed());
+		return(myPropPageConf.isDisplayed());
 	}
 	
 	public void clickOnCreateProperty() {
-		createPropBtn.click();
+		createPropButton.click();
 	}
 	
 	public void clickOnPropertyHiltonStays() {

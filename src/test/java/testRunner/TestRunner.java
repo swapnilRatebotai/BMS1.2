@@ -8,6 +8,7 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 //					features = "Features",
+					features = {".//Features/bms_update_workflow.feature"},
 //					features = {".//Features/update_user_profile.feature"},
 //					features = {".//Features/page_navigation.feature"},
 //					features = {".//Features/update_property_details.feature"},
@@ -19,7 +20,7 @@ import io.cucumber.junit.CucumberOptions;
 //					features = {".//Features/update_channel_manager.feature"},
 //					features = {".//Features/update_hotel_logo.feature"},
 //					features = {".//Features/bookings_page_workflow.feature"},
-					features = {".//Features/update_rate_and_inventory.feature"},
+//					features = {".//Features/update_rate_and_inventory.feature"},
 //					features = {".//Features/page_navigation.feature",".//Features/update_user_profile.feature",".//Features/update_property_details.feature"},
 //					features = {"@target/rerun.txt"},  //only run fail scenarios
 					glue={"stepDefinitions","hooks"},

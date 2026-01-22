@@ -23,7 +23,7 @@ public class BasicInfoPage extends BasePage {
 
 	// Elements
 	@FindBy(xpath = "//div[@class='form-header']")
-	WebElement basicInfoPgConf;
+	WebElement basicInfoPageConf;
 
 	@FindBy(css = "#Description")
 	WebElement descriptionInput;
@@ -51,7 +51,7 @@ public class BasicInfoPage extends BasePage {
 
 	// Actionsssss
 	public boolean basicInfoPageConfirmation() {
-		return basicInfoPgConf.isDisplayed();
+		return basicInfoPageConf.isDisplayed();
 	}
 
 	public void updateDescription() throws IOException {

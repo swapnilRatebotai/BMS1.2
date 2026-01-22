@@ -25,7 +25,7 @@ public class PhotosAndVideosPage extends BasePage{
 	
 		//Elements
 		@FindBy(xpath="//div[text()='Photos & Videos'][@class='form-header']")
-		WebElement photosAndVideosPgConf;
+		WebElement photosAndVideosPageConf;
 		
 		@FindBy(xpath="//button[@class='upload-button']")
 		WebElement uploadButton;
@@ -72,7 +72,7 @@ public class PhotosAndVideosPage extends BasePage{
 		
 		//Actions
 		public boolean photosAndVideosPageConfirmation() {
-			return photosAndVideosPgConf.isDisplayed();
+			return photosAndVideosPageConf.isDisplayed();
 		}
 		
 		public void uploadCoverPhoto() {

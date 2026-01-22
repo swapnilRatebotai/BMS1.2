@@ -21,7 +21,7 @@ public class PaymentPolicyPage extends BasePage{
 	
 	//Elements
 		@FindBy(xpath="//div[text()='Payment Policies'][@class='form-header']")
-		WebElement paymentPolicyPgConf;
+		WebElement paymentPolicyPageConf;
 		
 		@FindBy(xpath="//button[normalize-space()='Create Payment Policy']")
 		WebElement createPaymentPolicyButton;
@@ -50,7 +50,7 @@ public class PaymentPolicyPage extends BasePage{
 		//Actions
 		public boolean PaymentPolicyPageConfirmation() {
 			
-			return paymentPolicyPgConf.isDisplayed();
+			return paymentPolicyPageConf.isDisplayed();
 		}
 		
 		public void clickOnCreatePaymentPolicyButton() {

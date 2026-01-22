@@ -22,7 +22,7 @@ public class UserProfileSteps {
 	
 	
 	@When("user navigates to My Profile page")
-	public void user_navigates_to_my_profile_page() {
+	public void user_navigates_to_my_profile_page() throws InterruptedException {
 		
 		headerPage.clickOnProfileOption();
 		headerPage.clickOnMyProfile();

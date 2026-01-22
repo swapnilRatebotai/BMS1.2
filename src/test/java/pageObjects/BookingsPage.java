@@ -9,10 +9,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import factory.BaseClass;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class BookingsPage extends BasePage {
 
@@ -28,7 +29,7 @@ public class BookingsPage extends BasePage {
 	// Elements
 
 	@FindBy(xpath = "//h1[normalize-space()='Bookings']")
-	WebElement bookingsPgConf;
+	WebElement bookingsPageConf;
 
 	@FindBy(css = "#fromDate")
 	WebElement fromDateInput;
@@ -60,7 +61,7 @@ public class BookingsPage extends BasePage {
 	// Actions
 
 	public boolean bookingsPageConfirmation() {
-		return bookingsPgConf.isDisplayed();
+		return bookingsPageConf.isDisplayed();
 	}
 
 	public void selectFromDate() throws IOException {
@@ -85,6 +86,7 @@ public class BookingsPage extends BasePage {
 
 	public void selectBookingStatusToConfirmed() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(bookingStatusDropdown));
 		bookingStatusDropdown.click();
 		bookingStatusDropdown.sendKeys(Keys.UP);
 		bookingStatusDropdown.sendKeys(Keys.ENTER);
@@ -92,6 +94,7 @@ public class BookingsPage extends BasePage {
 
 	public void selectBookingStatusToCancelled() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(bookingStatusDropdown));
 		bookingStatusDropdown.click();
 		bookingStatusDropdown.sendKeys(Keys.DOWN);
 		bookingStatusDropdown.sendKeys(Keys.ENTER);
@@ -99,20 +102,24 @@ public class BookingsPage extends BasePage {
 
 	public boolean confirmedBookingStatusConfirmation() {
 
+		wait.until(ExpectedConditions.visibilityOf(confirmedStatusText));
 		return confirmedStatusText.isDisplayed();
 	}
 
 	public boolean cancelledBookingStatusConfirmation() {
 
+		wait.until(ExpectedConditions.visibilityOf(cancelledStatusText));
 		return cancelledStatusText.isDisplayed();
 	}
 
 	public void clickOnWhatsappToConnectCustomer() {
 
+		wait.until(ExpectedConditions.visibilityOf(whatsappNumberTextOnBMS));
 		String mobileNumber = whatsappNumberTextOnBMS.getText().replaceAll("\\D", "");
 
 		String parentWindow = driver.getWindowHandle();
 
+		wait.until(ExpectedConditions.elementToBeClickable(whatsappIcon));
 		whatsappIcon.click();
 
 		wait.until(d -> d.getWindowHandles().size() > 1);

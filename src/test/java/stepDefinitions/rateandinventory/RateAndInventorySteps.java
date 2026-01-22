@@ -48,67 +48,67 @@ public class RateAndInventorySteps {
 	public void user_updates_inventory_details() throws IOException, InterruptedException {
 	    
 		rateAndInventoryPage.clickOnInventoryButton();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		rateAndInventoryPage.selectFromDateAsToday();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		rateAndInventoryPage.selectToDate();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		rateAndInventoryPage.selectRoomTypeAsTestRoom();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		rateAndInventoryPage.selectDays();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		rateAndInventoryPage.enterNumberOfRoomsToSell();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		rateAndInventoryPage.clickOnSubmitButton();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 	}
 
 	@When("user updates rate details")
 	public void user_updates_rate_details() throws IOException, InterruptedException {
 	    
 		rateAndInventoryPage.clickOnRateButton();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		rateAndInventoryPage.selectFromDateAsToday();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		rateAndInventoryPage.selectToDate();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		rateAndInventoryPage.selectRoomTypeAsTestRoom();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		rateAndInventoryPage.selectRatePlanType();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		rateAndInventoryPage.selectDays();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		rateAndInventoryPage.enterRateForFirstOccupancy();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		rateAndInventoryPage.enterRateForSecondOccupancy();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		rateAndInventoryPage.enterExtraAdultRate();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		rateAndInventoryPage.enterExtraChildRate();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 		rateAndInventoryPage.clickOnSubmitButton();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 	}
 
 	@When("user selects a date from the calendar")
 	public void user_selects_a_date_from_the_calendar() throws IOException, InterruptedException {
 	    
 		rateAndInventoryPage.selectDateOfCalenderChart();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 	}
 
 	@When("user navigates to previous calender chart")
 	public void user_navigates_to_previous_calender_chart() throws InterruptedException {
 	    
 		rateAndInventoryPage.clickOnBackButtonOfCalenderChart();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 	}
 
 	@When("user navigates to next calender chart")
 	public void user_navigates_to_next_calender_chart() throws InterruptedException {
 	    
 		rateAndInventoryPage.clickOnNextButtonOfCalenderChart();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 	}
 	
 	@When("user close all rooms rate plans")

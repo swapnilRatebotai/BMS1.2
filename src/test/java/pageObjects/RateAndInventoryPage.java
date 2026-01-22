@@ -30,7 +30,7 @@ public class RateAndInventoryPage extends BasePage {
 
 	// Elements
 	@FindBy(xpath = "//div[@class='cm-header']")
-	WebElement rateAndInventoryPgConf;
+	WebElement rateAndInventoryPageConf;
 
 	@FindBy(xpath = "//button[normalize-space()='Show Rateplans']")
 	WebElement showRateplanButton;
@@ -140,7 +140,7 @@ public class RateAndInventoryPage extends BasePage {
 	// Actions
 	public boolean rateAndInventoryPageConfirmation() {
 
-		return rateAndInventoryPgConf.isDisplayed();
+		return rateAndInventoryPageConf.isDisplayed();
 	}
 
 	public void clickOnShowAllRateplans() {

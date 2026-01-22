@@ -1,21 +1,31 @@
 package pageObjects;
 
+import java.io.IOException;
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import factory.BaseClass;
 
 public class LoginPage extends BasePage {
 	
 	
+	WebDriver driver;
+	WebDriverWait wait;
+
 	public LoginPage(WebDriver driver) {
 		super(driver);
-//		PageFactory.initElements(driver, this); // Initialize the page elements using PageFactory
+		this.driver = driver;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 	}
 	
 	//Elements
 	
 	@FindBy(xpath="//p[@class='login-p']")
-	WebElement loginPgConf;
+	WebElement loginPageConf;
 	
 	@FindBy(xpath="//input[@type='text']")
 	WebElement userName;
@@ -30,24 +40,27 @@ public class LoginPage extends BasePage {
 	WebElement forgotPassword;
 	
 	@FindBy(xpath="//button[@class='login-button']")
-	WebElement loginBtn;
+	WebElement loginButton;
 	
 	@FindBy(xpath="//a[normalize-space()='Sign Up']")
-	WebElement signUpBtn;
-	
+	WebElement signUpPage;
 	
 	
 	//Action Methods
 	
 	public boolean loginPageConfirmation() {
-		return(loginPgConf.isDisplayed());
+		return(loginPageConf.isDisplayed());
 	}
 	
-	public void enterUsername(String username){
+	public void enterUsername() throws IOException{
+		
+		String username = BaseClass.getProperties().getProperty("username");
 		userName.sendKeys(username);
 	}
 	
-	public void enterPassword(String password) {
+	public void enterPassword() throws IOException {
+		
+		String password = BaseClass.getProperties().getProperty("password");
 		pass.sendKeys(password);
 	}
 	
@@ -60,10 +73,10 @@ public class LoginPage extends BasePage {
 	}
 	
 	public void clickOnLoginButton() {
-		loginBtn.click();
+		loginButton.click();
 	}
 	
-	public void clickOnSignUpButton() {
-		signUpBtn.click();
+	public void clickOnSignUpPage() {
+		signUpPage.click();
 	}
 }

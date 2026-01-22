@@ -22,7 +22,7 @@ public class HotelLogoPage extends BasePage{
 	
 	//Elements
 		@FindBy(xpath="//div[text()='Hotel Logo'][@class='form-header']")
-		WebElement hotelLogoPgConf;
+		WebElement hotelLogoPageConf;
 		
 		@FindBy(xpath="//button[normalize-space()='Update Logo']")
 		WebElement logoUpdateButton;
@@ -42,7 +42,7 @@ public class HotelLogoPage extends BasePage{
 		//Actions
 		public boolean hotelLogoPageConfirmation() {
 			
-			return hotelLogoPgConf.isDisplayed();
+			return hotelLogoPageConf.isDisplayed();
 		}
 		
 		public void clickOnUpdateLogoButton() {

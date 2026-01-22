@@ -15,11 +15,11 @@ public class PaymentGatewayPage extends BasePage{
 	
 	//Elements
 		@FindBy(xpath="//div[text()='Payment Gateway Configuration'][@class='form-header']")
-		WebElement paymentGatewayPgConf;
+		WebElement paymentGatewayPageConf;
 		
 		
 		//Actions
 		public boolean paymentGatewayPageConfirmation() {
-			return paymentGatewayPgConf.isDisplayed();
+			return paymentGatewayPageConf.isDisplayed();
 		}
 }

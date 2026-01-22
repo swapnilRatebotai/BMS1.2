@@ -23,10 +23,10 @@ public class UserProfilePage extends BasePage{
 	
 	//Elements
 	@FindBy(xpath="//h1[@class='user-page-header'][text()='User Profile']")
-	WebElement userProfilePgConf;
+	WebElement userProfilePageConf;
 	
 	@FindBy(xpath="//button[@type='button'][text()='Edit Profile']")
-	WebElement editProfileBtn;
+	WebElement editProfileButton;
 	
 	@FindBy(css="#firstName")
 	WebElement firstNameInput;
@@ -51,13 +51,16 @@ public class UserProfilePage extends BasePage{
 	
 	
 	//Actions
-	public boolean userProfilePageConfirmation() {
-		wait.until(ExpectedConditions.visibilityOf(userProfilePgConf));
-		return userProfilePgConf.isDisplayed();
+	public boolean userProfilePageConfirmation() throws InterruptedException {
+		wait.until(ExpectedConditions.visibilityOf(userProfilePageConf));
+		Thread.sleep(800);
+		return userProfilePageConf.isDisplayed();
 	}
 	
 	public void clickOnEditProfileButton() {
-		editProfileBtn.click();
+		
+		wait.until(ExpectedConditions.elementToBeClickable(editProfileButton));
+		editProfileButton.click();
 	}
 	
 	public void enterFirstName() throws IOException {

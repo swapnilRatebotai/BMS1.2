@@ -23,7 +23,7 @@ public class ContactsPage extends BasePage {
 
 	// Elements
 	@FindBy(xpath = "//div[text()='Property Contacts'][@class='form-header']")
-	WebElement contactsPgConf;
+	WebElement contactsPageConf;
 
 	@FindBy(xpath = "//input[@id='Hotel Phone']")
 	WebElement hotelPhoneInput;
@@ -63,7 +63,7 @@ public class ContactsPage extends BasePage {
 
 	// Actions
 	public boolean contactsPageConfirmation() {
-		return contactsPgConf.isDisplayed();
+		return contactsPageConf.isDisplayed();
 	}
 
 	public void updateHotelPhone() throws IOException {

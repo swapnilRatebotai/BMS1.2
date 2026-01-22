@@ -24,7 +24,7 @@ public class CancellationPolicyPage extends BasePage {
 
 	// Elements
 	@FindBy(xpath = "//div[text()='Policies'][@class='form-header']")
-	WebElement cancellationPolicyPgConf;
+	WebElement cancellationPolicyPageConf;
 
 	@FindBy(xpath = "//button[normalize-space()='Create Policy']")
 	WebElement createPolicyButton;
@@ -70,7 +70,7 @@ public class CancellationPolicyPage extends BasePage {
 
 	// Actions
 	public boolean cancellationPolicyPageConfirmation() {
-		return cancellationPolicyPgConf.isDisplayed();
+		return cancellationPolicyPageConf.isDisplayed();
 	}
 
 	public void clickOnCreatePolicyButton() {

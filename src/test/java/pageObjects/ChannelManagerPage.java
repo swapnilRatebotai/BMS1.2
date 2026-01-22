@@ -25,7 +25,7 @@ public class ChannelManagerPage extends BasePage {
 	
 	//Elements
 	@FindBy(xpath="//div[text()='Channel Manager'][@class='form-header']")
-	WebElement cmPgConf;
+	WebElement channelManagerPageConf;
 	
 	@FindBy(xpath="//div[text()='Bookings'][@class='sidebar-main-item']")
 	WebElement menuBookings;
@@ -52,8 +52,8 @@ public class ChannelManagerPage extends BasePage {
 	//Actions
 	public boolean channelManagerPageConfirmation() {
 		
-		wait.until(ExpectedConditions.visibilityOf(cmPgConf));
-		return cmPgConf.isDisplayed();
+		wait.until(ExpectedConditions.visibilityOf(channelManagerPageConf));
+		return channelManagerPageConf.isDisplayed();
 	}
 	
 	public void clickOnBookingsFromMenu() {

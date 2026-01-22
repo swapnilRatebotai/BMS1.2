@@ -15,15 +15,17 @@ import factory.BaseClass;
 public class RoomsPage extends BasePage {
 
 	WebDriver driver;
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+	WebDriverWait wait;
 
 	public RoomsPage(WebDriver driver) {
 		super(driver);
+		this.driver = driver;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 	}
 
 	// Elements
 	@FindBy(xpath = "//div[text()='Rooms'][@class='form-header']")
-	WebElement roomsPgConf;
+	WebElement roomsPageConf;
 
 	@FindBy(xpath = "//button[normalize-space()='Create New Room']")
 	WebElement createNewRoomButton;
@@ -124,7 +126,7 @@ public class RoomsPage extends BasePage {
 	// Actions
 	public boolean roomsPageConfirmation() {
 
-		return roomsPgConf.isDisplayed();
+		return roomsPageConf.isDisplayed();
 	}
 
 	public void clickOnCreateNewRoomButton() {
@@ -274,7 +276,10 @@ public class RoomsPage extends BasePage {
 	}
 
 	public void updateRatePlanName() throws IOException {
-		ratePlanNameInput.clear();
+		
+		ratePlanNameInput.click();
+		ratePlanNameInput.sendKeys(Keys.CONTROL + "a");
+		ratePlanNameInput.sendKeys(Keys.DELETE);
 		String RateplanName = BaseClass.getProperties().getProperty("RatePlanName");
 		ratePlanNameInput.sendKeys(RateplanName);
 	}
@@ -288,6 +293,8 @@ public class RoomsPage extends BasePage {
 	}
 	
 	public void clickOnUpdateRateplanButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(updateRateplanButton));
 		updateRateplanButton.click();
 	}
 
@@ -308,6 +315,8 @@ public class RoomsPage extends BasePage {
 	}
 
 	public void clickOnEPRateplanEditButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(epRateplanEditButton));
 		epRateplanEditButton.click();
 	}
 

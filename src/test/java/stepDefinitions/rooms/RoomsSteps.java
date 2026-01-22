@@ -58,7 +58,7 @@ public class RoomsSteps {
 	}
 
 	@When("user updates rate plan details")
-	public void user_updates_rate_plan_details() throws IOException {
+	public void user_updates_rate_plan_details() throws IOException, InterruptedException {
 
 		roomsPage.clickOnEPRateplanEditButton();
 		roomsPage.updateRatePlanName();

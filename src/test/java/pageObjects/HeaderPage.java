@@ -15,16 +15,16 @@ public class HeaderPage extends BasePage{
 	//Elements
 	
 	@FindBy(xpath="//div[@class='header-profile']")
-	WebElement profileOpt;
+	WebElement profileOptions;
 	
 	@FindBy(xpath="//div[text()='My Profile']")
-	WebElement myProfileBtn;
+	WebElement myProfileButton;
 	
 	@FindBy(xpath="//div[text()='Logout']")
-	WebElement logoutBtn;
+	WebElement logoutButton;
 	
 	@FindBy(xpath="//img[@alt='MenuIcon']")
-	WebElement menuOpt;
+	WebElement menuOptions;
 	
 	@FindBy(xpath="//img[@alt='Logo']")
 	WebElement logo;
@@ -33,19 +33,19 @@ public class HeaderPage extends BasePage{
 	//Actions
 	
 	public void clickOnProfileOption() {
-		profileOpt.click();
+		profileOptions.click();
 	}
 	
 	public void clickOnMyProfile() {
-		myProfileBtn.click();
+		myProfileButton.click();
 	}
 	
 	public void clickOnLogout() {
-		logoutBtn.click();
+		logoutButton.click();
 	}
 	
 	public void clickOnMenu() {
-		menuOpt.click();
+		menuOptions.click();
 	}
 	
 	public void clickOnLogo() {

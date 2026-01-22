@@ -30,18 +30,9 @@ public class LoginSteps {
 		boolean loginPgStatus = loginPage.loginPageConfirmation();
 		Assert.assertTrue(loginPgStatus);
 		
-		BaseClass.getLogger().info("Entering username and password...");
-
-		String username = BaseClass.getProperties().getProperty("username");
-		loginPage.enterUsername(username);
-		String password = BaseClass.getProperties().getProperty("password");
-		loginPage.enterPassword(password);
-
-		BaseClass.getLogger().info("Click on Login Button...");
-
+		loginPage.enterUsername();
+		loginPage.enterPassword();
 		loginPage.clickOnLoginButton();
-		
-		BaseClass.getLogger().info("User is on My Properties Page...");
 
 		boolean myPropPageStatus = myPropertiesPage.myPropertiesPageConfirmation();
 		Assert.assertTrue(myPropPageStatus);

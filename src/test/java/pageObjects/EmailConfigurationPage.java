@@ -25,7 +25,7 @@ public class EmailConfigurationPage extends BasePage {
 
 	// Elements
 	@FindBy(xpath = "//div[text()='Email Configuration'][@class='form-header']")
-	WebElement emailConfigPgConf;
+	WebElement emailConfigPageConf;
 
 	@FindBy(xpath = "//input[@id='SMTP Host']")
 	WebElement smtpHostInput;
@@ -62,7 +62,7 @@ public class EmailConfigurationPage extends BasePage {
 
 	// Actions
 	public boolean emailConfigurationPageConfirmation() {
-		return emailConfigPgConf.isDisplayed();
+		return emailConfigPageConf.isDisplayed();
 	}
 
 	public void enterSMTPHost() throws IOException {

@@ -20,7 +20,7 @@ public class DiscountsPage extends BasePage {
 
 	// Elements
 	@FindBy(xpath = "//div[text()='Discounts'][@class='form-header']")
-	WebElement discountsPgConf;
+	WebElement discountsPageConf;
 	
 	@FindBy(xpath="//button[normalize-space()='Create Discount']")
 	WebElement createDiscountButton;
@@ -58,7 +58,7 @@ public class DiscountsPage extends BasePage {
 	// Actions
 	public boolean discountsPageConfirmation() {
 		
-		return discountsPgConf.isDisplayed();
+		return discountsPageConf.isDisplayed();
 	}
 	
 	public void clickOnCreateDiscountButton() {

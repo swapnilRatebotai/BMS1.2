@@ -26,7 +26,7 @@ public class LocationPage extends BasePage{
 	
 	//Elements
 	@FindBy(xpath="//div[text()='Property Location'][@class='form-header']")
-	WebElement locationPgConf;
+	WebElement locationPageConf;
 	
 	@FindBy(xpath="//input[@id='Street Address']")
 	WebElement streetAddressInput;
@@ -43,19 +43,20 @@ public class LocationPage extends BasePage{
 	
 	//Actions
 	public boolean locationPageConfirmation() {
-		return locationPgConf.isDisplayed();
+		return locationPageConf.isDisplayed();
 	}
 	
 	public void updateStreetAddress() throws InterruptedException, IOException {
 		
 		streetAddressInput.clear();
 		String streetAddress = BaseClass.getProperties().getProperty("StreetAddress");
+		Thread.sleep(800);
 		streetAddressInput.sendKeys(streetAddress);
 		Thread.sleep(800);
 		streetAddressInput.sendKeys(Keys.DOWN);
-		Thread.sleep(900);
+		Thread.sleep(800);
 		streetAddressInput.sendKeys(Keys.ENTER);
-		Thread.sleep(900);
+		
 	}
 	
 	public void updateLocality() throws IOException {
@@ -65,6 +66,8 @@ public class LocationPage extends BasePage{
 	}
 	
 	public void clickOnUpdateLocationButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(updateLocationButton));
 		updateLocationButton.click();
 	}
 	
