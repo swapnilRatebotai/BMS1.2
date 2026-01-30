@@ -44,6 +44,11 @@ public class SignUpPage extends BasePage {
 	@FindBy(xpath="//a[normalize-space()='Login']")
 	WebElement loginPage;
 	
+	@FindBy(css=".login-redirect-button")
+	WebElement goToLoginButton;
+	
+	
+	
 	//Actions
 	
 	public boolean signUpPageConfirmation() {
@@ -82,5 +87,10 @@ public class SignUpPage extends BasePage {
 	public void clickOnLoginPage() {
 		
 		loginPage.click();
+	}
+	
+	public void clickOnGoToLoginButton(){
+		
+		goToLoginButton.click();
 	}
 }

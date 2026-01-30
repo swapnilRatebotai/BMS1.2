@@ -42,4 +42,26 @@ public class BasicInfoSteps {
 	 	
 	 	basicInfoPage.waitForSuccessPopupToDisappear();
 	}
+	
+	@Then("user enters the property details")
+	public void user_enters_the_property_details() throws IOException {
+	    
+		basicInfoPage.enterPropertyName();
+		basicInfoPage.enterDisplayName();
+		basicInfoPage.updateDescription();
+		basicInfoPage.selectPropertyType();
+		basicInfoPage.selectStarRating();
+		basicInfoPage.updateBuiltYear();
+		basicInfoPage.updateNumberOfRooms();
+		basicInfoPage.updateNumberOfFloors();
+		basicInfoPage.selectCurrency();
+		basicInfoPage.selectTimezone();
+		basicInfoPage.updateCheckInTime();
+		basicInfoPage.updateCheckOutTime();
+	}
+
+	@Then("user submits the property information")
+	public void user_submits_the_property_information() {
+	    
+	}
 }

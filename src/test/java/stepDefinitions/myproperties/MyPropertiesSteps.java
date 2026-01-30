@@ -7,12 +7,20 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.ChannelManagerPage;
+import pageObjects.HeaderPage;
 import pageObjects.MyPropertiesPage;
 
 public class MyPropertiesSteps {
 	
 	MyPropertiesPage myPropertiesPage = new MyPropertiesPage(BaseClass.getDriver());
-	ChannelManagerPage cmp = new ChannelManagerPage(BaseClass.getDriver());
+	ChannelManagerPage channelManagerPage = new ChannelManagerPage(BaseClass.getDriver());
+	HeaderPage headerPage = new HeaderPage(BaseClass.getDriver());
+	
+	@When("user navigates to My Properties page")
+	public void user_navigates_to_my_properties_page() {
+	    
+		headerPage.clickOnLogo();
+	}
 	
 	@Given("user is on the My Properties page")
 	public void user_is_on_the_my_properties_page() {
@@ -34,7 +42,7 @@ public class MyPropertiesSteps {
 	public void user_should_be_redirected_to_the_channel_manager_page() {
 		BaseClass.getLogger().info("User is on Channel Manager Page...");
 		
-		boolean channelManagerPageStatus = cmp.channelManagerPageConfirmation();
+		boolean channelManagerPageStatus = channelManagerPage.channelManagerPageConfirmation();
 		Assert.assertTrue(channelManagerPageStatus);
 	}
 }

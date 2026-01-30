@@ -39,4 +39,14 @@ public class LocationSteps {
 	 	
 	 	locationPage.waitForSuccessPopupToDisappear();
 	}
+	
+	@Then("user enters the location details")
+	public void user_enters_the_location_details() {
+	    
+	}
+
+	@Then("user saves the Location details")
+	public void user_saves_the_location_details() {
+	    
+	}
 }

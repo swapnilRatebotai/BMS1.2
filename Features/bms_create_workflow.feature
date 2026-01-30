@@ -1,9 +1,13 @@
-Feature: BMS update Workflow Happypath
+Feature: BMS Start to End Workflow Happypath
 
-  Scenario: Verify all pages are update correctly 
+  Scenario: Verify all pages are working correctly 
   
-  Given user logs into the BMS application
-    Then user is on the My Properties page
+  Given the user signs up for the BMS application
+  When the user verifies the account via email
+  And  user logs into the BMS application
+  Then user is on the Channel Manager page
+    
+    When user navigates to My Properties page
     
     When user navigates to My Profile page
     And user clicks on Edit Profile
@@ -11,31 +15,24 @@ Feature: BMS update Workflow Happypath
     And user clicks on Save Changes
     Then user navigates back from the profile page
     
-    When user selects property from the property list
-    Then user is on the Channel Manager page
-    
-    When user navigates to Basic Info page
     Then user is on the Basic Info page
-    And user updates property details
-    And user clicks on save property details button
+    And user enters the property details
+    And user submits the property information
     
-    When user navigates to Contacts page
     Then user is on the Contacts page
-    And user updates contact details
-    And user clicks on update contact button
+    And user enters the contact details
+    And user saves the Contact details
     
-    When user navigates to Location page
     Then user is on the Location page
-    And user updates location details
-    And user clicks on update location button
+    And user enters the location details
+    And user saves the Location details
     
     When user navigates to Rooms page
     Then user is on the Rooms page
-    And user updates selected room details
-    Then user clicks on update room button
-    When user opens rate plans section
-    And user updates rate plan details
-    Then user clicks on update rate plan button
+    And user enters valid room details
+    Then user creates the room
+    When user enters valid rate plan details
+    Then user creates the rate plan
     
     When user navigates to Photos and Videos page
     Then user is on the Photos and Videos page
@@ -91,14 +88,13 @@ Feature: BMS update Workflow Happypath
     
     When user navigates to Channel Manager page
     Then user is on the Channel Manager page
-    And user disconnects the channel manager
     And user connects the channel manager
     Then user clicks on reveal secret code
+    And user disconnects the channel manager
     
     When user navigates to Bookings page
     Then user is on the Bookings page
     And user selects from date and to date
-
     When user selects booking status as confirmed
     And user clicks on WhatsApp connect to contact customer
     When user selects booking status as cancelled

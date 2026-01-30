@@ -58,4 +58,14 @@ public class ContactsSteps {
 	 	
 	 	contactsPage.waitForSuccessPopupToDisappear();
 	}
+	
+	@Then("user enters the contact details")
+	public void user_enters_the_contact_details() {
+	    
+	}
+
+	@Then("user saves the Contact details")
+	public void user_saves_the_contact_details() {
+	    
+	}
 }

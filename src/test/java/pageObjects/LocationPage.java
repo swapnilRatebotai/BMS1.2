@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import factory.BaseClass;
 
-public class LocationPage extends BasePage{
+public class LocationPage extends BasePage {
 
 	WebDriver driver;
 //	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -22,32 +22,33 @@ public class LocationPage extends BasePage{
 		super(driver);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 	}
-	
-	
-	//Elements
-	@FindBy(xpath="//div[text()='Property Location'][@class='form-header']")
+
+	// Elements
+	@FindBy(xpath = "//div[text()='Property Location'][@class='form-header']")
 	WebElement locationPageConf;
-	
-	@FindBy(xpath="//input[@id='Street Address']")
+
+	@FindBy(xpath = "//input[@id='Street Address']")
 	WebElement streetAddressInput;
-	
-	@FindBy(css="#Locality")
+
+	@FindBy(css = "#Locality")
 	WebElement localityInput;
-	
-	@FindBy(xpath="//button[normalize-space()='Update Location']")
+
+	@FindBy(xpath = "//button[normalize-space()='Update Location']")
 	WebElement updateLocationButton;
-	
+
 	@FindBy(xpath = "//div[@class='snackbar success']")
 	WebElement successPopup;
-	
-	
-	//Actions
+
+	@FindBy(xpath = "//button[normalize-space()='Create Location']")
+	WebElement createLocationButton;
+
+	// Actions
 	public boolean locationPageConfirmation() {
 		return locationPageConf.isDisplayed();
 	}
-	
+
 	public void updateStreetAddress() throws InterruptedException, IOException {
-		
+
 		streetAddressInput.clear();
 		String streetAddress = BaseClass.getProperties().getProperty("StreetAddress");
 		Thread.sleep(800);
@@ -56,29 +57,35 @@ public class LocationPage extends BasePage{
 		streetAddressInput.sendKeys(Keys.DOWN);
 		Thread.sleep(800);
 		streetAddressInput.sendKeys(Keys.ENTER);
-		
+
 	}
-	
+
 	public void updateLocality() throws IOException {
 		localityInput.clear();
 		String locality = BaseClass.getProperties().getProperty("Locality");
 		localityInput.sendKeys(locality);
 	}
-	
+
 	public void clickOnUpdateLocationButton() {
-		
+
 		wait.until(ExpectedConditions.elementToBeClickable(updateLocationButton));
 		updateLocationButton.click();
 	}
-	
+
+	public void clickOnCreateLocationButton() {
+
+		wait.until(ExpectedConditions.elementToBeClickable(createLocationButton));
+		createLocationButton.click();
+	}
+
 	public String waitAndGetSuccessMessage() {
 
 		WebElement popup = wait.until(ExpectedConditions.visibilityOf(successPopup));
 		return popup.getText().trim();
 	}
-	
+
 	public void waitForSuccessPopupToDisappear() {
-		
+
 		wait.until(ExpectedConditions.invisibilityOf(successPopup));
 	}
 }

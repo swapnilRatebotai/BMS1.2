@@ -25,8 +25,20 @@ public class BasicInfoPage extends BasePage {
 	@FindBy(xpath = "//div[@class='form-header']")
 	WebElement basicInfoPageConf;
 
+	@FindBy(xpath = "//input[@id='Property Name']")
+	WebElement propertyNameInput;
+
+	@FindBy(xpath = "//input[@id='Display Name']")
+	WebElement displayNameInput;
+
 	@FindBy(css = "#Description")
 	WebElement descriptionInput;
+
+	@FindBy(xpath = "//input[@placeholder=' Property Type']")
+	WebElement propertyTypeInput;
+
+	@FindBy(xpath = "//input[@placeholder=' Star Rating']")
+	WebElement starRatingInput;
 
 	@FindBy(xpath = "//input[@placeholder=' Built Year']")
 	WebElement builtYearInput;
@@ -37,6 +49,12 @@ public class BasicInfoPage extends BasePage {
 	@FindBy(xpath = "//input[@id='Number of Floors']")
 	WebElement numberOfFloorsInput;
 
+	@FindBy(xpath = "//input[@placeholder=' Currency']")
+	WebElement currencyInput;
+
+	@FindBy(xpath = "//input[@placeholder=' Timezone']")
+	WebElement timezoneInput;
+
 	@FindBy(xpath = "//input[@placeholder=' Check-in Time']")
 	WebElement checkInInput;
 
@@ -45,21 +63,60 @@ public class BasicInfoPage extends BasePage {
 
 	@FindBy(xpath = "//button[normalize-space()='Save']")
 	WebElement saveButton;
+	
+	@FindBy(xpath="//button[normalize-space()='Cancel']")
+	WebElement cancelButton;
+	
+	@FindBy(xpath="//button[normalize-space()='Submit']")
+	WebElement submitButton;
 
 	@FindBy(xpath = "//div[@class='snackbar success']")
 	WebElement successPopup;
 
 	// Actionsssss
+
 	public boolean basicInfoPageConfirmation() {
+
 		return basicInfoPageConf.isDisplayed();
 	}
 
+	public void enterPropertyName() throws IOException {
+
+		String propertyname = BaseClass.getProperties().getProperty("PropertyName");
+		propertyNameInput.sendKeys(propertyname);
+	}
+
+	public void enterDisplayName() throws IOException {
+
+		String displayname = BaseClass.getProperties().getProperty("DisplayName");
+		displayNameInput.sendKeys(displayname);
+	}
+
 	public void updateDescription() throws IOException {
+
 		descriptionInput.click();
 		descriptionInput.sendKeys(Keys.CONTROL + "a");
 		descriptionInput.sendKeys(Keys.DELETE);
 		String description = BaseClass.getProperties().getProperty("Description");
 		descriptionInput.sendKeys(description);
+	}
+	
+	public void selectPropertyType() throws IOException {
+
+		propertyTypeInput.click();
+		String propertytype = BaseClass.getProperties().getProperty("PropertyType");
+		propertyTypeInput.sendKeys(propertytype);
+		propertyTypeInput.sendKeys(Keys.DOWN);
+		propertyTypeInput.sendKeys(Keys.ENTER);
+	}
+	
+	public void selectStarRating() throws IOException {
+
+		starRatingInput.click();
+		String starRating = BaseClass.getProperties().getProperty("StarRating");
+		starRatingInput.sendKeys(starRating);
+		starRatingInput.sendKeys(Keys.DOWN);
+		starRatingInput.sendKeys(Keys.ENTER);
 	}
 
 	public void updateBuiltYear() throws IOException {
@@ -84,6 +141,24 @@ public class BasicInfoPage extends BasePage {
 		String numberOfFloors = BaseClass.getProperties().getProperty("NumberOfFloors");
 		numberOfFloorsInput.sendKeys(numberOfFloors);
 	}
+	
+	public void selectCurrency() throws IOException {
+
+		currencyInput.click();
+		String currency = BaseClass.getProperties().getProperty("Currency");
+		currencyInput.sendKeys(currency);
+		currencyInput.sendKeys(Keys.DOWN);
+		currencyInput.sendKeys(Keys.ENTER);
+	}
+	
+	public void selectTimezone() throws IOException {
+
+		timezoneInput.click();
+		String timezone = BaseClass.getProperties().getProperty("Timezone");
+		timezoneInput.sendKeys(timezone);
+		timezoneInput.sendKeys(Keys.DOWN);
+		timezoneInput.sendKeys(Keys.ENTER);
+	}
 
 	public void updateCheckInTime() throws IOException {
 		checkInInput.click();
@@ -107,6 +182,14 @@ public class BasicInfoPage extends BasePage {
 
 	public void clickOnSaveButton() {
 		saveButton.click();
+	}
+	
+	public void clickOnCancelButton() {
+		cancelButton.click();
+	}
+	
+	public void clickOnSubmitButton() {
+		submitButton.click();
 	}
 
 	public String waitAndGetSuccessMessage() {

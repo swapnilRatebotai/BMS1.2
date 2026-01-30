@@ -75,4 +75,24 @@ public class RoomsSteps {
 	 	
 	 	roomsPage.waitForSuccessPopupOfRateplanToDisappear();
 	}
+	
+	@Then("user enters valid room details")
+	public void user_enters_valid_room_details() {
+	    
+	}
+
+	@Then("user creates the room")
+	public void user_creates_the_room() {
+	    
+	}
+
+	@When("user enters valid rate plan details")
+	public void user_enters_valid_rate_plan_details() {
+	    
+	}
+
+	@Then("user creates the rate plan")
+	public void user_creates_the_rate_plan() {
+	    
+	}
 }

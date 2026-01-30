@@ -57,6 +57,9 @@ public class ContactsPage extends BasePage {
 
 	@FindBy(xpath = "//button[normalize-space()='Update Contact']")
 	WebElement updateButton;
+	
+	@FindBy(xpath="//button[normalize-space()='Create Contact']")
+	WebElement createContactButton;
 
 	@FindBy(xpath = "//div[@class='snackbar success']")
 	WebElement successPopup;
@@ -149,6 +152,10 @@ public class ContactsPage extends BasePage {
 
 	public void clickOnUpdateContactButton() {
 		updateButton.click();
+	}
+	
+	public void clickOnCreateContactButton() {
+		createContactButton.click();
 	}
 
 	public String waitAndGetSuccessMessage() {
