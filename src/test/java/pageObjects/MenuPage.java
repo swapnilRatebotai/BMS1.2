@@ -1,15 +1,22 @@
 package pageObjects;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MenuPage extends BasePage {
 
 	WebDriver driver;
+	WebDriverWait wait;
 
 	public MenuPage(WebDriver driver) {
 		super(driver);
+		this.driver = driver;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	// Elements in Menu
@@ -54,7 +61,7 @@ public class MenuPage extends BasePage {
 	WebElement menuDiscounts;
 
 	@FindBy(xpath = "//div[text()='Email Configuration'][@class='sidebar-main-item']")
-	WebElement menuEmailConfig;
+	WebElement menuEmailConfiguration;
 
 	@FindBy(xpath = "//div[text()='Payment Gateway'][@class='sidebar-main-item']")
 	WebElement menuPaymentGateway;
@@ -71,74 +78,110 @@ public class MenuPage extends BasePage {
 	// Actions for Menu Elements
 
 	public void clickOnBookingsFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuBookings));
 		menuBookings.click();
 	}
 
 	public void clickOnPropertyDetailsFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuPropertyDetails));
 		menuPropertyDetails.click();
 	}
 
 	public void clickOnBasicInfoFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuBasicInfo));
 		menuBasicInfo.click();
 	}
 
 	public void clickOnContactsFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuContacts));
 		menuContacts.click();
 	}
 
 	public void clickOnLocationFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuLocation));
 		menuLocation.click();
 	}
 	
 	public void clickOnRoomsFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuRooms));
 		menuRooms.click();
 	}
 	
 	public void clickOnPhotosAndVideosFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuPhotosAndVideos));
 		menuPhotosAndVideos.click();
 	}
 	
 	public void clickOnRatesAndInventoryFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuRatesAndInventory));
 		menuRatesAndInventory.click();
 	}
 	
 	public void clickOnPolicyFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuPolicy));
 		menuPolicy.click();
 	}
 	
 	public void clickOnCancellationPolicyFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuCancellationPolicy));
 		menuCancellationPolicy.click();
 	}
 	
 	public void clickOnPaymentPolicyFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuPaymentPolicy));
 		menuPaymentPolicy.click();
 	}
 	
 	public void clickOnDealsFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuDeals));
 		menuDeals.click();
 	}
 	
 	public void clickOnDiscountsFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuDiscounts));
 		menuDiscounts.click();
 	}
 	
 	public void clickOnEmailConfigurationFromMenu() {
-		menuEmailConfig.click();
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuEmailConfiguration));
+		menuEmailConfiguration.click();
 	}
 	
 	public void clickOnPaymentgatewayFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuPaymentGateway));
 		menuPaymentGateway.click();
 	}
 	
 	public void clickOnHotelLogoFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuHotelLogo));
 		menuHotelLogo.click();
 	}
 	
 	public void clickOnChannelManagerFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuChannelManager));
 		menuChannelManager.click();
 	}
 	
 	public void clickOnPropertyListFromMenu() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(menuPropertyList));
 		menuPropertyList.click();
 	}
 }

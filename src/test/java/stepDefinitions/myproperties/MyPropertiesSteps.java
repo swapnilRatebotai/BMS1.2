@@ -36,6 +36,7 @@ public class MyPropertiesSteps {
 
 		Thread.sleep(1000);
 		myPropertiesPage.clickOnPropertyHiltonStays();
+		
 	}
 
 	@Then("user should be redirected to the Channel Manager page")

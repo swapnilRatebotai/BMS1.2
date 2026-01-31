@@ -1,6 +1,7 @@
 package pageObjects;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -9,22 +10,27 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import factory.BaseClass;
 
 public class CancellationPolicyPage extends BasePage {
 
 	WebDriver driver;
+	WebDriverWait wait;
 	
 	private String cancellationchargesfornoshow;
 
 	public CancellationPolicyPage(WebDriver driver) {
 		super(driver);
+		this.driver = driver;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	// Elements
 	@FindBy(xpath = "//div[text()='Policies'][@class='form-header']")
-	WebElement cancellationPolicyPageConf;
+	WebElement cancellationPolicyPageConfirmation;
 
 	@FindBy(xpath = "//button[normalize-space()='Create Policy']")
 	WebElement createPolicyButton;
@@ -70,16 +76,20 @@ public class CancellationPolicyPage extends BasePage {
 
 	// Actions
 	public boolean cancellationPolicyPageConfirmation() {
-		return cancellationPolicyPageConf.isDisplayed();
+		
+		wait.until(ExpectedConditions.visibilityOf(cancellationPolicyPageConfirmation));
+		return cancellationPolicyPageConfirmation.isDisplayed();
 	}
 
 	public void clickOnCreatePolicyButton() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(createPolicyButton));
 		createPolicyButton.click();
 	}
 
 	public void selectStartDate() {
 
+		wait.until(ExpectedConditions.visibilityOf(startDateInput));
 		LocalDate today = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		String todayDate = today.format(formatter);
@@ -88,28 +98,33 @@ public class CancellationPolicyPage extends BasePage {
 
 	public void selectEndDate() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(endDateInput));
 		String enddate = BaseClass.getProperties().getProperty("EndDateOfCancellationPolicy");
 		endDateInput.sendKeys(enddate);
 	}
 	
 	public void enterFreeCancellationDays() throws IOException {
 		
+		wait.until(ExpectedConditions.visibilityOf(freeCancellationDays));
 		String freecancellationdays = BaseClass.getProperties().getProperty("FreeCancellationDays");
 		freeCancellationDays.sendKeys(freecancellationdays);
 	}
 	
 	public void selectNoRefundIfCancelledWithinDays() {
 		
+		wait.until(ExpectedConditions.elementToBeClickable(noRefundWithinDaysRadioButton));
 		noRefundWithinDaysRadioButton.click();
 	}
 	
 	public void selectCreateCancellationCharges() {
 		
+		wait.until(ExpectedConditions.elementToBeClickable(createCancellationChargesRadioButton));
 		createCancellationChargesRadioButton.click();
 	}
 	
 	public void enterCancellationChargesForNoShow() throws IOException {
 		
+		wait.until(ExpectedConditions.visibilityOf(cancellationChargesForNoShowInput));
 		cancellationchargesfornoshow = BaseClass.getProperties().getProperty("CancellationChargesForNoShow");
 		cancellationChargesForNoShowInput.sendKeys(cancellationchargesfornoshow);
 	}
@@ -160,11 +175,13 @@ public class CancellationPolicyPage extends BasePage {
 	
 	public void clickOnSaveButton() {
 		
+		wait.until(ExpectedConditions.elementToBeClickable(saveButton));
 		saveButton.click();
 	}
 	
 	public void clickOnDeletePolicyButton() {
 		
+		wait.until(ExpectedConditions.elementToBeClickable(deleteButton));
 		deleteButton.click();
 	}
 }

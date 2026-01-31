@@ -61,7 +61,14 @@ public class BasicInfoSteps {
 	}
 
 	@Then("user submits the property information")
-	public void user_submits_the_property_information() {
+	public void user_submits_the_property_information() throws IOException {
 	    
+		basicInfoPage.clickOnSubmitButton();
+		
+		String actualMessage = basicInfoPage.waitAndGetSuccessMessage();
+		String popupMessage = BaseClass.getProperties().getProperty("BasicInfoPopupMessage");
+	 	Assert.assertEquals(actualMessage, popupMessage);
+	 	
+	 	basicInfoPage.waitForSuccessPopupToDisappear();
 	}
 }

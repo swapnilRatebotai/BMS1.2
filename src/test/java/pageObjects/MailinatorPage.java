@@ -46,6 +46,9 @@ public class MailinatorPage extends BasePage {
 	
 	public void searchMailOnMailinator() throws IOException {
 		
+		wait.until(ExpectedConditions.visibilityOf(searchBoxInput));
+		wait.until(ExpectedConditions.elementToBeClickable(goButton));
+		
 		String email = BaseClass.getProperties().getProperty("Email");
 		searchBoxInput.sendKeys(email);
 		goButton.click();
@@ -59,11 +62,13 @@ public class MailinatorPage extends BasePage {
 	
 	public void clickOnVerifyEmailAddress() {
 		
+		wait.until(ExpectedConditions.elementToBeClickable(verifyEmailAddressLink));
 		verifyEmailAddressLink.click();
 	}
 	
 	public void clickOnContinueToLoginButton() {
 		
+		wait.until(ExpectedConditions.elementToBeClickable(continueToLoginButton));
 		continueToLoginButton.click();
 	}
 }

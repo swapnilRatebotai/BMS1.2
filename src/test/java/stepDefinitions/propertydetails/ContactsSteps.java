@@ -59,13 +59,20 @@ public class ContactsSteps {
 	 	contactsPage.waitForSuccessPopupToDisappear();
 	}
 	
-	@Then("user enters the contact details")
-	public void user_enters_the_contact_details() {
-	    
-	}
+//	@Then("user enters the contact details")
+//	public void user_enters_the_contact_details() {
+//	    
+//	}
 
 	@Then("user saves the Contact details")
-	public void user_saves_the_contact_details() {
+	public void user_saves_the_contact_details() throws IOException {
 	    
+		contactsPage.clickOnCreateContactButton();
+		
+		String actualMessage = contactsPage.waitAndGetSuccessMessage();
+		String popupMessage = BaseClass.getProperties().getProperty("ContactsPopupMessage");
+	 	Assert.assertEquals(actualMessage, popupMessage);
+	 	
+	 	contactsPage.waitForSuccessPopupToDisappear();
 	}
 }

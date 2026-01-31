@@ -20,11 +20,11 @@ Feature: BMS Start to End Workflow Happypath
     And user submits the property information
     
     Then user is on the Contacts page
-    And user enters the contact details
+    And user updates contact details
     And user saves the Contact details
     
     Then user is on the Location page
-    And user enters the location details
+    And user updates location details
     And user saves the Location details
     
     When user navigates to Rooms page

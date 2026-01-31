@@ -23,13 +23,13 @@ public class BookingsPage extends BasePage {
 	public BookingsPage(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	// Elements
 
 	@FindBy(xpath = "//h1[normalize-space()='Bookings']")
-	WebElement bookingsPageConf;
+	WebElement bookingsPageConfirmation;
 
 	@FindBy(css = "#fromDate")
 	WebElement fromDateInput;
@@ -61,23 +61,28 @@ public class BookingsPage extends BasePage {
 	// Actions
 
 	public boolean bookingsPageConfirmation() {
-		return bookingsPageConf.isDisplayed();
+		
+		wait.until(ExpectedConditions.visibilityOf(bookingsPageConfirmation));
+		return bookingsPageConfirmation.isDisplayed();
 	}
 
 	public void selectFromDate() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(fromDateInput));
 		String fromdate = BaseClass.getProperties().getProperty("FromDateOfBookings");
 		fromDateInput.sendKeys(fromdate);
 	}
 
 	public void selectToDate() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(toDateInput));
 		String todate = BaseClass.getProperties().getProperty("ToDateOfBookings");
 		toDateInput.sendKeys(todate);
 	}
 
 	public void selectTodaysDate() {
 
+		wait.until(ExpectedConditions.visibilityOf(toDateInput));
 		LocalDate today = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		String todayDate = today.format(formatter);
@@ -145,6 +150,7 @@ public class BookingsPage extends BasePage {
 
 	public void selectCheckinFilter() {
 
+		wait.until(ExpectedConditions.visibilityOf(dateFilterTypeDropdown));
 		dateFilterTypeDropdown.click();
 		dateFilterTypeDropdown.sendKeys(Keys.UP);
 		dateFilterTypeDropdown.sendKeys(Keys.ENTER);
@@ -152,6 +158,7 @@ public class BookingsPage extends BasePage {
 
 	public void selectCheckoutFilter() {
 
+		wait.until(ExpectedConditions.visibilityOf(dateFilterTypeDropdown));
 		dateFilterTypeDropdown.click();
 		dateFilterTypeDropdown.sendKeys(Keys.DOWN);
 		dateFilterTypeDropdown.sendKeys(Keys.ENTER);

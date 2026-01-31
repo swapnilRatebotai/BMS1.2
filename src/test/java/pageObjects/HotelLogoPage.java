@@ -16,13 +16,14 @@ public class HotelLogoPage extends BasePage{
 
 	public HotelLogoPage(WebDriver driver) {
 		super(driver);
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		this.driver = driver;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 	
 	
 	//Elements
 		@FindBy(xpath="//div[text()='Hotel Logo'][@class='form-header']")
-		WebElement hotelLogoPageConf;
+		WebElement hotelLogoPageConfirmation;
 		
 		@FindBy(xpath="//button[normalize-space()='Update Logo']")
 		WebElement logoUpdateButton;
@@ -42,16 +43,19 @@ public class HotelLogoPage extends BasePage{
 		//Actions
 		public boolean hotelLogoPageConfirmation() {
 			
-			return hotelLogoPageConf.isDisplayed();
+			wait.until(ExpectedConditions.visibilityOf(hotelLogoPageConfirmation));
+			return hotelLogoPageConfirmation.isDisplayed();
 		}
 		
 		public void clickOnUpdateLogoButton() {
 			
+			wait.until(ExpectedConditions.elementToBeClickable(logoUpdateButton));
 			logoUpdateButton.click();
 		}
 		
 		public void uploadLogo() {
 			
+			wait.until(ExpectedConditions.visibilityOf(logoUploadInputBox));
 			String projectPath = System.getProperty("user.dir");
 			String imagePath = projectPath + File.separator + "images" + File.separator + "logo_2.jpg";
 			logoUploadInputBox.sendKeys(imagePath);
@@ -59,6 +63,7 @@ public class HotelLogoPage extends BasePage{
 		
 		public void clickOnSubmitButton() {
 			
+			wait.until(ExpectedConditions.elementToBeClickable(submitButton));
 			submitButton.click();
 		}
 		

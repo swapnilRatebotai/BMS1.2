@@ -15,17 +15,16 @@ import factory.BaseClass;
 public class LocationPage extends BasePage {
 
 	WebDriver driver;
-//	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 	WebDriverWait wait;
 
 	public LocationPage(WebDriver driver) {
 		super(driver);
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	// Elements
 	@FindBy(xpath = "//div[text()='Property Location'][@class='form-header']")
-	WebElement locationPageConf;
+	WebElement locationPageConfirmation;
 
 	@FindBy(xpath = "//input[@id='Street Address']")
 	WebElement streetAddressInput;
@@ -44,11 +43,14 @@ public class LocationPage extends BasePage {
 
 	// Actions
 	public boolean locationPageConfirmation() {
-		return locationPageConf.isDisplayed();
+		
+		wait.until(ExpectedConditions.visibilityOf(locationPageConfirmation));
+		return locationPageConfirmation.isDisplayed();
 	}
 
 	public void updateStreetAddress() throws InterruptedException, IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(streetAddressInput));
 		streetAddressInput.clear();
 		String streetAddress = BaseClass.getProperties().getProperty("StreetAddress");
 		Thread.sleep(800);
@@ -61,6 +63,8 @@ public class LocationPage extends BasePage {
 	}
 
 	public void updateLocality() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(localityInput));
 		localityInput.clear();
 		String locality = BaseClass.getProperties().getProperty("Locality");
 		localityInput.sendKeys(locality);

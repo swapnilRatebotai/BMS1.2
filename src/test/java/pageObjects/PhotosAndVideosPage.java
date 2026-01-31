@@ -13,19 +13,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class PhotosAndVideosPage extends BasePage{
 
 	WebDriver driver;
-//	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 	 WebDriverWait wait;
 
 	public PhotosAndVideosPage(WebDriver driver) {
 		super(driver);
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-
+		this.driver = driver;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 	
 	
 		//Elements
 		@FindBy(xpath="//div[text()='Photos & Videos'][@class='form-header']")
-		WebElement photosAndVideosPageConf;
+		WebElement photosAndVideosPageConfirmation;
 		
 		@FindBy(xpath="//button[@class='upload-button']")
 		WebElement uploadButton;
@@ -72,19 +71,26 @@ public class PhotosAndVideosPage extends BasePage{
 		
 		//Actions
 		public boolean photosAndVideosPageConfirmation() {
-			return photosAndVideosPageConf.isDisplayed();
+			
+			wait.until(ExpectedConditions.visibilityOf(photosAndVideosPageConfirmation));
+			return photosAndVideosPageConfirmation.isDisplayed();
 		}
 		
 		public void uploadCoverPhoto() {
 			
 			String projectPath = System.getProperty("user.dir");
 			String imagePath = projectPath + File.separator + "images" + File.separator + "hotel_bg_1.jpg";
+			
+			wait.until(ExpectedConditions.elementToBeClickable(uploadButton));
 			uploadButton.click();
+			
+			wait.until(ExpectedConditions.visibilityOf(photoUploadInputBox));
 			photoUploadInputBox.sendKeys(imagePath);
 		}
 		
 		public void clickOnCoverPhotoCheckbox() {
 			
+			wait.until(ExpectedConditions.elementToBeClickable(coverPhotoCheckbox));
 			coverPhotoCheckbox.click();
 		}
 		
@@ -92,19 +98,29 @@ public class PhotosAndVideosPage extends BasePage{
 			
 			String projectPath = System.getProperty("user.dir");
 			String imagePath = projectPath + File.separator + "images" + File.separator + "room_1.jpg";
+			
+			wait.until(ExpectedConditions.elementToBeClickable(uploadButton));
 			uploadButton.click();
+			
+			wait.until(ExpectedConditions.visibilityOf(photoUploadInputBox));
 			photoUploadInputBox.sendKeys(imagePath);
 		}
 		
 		public void selectTags() {
 			
+			wait.until(ExpectedConditions.visibilityOf(tagsDropdown));
 			tagsDropdown.click();
+			
+			wait.until(ExpectedConditions.visibilityOf(tagsDropdownInputBox));
 			tagsDropdownInputBox.sendKeys("room");
 		}
 		
 		public void selectRoomType() {
 			
+			wait.until(ExpectedConditions.visibilityOf(roomTagDropdown));
 			roomTagDropdown.click();
+			
+			wait.until(ExpectedConditions.visibilityOf(tagsDropdown));
 			tagsDropdown.click();
 			roomTypeDropdown.sendKeys("test room");
 			roomTypeDropdown.sendKeys(Keys.DOWN);
@@ -113,23 +129,32 @@ public class PhotosAndVideosPage extends BasePage{
 		
 		public void clickOnSaveButton() {
 			
+			wait.until(ExpectedConditions.elementToBeClickable(saveImageButton));
 			saveImageButton.click();
 			wait.until(ExpectedConditions.alertIsPresent()).accept();
 		}
 		
 		public void deleteRoomImage() {
 			
+			wait.until(ExpectedConditions.elementToBeClickable(roomImage));
 			roomImage.click();
+			
+			wait.until(ExpectedConditions.elementToBeClickable(deleteImageButton));
 			deleteImageButton.click();
 		}
 		
 		public void deleteCoverPhoto() {
+			
+			wait.until(ExpectedConditions.elementToBeClickable(coverPhoto));
 			coverPhoto.click();
+			
+			wait.until(ExpectedConditions.elementToBeClickable(deleteImageButton));
 			deleteImageButton.click();
 		}
 		
 		public void cancelRoomActionsButton() {
 			
+			wait.until(ExpectedConditions.elementToBeClickable(cancelImageActionsButton));
 			cancelImageActionsButton.click();
 		}
 		

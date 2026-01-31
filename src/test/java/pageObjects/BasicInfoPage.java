@@ -15,15 +15,17 @@ import factory.BaseClass;
 public class BasicInfoPage extends BasePage {
 
 	WebDriver driver;
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+	WebDriverWait wait;
 
 	public BasicInfoPage(WebDriver driver) {
 		super(driver);
+		this.driver = driver;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	// Elements
 	@FindBy(xpath = "//div[@class='form-header']")
-	WebElement basicInfoPageConf;
+	WebElement basicInfoPageConfirmation;
 
 	@FindBy(xpath = "//input[@id='Property Name']")
 	WebElement propertyNameInput;
@@ -77,23 +79,27 @@ public class BasicInfoPage extends BasePage {
 
 	public boolean basicInfoPageConfirmation() {
 
-		return basicInfoPageConf.isDisplayed();
+		wait.until(ExpectedConditions.visibilityOf(basicInfoPageConfirmation));
+		return basicInfoPageConfirmation.isDisplayed();
 	}
 
 	public void enterPropertyName() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(propertyNameInput));
 		String propertyname = BaseClass.getProperties().getProperty("PropertyName");
 		propertyNameInput.sendKeys(propertyname);
 	}
 
 	public void enterDisplayName() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(displayNameInput));
 		String displayname = BaseClass.getProperties().getProperty("DisplayName");
 		displayNameInput.sendKeys(displayname);
 	}
 
 	public void updateDescription() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(descriptionInput));
 		descriptionInput.click();
 		descriptionInput.sendKeys(Keys.CONTROL + "a");
 		descriptionInput.sendKeys(Keys.DELETE);
@@ -103,6 +109,7 @@ public class BasicInfoPage extends BasePage {
 	
 	public void selectPropertyType() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(propertyTypeInput));
 		propertyTypeInput.click();
 		String propertytype = BaseClass.getProperties().getProperty("PropertyType");
 		propertyTypeInput.sendKeys(propertytype);
@@ -112,6 +119,7 @@ public class BasicInfoPage extends BasePage {
 	
 	public void selectStarRating() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(starRatingInput));
 		starRatingInput.click();
 		String starRating = BaseClass.getProperties().getProperty("StarRating");
 		starRatingInput.sendKeys(starRating);
@@ -121,6 +129,7 @@ public class BasicInfoPage extends BasePage {
 
 	public void updateBuiltYear() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(builtYearInput));
 		builtYearInput.click();
 		builtYearInput.sendKeys(Keys.CONTROL + "a");
 		builtYearInput.sendKeys(Keys.DELETE);
@@ -131,12 +140,16 @@ public class BasicInfoPage extends BasePage {
 	}
 
 	public void updateNumberOfRooms() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(numberOfRoomsInput));
 		numberOfRoomsInput.clear();
 		String numberOfRooms = BaseClass.getProperties().getProperty("NumberOfRooms");
 		numberOfRoomsInput.sendKeys(numberOfRooms);
 	}
 
 	public void updateNumberOfFloors() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(numberOfFloorsInput));
 		numberOfFloorsInput.clear();
 		String numberOfFloors = BaseClass.getProperties().getProperty("NumberOfFloors");
 		numberOfFloorsInput.sendKeys(numberOfFloors);
@@ -144,6 +157,7 @@ public class BasicInfoPage extends BasePage {
 	
 	public void selectCurrency() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(currencyInput));
 		currencyInput.click();
 		String currency = BaseClass.getProperties().getProperty("Currency");
 		currencyInput.sendKeys(currency);
@@ -153,6 +167,7 @@ public class BasicInfoPage extends BasePage {
 	
 	public void selectTimezone() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(timezoneInput));
 		timezoneInput.click();
 		String timezone = BaseClass.getProperties().getProperty("Timezone");
 		timezoneInput.sendKeys(timezone);
@@ -161,6 +176,8 @@ public class BasicInfoPage extends BasePage {
 	}
 
 	public void updateCheckInTime() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(checkInInput));
 		checkInInput.click();
 		checkInInput.sendKeys(Keys.CONTROL + "a");
 		checkInInput.sendKeys(Keys.DELETE);
@@ -171,6 +188,8 @@ public class BasicInfoPage extends BasePage {
 	}
 
 	public void updateCheckOutTime() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(checkOutInput));
 		checkOutInput.click();
 		checkOutInput.sendKeys(Keys.CONTROL + "a");
 		checkOutInput.sendKeys(Keys.DELETE);
@@ -181,14 +200,20 @@ public class BasicInfoPage extends BasePage {
 	}
 
 	public void clickOnSaveButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(saveButton));
 		saveButton.click();
 	}
 	
 	public void clickOnCancelButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(cancelButton));
 		cancelButton.click();
 	}
 	
 	public void clickOnSubmitButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(submitButton));
 		submitButton.click();
 	}
 

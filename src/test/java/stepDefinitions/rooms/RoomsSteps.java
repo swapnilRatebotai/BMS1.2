@@ -42,13 +42,13 @@ public class RoomsSteps {
 	public void user_clicks_on_update_room_button() throws IOException {
 
 		roomsPage.clickOnUpdateRoomButton();
-		
+
 		String actualMessageForRoom = roomsPage.waitAndGetSuccessMessageOfRoom();
 		String popupMessageForRoom = BaseClass.getProperties().getProperty("UpdateRoomPopupMessage");
-	 	Assert.assertEquals(actualMessageForRoom, popupMessageForRoom);
-	 	
-	 	roomsPage.waitForSuccessPopupOfRoomToDisappear();
-	 	
+		Assert.assertEquals(actualMessageForRoom, popupMessageForRoom);
+
+		roomsPage.waitForSuccessPopupOfRoomToDisappear();
+
 	}
 
 	@When("user opens rate plans section")
@@ -66,33 +66,57 @@ public class RoomsSteps {
 
 	@Then("user clicks on update rate plan button")
 	public void user_clicks_on_update_rate_plan_button() throws IOException {
-		
+
 		roomsPage.clickOnUpdateRateplanButton();
-		
+
 		String actualMessageForRateplan = roomsPage.waitAndGetSuccessMessageOfRateplan();
 		String popupMessageForRateplan = BaseClass.getProperties().getProperty("UpdateRateplanPopupMessage");
-	 	Assert.assertEquals(actualMessageForRateplan, popupMessageForRateplan);
-	 	
-	 	roomsPage.waitForSuccessPopupOfRateplanToDisappear();
+		Assert.assertEquals(actualMessageForRateplan, popupMessageForRateplan);
+
+		roomsPage.waitForSuccessPopupOfRateplanToDisappear();
 	}
-	
+
 	@Then("user enters valid room details")
-	public void user_enters_valid_room_details() {
-	    
+	public void user_enters_valid_room_details() throws IOException {
+
+		roomsPage.clickOnCreateNewRoomButton();
+		roomsPage.updateDisplayName();
+		roomsPage.updateDescription();
+		roomsPage.updateNumberOfRooms();
+		roomsPage.updateRoomType();
+		roomsPage.updateRoomView();
+		roomsPage.updateBedType();
+		roomsPage.updateExtraBedType();
+		roomsPage.updateBaseAdults();
+		roomsPage.updateMaximumAdults();
+		roomsPage.updateChildBase();
+		roomsPage.updateMaximumChildren();
+		roomsPage.updateMaxPax();
 	}
 
 	@Then("user creates the room")
 	public void user_creates_the_room() {
-	    
+
+		roomsPage.clickOnCreateRoomButton();
 	}
 
 	@When("user enters valid rate plan details")
-	public void user_enters_valid_rate_plan_details() {
-	    
+	public void user_enters_valid_rate_plan_details() throws IOException {
+
+		roomsPage.clickOnCreateRateplanButton();
+		roomsPage.selectMealPlan();
+		roomsPage.updateRatePlanName();
 	}
 
 	@Then("user creates the rate plan")
-	public void user_creates_the_rate_plan() {
-	    
+	public void user_creates_the_rate_plan() throws IOException {
+
+		roomsPage.clickOnCreateRateplanSubmitButton();
+
+		String actualMessageForRateplan = roomsPage.waitAndGetSuccessMessageOfRateplan();
+		String popupMessageForRateplan = BaseClass.getProperties().getProperty("UpdateRateplanPopupMessage");
+		Assert.assertEquals(actualMessageForRateplan, popupMessageForRateplan);
+
+		roomsPage.waitForSuccessPopupOfRateplanToDisappear();
 	}
 }

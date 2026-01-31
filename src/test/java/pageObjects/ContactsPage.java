@@ -15,15 +15,17 @@ import factory.BaseClass;
 public class ContactsPage extends BasePage {
 
 	WebDriver driver;
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+	WebDriverWait wait;
 
 	public ContactsPage(WebDriver driver) {
 		super(driver);
+		this.driver = driver;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	// Elements
 	@FindBy(xpath = "//div[text()='Property Contacts'][@class='form-header']")
-	WebElement contactsPageConf;
+	WebElement contactsPageConfirmation;
 
 	@FindBy(xpath = "//input[@id='Hotel Phone']")
 	WebElement hotelPhoneInput;
@@ -66,10 +68,14 @@ public class ContactsPage extends BasePage {
 
 	// Actions
 	public boolean contactsPageConfirmation() {
-		return contactsPageConf.isDisplayed();
+		
+		wait.until(ExpectedConditions.visibilityOf(contactsPageConfirmation));
+		return contactsPageConfirmation.isDisplayed();
 	}
 
 	public void updateHotelPhone() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(hotelPhoneInput));
 		hotelPhoneInput.click();
 		hotelPhoneInput.sendKeys(Keys.CONTROL + "a");
 		hotelPhoneInput.sendKeys(Keys.DELETE);
@@ -78,42 +84,57 @@ public class ContactsPage extends BasePage {
 	}
 
 	public void updateHotelMobile() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(hotelMobileInput));
 		hotelMobileInput.clear();
 		String hotelMobile = BaseClass.getProperties().getProperty("HotelMobile");
 		hotelMobileInput.sendKeys(hotelMobile);
 	}
 
 	public void updateHotelEmail() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(hotelEmailInput));
 		hotelEmailInput.clear();
 		String hotelEmail = BaseClass.getProperties().getProperty("HotelEmail");
 		hotelEmailInput.sendKeys(hotelEmail);
 	}
 
 	public void updatePhoneList() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(phoneListInput));
 		phoneListInput.clear();
 		String phoneList = BaseClass.getProperties().getProperty("PhoneList");
 		phoneListInput.sendKeys(phoneList);
 	}
 
 	public void updateWebsite() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(websiteInput));
 		websiteInput.clear();
 		String website = BaseClass.getProperties().getProperty("HotelWebsite");
 		websiteInput.sendKeys(website);
 	}
 
 	public void updateEmailList() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(emailListInput));
 		emailListInput.clear();
 		String emailList = BaseClass.getProperties().getProperty("EmailList");
 		emailListInput.sendKeys(emailList);
 	}
 
 	public void updateCustomerCareNumber() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(customerCareNumberInput));
 		customerCareNumberInput.clear();
 		String customerCareNumber = BaseClass.getProperties().getProperty("CustomerCareNumber");
 		customerCareNumberInput.sendKeys(customerCareNumber);
 	}
 	
 	public void updateWhatsappNumber() throws IOException {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(useCustomerCareAsWhatsappTrue));
+		wait.until(ExpectedConditions.elementToBeClickable(useCustomerCareAsWhatsappFalse));
 		
 		String customerCareAsWhatsappnumber = BaseClass.getProperties().getProperty("UseCustomerCareAsWhatsappNumber");
 		String whatsappNumber = BaseClass.getProperties().getProperty("WhatsappNumber");
@@ -125,6 +146,8 @@ public class ContactsPage extends BasePage {
 		else {
 			
 			useCustomerCareAsWhatsappFalse.click();
+			
+			wait.until(ExpectedConditions.elementToBeClickable(whatsappNumberInput));
 			whatsappNumberInput.clear();
 			whatsappNumberInput.sendKeys(whatsappNumber);
 		}
@@ -151,10 +174,14 @@ public class ContactsPage extends BasePage {
 //	}
 
 	public void clickOnUpdateContactButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(updateButton));
 		updateButton.click();
 	}
 	
 	public void clickOnCreateContactButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(createContactButton));
 		createContactButton.click();
 	}
 

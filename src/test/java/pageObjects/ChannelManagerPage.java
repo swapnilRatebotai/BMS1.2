@@ -19,13 +19,14 @@ public class ChannelManagerPage extends BasePage {
 
 	public ChannelManagerPage(WebDriver driver) {
 		super(driver);
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		this.driver = driver;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 	
 	
 	//Elements
 	@FindBy(xpath="//div[text()='Channel Manager'][@class='form-header']")
-	WebElement channelManagerPageConf;
+	WebElement channelManagerPageConfirmation;
 	
 	@FindBy(xpath="//div[text()='Bookings'][@class='sidebar-main-item']")
 	WebElement menuBookings;
@@ -52,28 +53,32 @@ public class ChannelManagerPage extends BasePage {
 	//Actions
 	public boolean channelManagerPageConfirmation() {
 		
-		wait.until(ExpectedConditions.visibilityOf(channelManagerPageConf));
-		return channelManagerPageConf.isDisplayed();
+		wait.until(ExpectedConditions.visibilityOf(channelManagerPageConfirmation));
+		return channelManagerPageConfirmation.isDisplayed();
 	}
 	
 	public void clickOnBookingsFromMenu() {
 		
+		wait.until(ExpectedConditions.elementToBeClickable(menuBookings));
 		menuBookings.click();
 	}
 	
 	public void clickOnDisconnectButton() {
 		
+		wait.until(ExpectedConditions.elementToBeClickable(disconnectButton));
 		disconnectButton.click();
 		wait.until(ExpectedConditions.alertIsPresent()).accept();
 	}
 	
 	public void clickOnConnectButton() {
 		
+		wait.until(ExpectedConditions.elementToBeClickable(connectButton));
 		connectButton.click();
 	}
 	
 	public void selectChannelManager() throws IOException {
 		
+		wait.until(ExpectedConditions.visibilityOf(channelManagerDropdown));
 		String channelmanager = BaseClass.getProperties().getProperty("ChannelManager");
 		channelManagerDropdown.sendKeys(channelmanager);
 		channelManagerDropdown.sendKeys(Keys.DOWN);
@@ -82,6 +87,7 @@ public class ChannelManagerPage extends BasePage {
 	
 	public void showSecretCode() {
 		
+		wait.until(ExpectedConditions.elementToBeClickable(secretCodeVisibilityButton));
 		secretCodeVisibilityButton.click();
 	}
 	

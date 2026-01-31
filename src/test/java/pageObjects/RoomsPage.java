@@ -267,7 +267,7 @@ public class RoomsPage extends BasePage {
 		createTestRatePlanButton.click();
 	}
 	
-	public void updateMealPlan() throws IOException {
+	public void selectMealPlan() throws IOException {
 		
 		String mealPlan = BaseClass.getProperties().getProperty("MealPlan");
 		mealPlanDropDown.sendKeys(mealPlan);

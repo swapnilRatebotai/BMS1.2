@@ -20,12 +20,12 @@ public class EmailConfigurationPage extends BasePage {
 	public EmailConfigurationPage(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	// Elements
 	@FindBy(xpath = "//div[text()='Email Configuration'][@class='form-header']")
-	WebElement emailConfigPageConf;
+	WebElement emailConfigPageConfirmation;
 
 	@FindBy(xpath = "//input[@id='SMTP Host']")
 	WebElement smtpHostInput;
@@ -62,11 +62,14 @@ public class EmailConfigurationPage extends BasePage {
 
 	// Actions
 	public boolean emailConfigurationPageConfirmation() {
-		return emailConfigPageConf.isDisplayed();
+		
+		wait.until(ExpectedConditions.visibilityOf(emailConfigPageConfirmation));
+		return emailConfigPageConfirmation.isDisplayed();
 	}
 
 	public void enterSMTPHost() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(smtpHostInput));
 		smtpHostInput.clear();
 		String smtphost = BaseClass.getProperties().getProperty("SMTPHost");
 		smtpHostInput.sendKeys(smtphost);
@@ -74,6 +77,7 @@ public class EmailConfigurationPage extends BasePage {
 
 	public void enterSMTPPort() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(smtpPortInput));
 		smtpPortInput.clear();
 		String smtpport = BaseClass.getProperties().getProperty("SMTPPort");
 		smtpPortInput.sendKeys(smtpport);
@@ -81,6 +85,7 @@ public class EmailConfigurationPage extends BasePage {
 
 	public void enterSMTPUsername() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(smtpUsernameInput));
 		smtpUsernameInput.clear();
 		String smtpusername = BaseClass.getProperties().getProperty("SMTPUsername");
 		smtpUsernameInput.sendKeys(smtpusername);
@@ -88,6 +93,7 @@ public class EmailConfigurationPage extends BasePage {
 
 	public void enterSMTPPassword() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(smtpPasswordInput));
 		smtpPasswordInput.clear();
 		String smtppassword = BaseClass.getProperties().getProperty("SMTPPassword");
 		smtpPasswordInput.sendKeys(smtppassword);
@@ -95,6 +101,7 @@ public class EmailConfigurationPage extends BasePage {
 
 	public void enterFromEmail() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(fromEmailInput));
 		fromEmailInput.clear();
 		String fromemail = BaseClass.getProperties().getProperty("FromEmail");
 		fromEmailInput.sendKeys(fromemail);
@@ -102,6 +109,7 @@ public class EmailConfigurationPage extends BasePage {
 
 	public void enterFromName() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(fromNameInput));
 		fromNameInput.clear();
 		String fromname = BaseClass.getProperties().getProperty("FromName");
 		fromNameInput.sendKeys(fromname);
@@ -109,6 +117,9 @@ public class EmailConfigurationPage extends BasePage {
 
 	public void selectEncryption() throws IOException {
 
+		wait.until(ExpectedConditions.elementToBeClickable(sslEncryptionRadioButton));
+		wait.until(ExpectedConditions.elementToBeClickable(tlsEncryptionRadioButton));
+		
 		String encryption = BaseClass.getProperties().getProperty("Encryption");
 		if (encryption.equalsIgnoreCase("ssl")) {
 
@@ -121,11 +132,13 @@ public class EmailConfigurationPage extends BasePage {
 
 	public void clickOnUpdateButton() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(updateButton));
 		updateButton.click();
 	}
 
 	public void clickOnSaveButton() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(saveButton));
 		saveButton.click();
 	}
 
