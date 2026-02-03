@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">BMS Regression Suite</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">22-01-2026 15:42:54</span></a>
+<a href="#"><span class="badge badge-primary">03-02-2026 19:35:36</span></a>
 </li>
 </ul>
 </div>
@@ -45,6 +45,11 @@
 <li class="nav-item dropdown" onclick="toggleView('test-view')">
 <a id="nav-test" class="dropdown-toggle" href="#">
 <span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
 </a>
 </li>
 <li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
@@ -66,7 +71,7 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
@@ -74,25 +79,25 @@
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="pass" test-id="1"
+        <li class="test-item"  status="fail" test-id="1"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">BMS Workflow Happypath</p>
+            <p class="name">BMS Start to End Workflow Happypath</p>
             <p class="text-sm">
-              <span>3:42:55 pm</span> / <span>00:02:55:382</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>7:35:37 pm</span> / <span>00:00:23:794</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">BMS Workflow Happypath</h5>
-<span class='badge badge-success'>01.22.2026 3:42:55 pm</span>
-<span class='badge badge-danger'>01.22.2026 3:45:51 pm</span>
-<span class='badge badge-default'>00:02:55:382</span>
+<h5 class="test-status text-fail">BMS Start to End Workflow Happypath</h5>
+<span class='badge badge-success'>02.03.2026 7:35:37 pm</span>
+<span class='badge badge-danger'>02.03.2026 7:36:01 pm</span>
+<span class='badge badge-default'>00:00:23:794</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -104,449 +109,489 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Verify all pages are update correctly</div>
+        <div class="node" id="2"><span class="badge log fail-bg mr-2">Fail</span>Verify all pages are working correctly</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
       </div>
     </div>
-        <div class="collapse">
+        <div class="">
           <div class="card-body">
-              <div class="step pass-bg" title="stepDefinitions.common.LoginSteps.user_logs_into_the_BMS_application()">
-                <span>Given user logs into the BMS application</span>
+              <div class="step fail-bg" title="stepDefinitions.common.SignUpSteps.the_user_signs_up_for_the_bms_application()">
+                <span>Given the user signs up for the BMS application</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: Proxy element for: DefaultElementLocator 'By.cssSelector: .login-redirect-button' (tried for 5 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at pageObjects.SignUpPage.clickOnGoToLoginButton(SignUpPage.java:102)
+	at stepDefinitions.common.SignUpSteps.the_user_signs_up_for_the_bms_application(SignUpSteps.java:31)
+	at ✽.the user signs up for the BMS application(file:///C:/Users/Admin%20-1/eclipse-workspace/BMS1.2/./Features/bms_create_workflow.feature:5)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":".login-redirect-button"}
+  (Session info: chrome=144.0.7559.110)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Build info: version: '4.38.0', revision: '6b412e825c*'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.9'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [0b5fa98c9ad64081741a674f8c574206, findElement {value=.login-redirect-button, using=css selector}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 144.0.7559.110, chrome: {chromedriverVersion: 144.0.7559.109 (6a8d5e49388..., userDataDir: C:\Users\ADMIN-~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52611}, goog:processID: 11772, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52611/devtoo..., se:cdpVersion: 144.0.7559.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0b5fa98c9ad64081741a674f8c574206
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:557)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:380)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:374)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy24.isDisplayed(Unknown Source)
+	at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:308)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:294)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:291)
+	at org.openqa.selenium.support.ui.ExpectedConditions$23.apply(ExpectedConditions.java:662)
+	at org.openqa.selenium.support.ui.ExpectedConditions$23.apply(ExpectedConditions.java:658)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
+	... 3 more
+</textarea>
+      
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>hooks.Hooks.addScreenshot(io.cucumber.java.Scenario)</span>
+      <div>Failed Screenshot
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='../Screenshots/embedded1.png' src="../Screenshots/embedded1.png">
+    
+    </div></div>
+</div>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.myproperties.MyPropertiesSteps.user_is_on_the_my_properties_page()">
-                <span>Then user is on the My Properties page</span>
-      <div>
+              <div class="step skip-bg" title="stepDefinitions.common.SignUpSteps.the_user_verifies_the_account_via_email()">
+                <span>When the user verifies the account via email</span>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.userprofile.UserProfileSteps.user_navigates_to_my_profile_page()">
+              <div class="step skip-bg" title="stepDefinitions.common.LoginSteps.user_logs_into_the_BMS_application()">
+                <span>And user logs into the BMS application</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepDefinitions.channelmanager.ChannelManagerSteps.user_is_on_the_Channel_Manager_page()">
+                <span>Then user is on the Channel Manager page</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepDefinitions.myproperties.MyPropertiesSteps.user_navigates_to_my_properties_page()">
+                <span>When user navigates to My Properties page</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepDefinitions.userprofile.UserProfileSteps.user_navigates_to_my_profile_page()">
                 <span>When user navigates to My Profile page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.userprofile.UserProfileSteps.user_clicks_on_edit_profile()">
+              <div class="step skip-bg" title="stepDefinitions.userprofile.UserProfileSteps.user_clicks_on_edit_profile()">
                 <span>And user clicks on Edit Profile</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.userprofile.UserProfileSteps.user_updates_profile_details()">
+              <div class="step skip-bg" title="stepDefinitions.userprofile.UserProfileSteps.user_updates_profile_details()">
                 <span>And user updates profile details</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.userprofile.UserProfileSteps.user_clicks_on_save_changes()">
+              <div class="step skip-bg" title="stepDefinitions.userprofile.UserProfileSteps.user_clicks_on_save_changes()">
                 <span>And user clicks on Save Changes</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.userprofile.UserProfileSteps.user_navigates_back_from_the_profile_page()">
+              <div class="step skip-bg" title="stepDefinitions.userprofile.UserProfileSteps.user_navigates_back_from_the_profile_page()">
                 <span>Then user navigates back from the profile page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.myproperties.MyPropertiesSteps.user_selects_property_from_the_property_list()">
-                <span>When user selects property from the property list</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepDefinitions.channelmanager.ChannelManagerSteps.user_is_on_the_Channel_Manager_page()">
-                <span>Then user is on the Channel Manager page</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_basic_info_page()">
-                <span>When user navigates to Basic Info page</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepDefinitions.propertydetails.BasicInfoSteps.user_is_on_the_Basic_Info_page()">
+              <div class="step skip-bg" title="stepDefinitions.propertydetails.BasicInfoSteps.user_is_on_the_Basic_Info_page()">
                 <span>Then user is on the Basic Info page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.propertydetails.BasicInfoSteps.user_updates_property_details()">
-                <span>And user updates property details</span>
-      <div>
+              <div class="step skip-bg" title="stepDefinitions.propertydetails.BasicInfoSteps.user_enters_the_property_details()">
+                <span>And user enters the property details</span>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.propertydetails.BasicInfoSteps.user_clicks_on_save_property_details_button()">
-                <span>And user clicks on save property details button</span>
-      <div>
+              <div class="step skip-bg" title="stepDefinitions.propertydetails.BasicInfoSteps.user_submits_the_property_information()">
+                <span>And user submits the property information</span>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_contacts_page()">
-                <span>When user navigates to Contacts page</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepDefinitions.propertydetails.ContactsSteps.user_is_on_the_Contacts_page()">
+              <div class="step skip-bg" title="stepDefinitions.propertydetails.ContactsSteps.user_is_on_the_Contacts_page()">
                 <span>Then user is on the Contacts page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.propertydetails.ContactsSteps.user_updates_contact_details()">
+              <div class="step skip-bg" title="stepDefinitions.propertydetails.ContactsSteps.user_updates_contact_details()">
                 <span>And user updates contact details</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.propertydetails.ContactsSteps.user_clicks_on_update_contact_button()">
-                <span>And user clicks on update contact button</span>
-      <div>
+              <div class="step skip-bg" title="stepDefinitions.propertydetails.ContactsSteps.user_saves_the_contact_details()">
+                <span>And user saves the Contact details</span>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_location_page()">
-                <span>When user navigates to Location page</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepDefinitions.propertydetails.LocationSteps.user_is_on_the_Location_page()">
+              <div class="step skip-bg" title="stepDefinitions.propertydetails.LocationSteps.user_is_on_the_Location_page()">
                 <span>Then user is on the Location page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.propertydetails.LocationSteps.user_updates_location_details()">
+              <div class="step skip-bg" title="stepDefinitions.propertydetails.LocationSteps.user_updates_location_details()">
                 <span>And user updates location details</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.propertydetails.LocationSteps.user_clicks_on_update_location_button()">
-                <span>And user clicks on update location button</span>
-      <div>
+              <div class="step skip-bg" title="stepDefinitions.propertydetails.LocationSteps.user_saves_the_location_details()">
+                <span>And user saves the Location details</span>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_rooms_page()">
+              <div class="step skip-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_rooms_page()">
                 <span>When user navigates to Rooms page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rooms.RoomsSteps.user_is_on_the_Rooms_page()">
+              <div class="step skip-bg" title="stepDefinitions.rooms.RoomsSteps.user_is_on_the_Rooms_page()">
                 <span>Then user is on the Rooms page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rooms.RoomsSteps.user_updates_selected_room_details()">
-                <span>And user updates selected room details</span>
-      <div>
+              <div class="step skip-bg" title="stepDefinitions.rooms.RoomsSteps.user_enters_valid_room_details()">
+                <span>And user enters valid room details</span>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rooms.RoomsSteps.user_clicks_on_update_room_button()">
-                <span>Then user clicks on update room button</span>
-      <div>
+              <div class="step skip-bg" title="stepDefinitions.rooms.RoomsSteps.user_creates_the_room()">
+                <span>Then user creates the room</span>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rooms.RoomsSteps.user_opens_rate_plans_section()">
-                <span>When user opens rate plans section</span>
-      <div>
+              <div class="step skip-bg" title="stepDefinitions.rooms.RoomsSteps.user_enters_valid_rate_plan_details()">
+                <span>When user enters valid rate plan details</span>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rooms.RoomsSteps.user_updates_rate_plan_details()">
-                <span>And user updates rate plan details</span>
-      <div>
+              <div class="step skip-bg" title="stepDefinitions.rooms.RoomsSteps.user_creates_the_rate_plan()">
+                <span>Then user creates the rate plan</span>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rooms.RoomsSteps.user_clicks_on_update_rate_plan_button()">
-                <span>Then user clicks on update rate plan button</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_photos_and_videos_page()">
+              <div class="step skip-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_photos_and_videos_page()">
                 <span>When user navigates to Photos and Videos page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.photosandvideos.PhotosAndVideosSteps.user_is_on_the_Photos_and_Videos_page()">
+              <div class="step skip-bg" title="stepDefinitions.photosandvideos.PhotosAndVideosSteps.user_is_on_the_Photos_and_Videos_page()">
                 <span>Then user is on the Photos and Videos page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.photosandvideos.PhotosAndVideosSteps.user_uploads_cover_photo()">
+              <div class="step skip-bg" title="stepDefinitions.photosandvideos.PhotosAndVideosSteps.user_uploads_cover_photo()">
                 <span>And user uploads cover photo</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.photosandvideos.PhotosAndVideosSteps.user_clicks_on_save_photos_button()">
+              <div class="step skip-bg" title="stepDefinitions.photosandvideos.PhotosAndVideosSteps.user_clicks_on_save_photos_button()">
                 <span>Then user clicks on save photos button</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.photosandvideos.PhotosAndVideosSteps.user_uploads_room_photo_and_select_room()">
+              <div class="step skip-bg" title="stepDefinitions.photosandvideos.PhotosAndVideosSteps.user_uploads_room_photo_and_select_room()">
                 <span>When user uploads room photo and select room</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.photosandvideos.PhotosAndVideosSteps.user_clicks_on_save_photos_button()">
+              <div class="step skip-bg" title="stepDefinitions.photosandvideos.PhotosAndVideosSteps.user_clicks_on_save_photos_button()">
                 <span>Then user clicks on save photos button</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.photosandvideos.PhotosAndVideosSteps.user_deletes_uploaded_room_photo()">
+              <div class="step skip-bg" title="stepDefinitions.photosandvideos.PhotosAndVideosSteps.user_deletes_uploaded_room_photo()">
                 <span>When user deletes uploaded room photo</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.photosandvideos.PhotosAndVideosSteps.user_deletes_uploaded_cover_photo()">
+              <div class="step skip-bg" title="stepDefinitions.photosandvideos.PhotosAndVideosSteps.user_deletes_uploaded_cover_photo()">
                 <span>And user deletes uploaded cover photo</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_rate_and_inventory_page()">
+              <div class="step skip-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_rate_and_inventory_page()">
                 <span>When user navigates to Rate and Inventory page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_is_on_the_Rate_and_Inventory_page()">
+              <div class="step skip-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_is_on_the_Rate_and_Inventory_page()">
                 <span>Then user is on the Rate and Inventory page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_opens_all_rooms_rate_plans()">
+              <div class="step skip-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_opens_all_rooms_rate_plans()">
                 <span>And user opens all rooms rate plans</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_closes_a_single_room_rate_plan()">
+              <div class="step skip-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_closes_a_single_room_rate_plan()">
                 <span>When user closes a single room rate plan</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_opens_the_single_room_rate_plan()">
+              <div class="step skip-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_opens_the_single_room_rate_plan()">
                 <span>And user opens the single room rate plan</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_clicks_on_bulk_update()">
+              <div class="step skip-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_clicks_on_bulk_update()">
                 <span>When user clicks on bulk update</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_updates_inventory_details()">
+              <div class="step skip-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_updates_inventory_details()">
                 <span>And user updates inventory details</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_updates_rate_details()">
+              <div class="step skip-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_updates_rate_details()">
                 <span>And user updates rate details</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_selects_a_date_from_the_calendar()">
+              <div class="step skip-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_selects_a_date_from_the_calendar()">
                 <span>When user selects a date from the calendar</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_navigates_to_previous_calender_chart()">
+              <div class="step skip-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_navigates_to_previous_calender_chart()">
                 <span>And user navigates to previous calender chart</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_navigates_to_next_calender_chart()">
+              <div class="step skip-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_navigates_to_next_calender_chart()">
                 <span>And user navigates to next calender chart</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_close_all_rooms_rate_plans()">
+              <div class="step skip-bg" title="stepDefinitions.rateandinventory.RateAndInventorySteps.user_close_all_rooms_rate_plans()">
                 <span>Then user close all rooms rate plans</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_cancellation_policy_page()">
+              <div class="step skip-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_cancellation_policy_page()">
                 <span>When user navigates to Cancellation Policy page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.policy.CancellationPolicySteps.user_is_on_the_Cancellation_Policy_page()">
+              <div class="step skip-bg" title="stepDefinitions.policy.CancellationPolicySteps.user_is_on_the_Cancellation_Policy_page()">
                 <span>Then user is on the Cancellation Policy page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.policy.CancellationPolicySteps.user_creates_a_simple_cancellation_policy()">
+              <div class="step skip-bg" title="stepDefinitions.policy.CancellationPolicySteps.user_creates_a_simple_cancellation_policy()">
                 <span>And user creates a simple cancellation policy</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.policy.CancellationPolicySteps.user_deletes_simple_cancellation_policy()">
+              <div class="step skip-bg" title="stepDefinitions.policy.CancellationPolicySteps.user_deletes_simple_cancellation_policy()">
                 <span>And user deletes simple cancellation policy</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.policy.CancellationPolicySteps.user_creates_a_custom_cancellation_policy()">
+              <div class="step skip-bg" title="stepDefinitions.policy.CancellationPolicySteps.user_creates_a_custom_cancellation_policy()">
                 <span>Then user creates a custom cancellation policy</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.policy.CancellationPolicySteps.user_deletes_custom_cancellation_policy()">
+              <div class="step skip-bg" title="stepDefinitions.policy.CancellationPolicySteps.user_deletes_custom_cancellation_policy()">
                 <span>And user deletes custom cancellation policy</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_payment_policy_page()">
+              <div class="step skip-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_payment_policy_page()">
                 <span>When user navigates to Payment Policy page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.policy.PaymentPolicy.user_is_on_the_Payment_Policy_page()">
+              <div class="step skip-bg" title="stepDefinitions.policy.PaymentPolicy.user_is_on_the_Payment_Policy_page()">
                 <span>Then user is on the Payment Policy page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.policy.PaymentPolicy.user_creates_payment_policy()">
+              <div class="step skip-bg" title="stepDefinitions.policy.PaymentPolicy.user_creates_payment_policy()">
                 <span>And user creates payment policy</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.policy.PaymentPolicy.user_deletes_payment_policy()">
+              <div class="step skip-bg" title="stepDefinitions.policy.PaymentPolicy.user_deletes_payment_policy()">
                 <span>Then user deletes payment policy</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_discounts_page()">
+              <div class="step skip-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_discounts_page()">
                 <span>When user navigates to Discounts page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.deals.DiscountsSteps.user_is_on_the_Discounts_page()">
+              <div class="step skip-bg" title="stepDefinitions.deals.DiscountsSteps.user_is_on_the_Discounts_page()">
                 <span>Then user is on the Discounts page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.deals.DiscountsSteps.user_creates_a_discount()">
+              <div class="step skip-bg" title="stepDefinitions.deals.DiscountsSteps.user_creates_a_discount()">
                 <span>And user creates a discount</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.deals.DiscountsSteps.user_deletes_the_discount()">
+              <div class="step skip-bg" title="stepDefinitions.deals.DiscountsSteps.user_deletes_the_discount()">
                 <span>Then user deletes the discount</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_email_configuration_page()">
+              <div class="step skip-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_email_configuration_page()">
                 <span>When user navigates to Email Configuration page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.emailconfiguration.EmailConfigurationSteps.user_is_on_the_Email_Configuration_page()">
+              <div class="step skip-bg" title="stepDefinitions.emailconfiguration.EmailConfigurationSteps.user_is_on_the_Email_Configuration_page()">
                 <span>Then user is on the Email Configuration page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.emailconfiguration.EmailConfigurationSteps.user_updates_email_configuration_details()">
+              <div class="step skip-bg" title="stepDefinitions.emailconfiguration.EmailConfigurationSteps.user_updates_email_configuration_details()">
                 <span>And user updates email configuration details</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.emailconfiguration.EmailConfigurationSteps.user_clicks_on_update_email_configuration_button()">
+              <div class="step skip-bg" title="stepDefinitions.emailconfiguration.EmailConfigurationSteps.user_clicks_on_update_email_configuration_button()">
                 <span>And user clicks on update email configuration button</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_payment_gateway_page()">
+              <div class="step skip-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_payment_gateway_page()">
                 <span>When user navigates to Payment Gateway page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.paymentgateway.PaymentGatewaySteps.user_is_on_the_Payment_Gateway_page()">
+              <div class="step skip-bg" title="stepDefinitions.paymentgateway.PaymentGatewaySteps.user_is_on_the_Payment_Gateway_page()">
                 <span>Then user is on the Payment Gateway page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_hotel_logo_page()">
+              <div class="step skip-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_hotel_logo_page()">
                 <span>When user navigates to Hotel Logo page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.hotellogo.HotelLogoSteps.user_is_on_the_Hotel_Logo_page()">
+              <div class="step skip-bg" title="stepDefinitions.hotellogo.HotelLogoSteps.user_is_on_the_Hotel_Logo_page()">
                 <span>Then user is on the Hotel Logo page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.hotellogo.HotelLogoSteps.user_uploads_hotel_logo()">
+              <div class="step skip-bg" title="stepDefinitions.hotellogo.HotelLogoSteps.user_uploads_hotel_logo()">
                 <span>And user uploads hotel logo</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.hotellogo.HotelLogoSteps.user_clicks_on_submit_hotel_logo_button()">
+              <div class="step skip-bg" title="stepDefinitions.hotellogo.HotelLogoSteps.user_clicks_on_submit_hotel_logo_button()">
                 <span>And user clicks on submit hotel logo button</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_Channel_Manager_page()">
+              <div class="step skip-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_Channel_Manager_page()">
                 <span>When user navigates to Channel Manager page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.channelmanager.ChannelManagerSteps.user_is_on_the_Channel_Manager_page()">
+              <div class="step skip-bg" title="stepDefinitions.channelmanager.ChannelManagerSteps.user_is_on_the_Channel_Manager_page()">
                 <span>Then user is on the Channel Manager page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.channelmanager.ChannelManagerSteps.user_disconnects_the_channel_manager()">
-                <span>And user disconnects the channel manager</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepDefinitions.channelmanager.ChannelManagerSteps.user_connects_the_channel_manager()">
+              <div class="step skip-bg" title="stepDefinitions.channelmanager.ChannelManagerSteps.user_connects_the_channel_manager()">
                 <span>And user connects the channel manager</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.channelmanager.ChannelManagerSteps.user_clicks_on_reveal_secret_code()">
+              <div class="step skip-bg" title="stepDefinitions.channelmanager.ChannelManagerSteps.user_clicks_on_reveal_secret_code()">
                 <span>Then user clicks on reveal secret code</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_bookings_page()">
+              <div class="step skip-bg" title="stepDefinitions.channelmanager.ChannelManagerSteps.user_disconnects_the_channel_manager()">
+                <span>And user disconnects the channel manager</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepDefinitions.common.MenuSteps.user_navigates_to_bookings_page()">
                 <span>When user navigates to Bookings page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.bookings.BookingsSteps.user_is_on_the_Bookings_page()">
+              <div class="step skip-bg" title="stepDefinitions.bookings.BookingsSteps.user_is_on_the_Bookings_page()">
                 <span>Then user is on the Bookings page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.bookings.BookingsSteps.user_selects_from_date_and_to_date()">
+              <div class="step skip-bg" title="stepDefinitions.bookings.BookingsSteps.user_selects_from_date_and_to_date()">
                 <span>And user selects from date and to date</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.bookings.BookingsSteps.user_selects_booking_status_as_confirmed()">
+              <div class="step skip-bg" title="stepDefinitions.bookings.BookingsSteps.user_selects_booking_status_as_confirmed()">
                 <span>When user selects booking status as confirmed</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.bookings.BookingsSteps.user_clicks_on_whats_app_connect_to_contact_customer()">
+              <div class="step skip-bg" title="stepDefinitions.bookings.BookingsSteps.user_clicks_on_whats_app_connect_to_contact_customer()">
                 <span>And user clicks on WhatsApp connect to contact customer</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.bookings.BookingsSteps.user_selects_booking_status_as_cancelled()">
+              <div class="step skip-bg" title="stepDefinitions.bookings.BookingsSteps.user_selects_booking_status_as_cancelled()">
                 <span>When user selects booking status as cancelled</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.bookings.BookingsSteps.user_clicks_on_whats_app_connect_to_contact_customer()">
+              <div class="step skip-bg" title="stepDefinitions.bookings.BookingsSteps.user_clicks_on_whats_app_connect_to_contact_customer()">
                 <span>And user clicks on WhatsApp connect to contact customer</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.bookings.BookingsSteps.user_selects_booking_filter_as_check_in()">
+              <div class="step skip-bg" title="stepDefinitions.bookings.BookingsSteps.user_selects_booking_filter_as_check_in()">
                 <span>When user selects booking filter as check-in</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.bookings.BookingsSteps.user_selects_booking_filter_as_check_out()">
+              <div class="step skip-bg" title="stepDefinitions.bookings.BookingsSteps.user_selects_booking_filter_as_check_out()">
                 <span>And user selects booking filter as check-out</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.common.HeaderSteps.user_logs_out_from_the_bms_application()">
+              <div class="step skip-bg" title="stepDefinitions.common.HeaderSteps.user_logs_out_from_the_bms_application()">
                 <span>When user logs out from the BMS application</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
-              <div class="step pass-bg" title="stepDefinitions.common.LoginSteps.user_is_on_the_login_page()">
+              <div class="step skip-bg" title="stepDefinitions.common.LoginSteps.user_is_on_the_login_page()">
                 <span>Then user is on the login page</span>
-      <div>
+      <div>Step skipped
       </div>
               </div>
           </div>
@@ -564,30 +609,82 @@
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
-<div class="container-fluid p-4 view dashboard-view">
+<div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">org.openqa.selenium.TimeoutException</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>org.openqa.selenium.TimeoutException</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>19:35:39 pm</td>
+<td>
+<a href="#" class="linked" test-id='1' id='4'>Given the user signs up for the BMS application</a>
+<div class="">
+<span class="badge badge-default">BMS Start to End Workflow Happypath.Verify all pages are working correctly.Given the user signs up for the BMS application</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="container-fluid p-4 view dashboard-view">
 <div class="row">
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>22-01-2026 15:42:54</h3>
+<h3>03-02-2026 19:35:36</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>22-01-2026 15:45:51</h3>
+<h3>03-02-2026 19:36:01</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Features Passed</p>
-<h3>1</h3>
+<h3>0</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Features Failed</p>
-<h3>0</h3>
+<h3>1</h3>
 </div></div>
 </div>
 </div>
@@ -603,12 +700,12 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'>
-<b>1</b> features passed
+<div><small data-tooltip='0%'>
+<b>0</b> features passed
 </small>
 </div>
 <div>
-<small data-tooltip='0%'><b>0</b> features failed,
+<small data-tooltip='100%'><b>1</b> features failed,
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -626,9 +723,9 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>1</b> scenarios passed</small></div>
+<div><small data-tooltip='0%'><b>0</b> scenarios passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> scenarios failed,
+<small data-tooltip='100%'><b>1</b> scenarios failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
@@ -646,10 +743,10 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>88</b> steps passed</small></div>
+<div><small data-tooltip='1%'><b>1</b> steps passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> steps failed,
-<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+<small data-tooltip='1%'><b>1</b> steps failed,
+<b>84</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
 </div>
@@ -665,7 +762,7 @@
 </div></div>
 <script>
 var timeline = {
-"BMS Workflow Happypath":175.382
+"BMS Start to End Workflow Happypath":23.794
 };
 </script>
 <div class="row">
@@ -674,21 +771,21 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 1,
-failParent: 0,
+passParent: 0,
+failParent: 1,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
-passChild: 1,
-failChild: 0,
+passChild: 0,
+failChild: 1,
 warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 88,
-failGrandChild: 0,
+passGrandChild: 1,
+failGrandChild: 1,
 warningGrandChild: 0,
-skipGrandChild: 0,
+skipGrandChild: 84,
 infoGrandChild: 0,
 eventsCount: 5,
 };

@@ -6,6 +6,7 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import factory.BaseClass;
@@ -24,21 +25,21 @@ public class SignUpPage extends BasePage {
 	//Elements
 	
 	@FindBy(css=".signup-h2")
-	WebElement signUpPageConf;
+	WebElement signUpPageConfirmation;
 	
-	@FindBy(xpath="//input[@type='text']")
+	@FindBy(xpath="//input[@type='email']")
 	WebElement emailInput;
 	
 	@FindBy(xpath="//input[@type='tel']")
 	WebElement mobileNumberInput;
 	
 	@FindBy(xpath="//input[@type='password']")
-	WebElement pass;
+	WebElement password;
 	
 	@FindBy(xpath="//span[@class='password-toggle']")
 	WebElement passwordToggleButton;
 	
-	@FindBy(css="signup-button")
+	@FindBy(css=".signup-button")
 	WebElement createAccountButton;
 	
 	@FindBy(xpath="//a[normalize-space()='Login']")
@@ -53,44 +54,52 @@ public class SignUpPage extends BasePage {
 	
 	public boolean signUpPageConfirmation() {
 		
-		return(signUpPageConf.isDisplayed());
+		wait.until(ExpectedConditions.visibilityOf(signUpPageConfirmation));
+		return(signUpPageConfirmation.isDisplayed());
 	}
 	
 	public void enterEmailAddress() throws IOException {
 		
+//		wait.until(ExpectedConditions.visibilityOf(emailInput));
 		String email = BaseClass.getProperties().getProperty("EmailForSignUp");
 		emailInput.sendKeys(email);
 	}
 	
 	public void enterMobileNumber() throws IOException {
 		
+//		wait.until(ExpectedConditions.visibilityOf(mobileNumberInput));
 		String mobilenumber = BaseClass.getProperties().getProperty("MobileNumberForSignUp");
-		emailInput.sendKeys(mobilenumber);
+		mobileNumberInput.sendKeys(mobilenumber);
 	}
 	
 	public void enterPassword() throws IOException {
 		
-		String password = BaseClass.getProperties().getProperty("PasswordForSignup");
-		emailInput.sendKeys(password);
+//		wait.until(ExpectedConditions.visibilityOf(password));
+		String pass = BaseClass.getProperties().getProperty("PasswordForSignup");
+		password.sendKeys(pass);
 	}
 	
 	public void clickOnPasswordToggleButton() {
 		
+		wait.until(ExpectedConditions.elementToBeClickable(passwordToggleButton));
 		passwordToggleButton.click();
 	}
 	
 	public void clickOnCreateAccountButton() {
 		
+		wait.until(ExpectedConditions.elementToBeClickable(createAccountButton));
 		createAccountButton.click();
 	}
 	
 	public void clickOnLoginPage() {
 		
+		wait.until(ExpectedConditions.elementToBeClickable(loginPage));
 		loginPage.click();
 	}
 	
 	public void clickOnGoToLoginButton(){
 		
+		wait.until(ExpectedConditions.elementToBeClickable(goToLoginButton));
 		goToLoginButton.click();
 	}
 }

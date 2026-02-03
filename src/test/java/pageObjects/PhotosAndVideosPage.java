@@ -84,13 +84,13 @@ public class PhotosAndVideosPage extends BasePage{
 			wait.until(ExpectedConditions.elementToBeClickable(uploadButton));
 			uploadButton.click();
 			
-			wait.until(ExpectedConditions.visibilityOf(photoUploadInputBox));
+//			wait.until(ExpectedConditions.visibilityOf(photoUploadInputBox));
 			photoUploadInputBox.sendKeys(imagePath);
 		}
 		
 		public void clickOnCoverPhotoCheckbox() {
 			
-			wait.until(ExpectedConditions.elementToBeClickable(coverPhotoCheckbox));
+			wait.until(ExpectedConditions.visibilityOf(coverPhotoCheckbox));
 			coverPhotoCheckbox.click();
 		}
 		
@@ -102,7 +102,7 @@ public class PhotosAndVideosPage extends BasePage{
 			wait.until(ExpectedConditions.elementToBeClickable(uploadButton));
 			uploadButton.click();
 			
-			wait.until(ExpectedConditions.visibilityOf(photoUploadInputBox));
+//			wait.until(ExpectedConditions.visibilityOf(photoUploadInputBox));
 			photoUploadInputBox.sendKeys(imagePath);
 		}
 		

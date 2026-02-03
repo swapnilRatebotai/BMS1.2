@@ -8,7 +8,8 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 //					features = "Features",
-					features = {".//Features/bms_update_workflow.feature"},
+//					features = {".//Features/bms_update_workflow.feature"},
+					features = {".//Features/bms_create_workflow.feature"},
 //					features = {".//Features/update_user_profile.feature"},
 //					features = {".//Features/page_navigation.feature"},
 //					features = {".//Features/update_property_details.feature"},

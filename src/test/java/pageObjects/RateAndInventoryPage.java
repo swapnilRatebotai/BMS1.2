@@ -10,6 +10,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import factory.BaseClass;
@@ -29,7 +30,7 @@ public class RateAndInventoryPage extends BasePage {
 
 	// Elements
 	@FindBy(xpath = "//div[@class='cm-header']")
-	WebElement rateAndInventoryPageConf;
+	WebElement rateAndInventoryPageConfirmation;
 
 	@FindBy(xpath = "//button[normalize-space()='Show Rateplans']")
 	WebElement showRateplanButton;
@@ -139,31 +140,37 @@ public class RateAndInventoryPage extends BasePage {
 	// Actions
 	public boolean rateAndInventoryPageConfirmation() {
 
-		return rateAndInventoryPageConf.isDisplayed();
+		wait.until(ExpectedConditions.visibilityOf(rateAndInventoryPageConfirmation));
+		return rateAndInventoryPageConfirmation.isDisplayed();
 	}
 
 	public void clickOnShowAllRateplans() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(showRateplanButton));
 		showRateplanButton.click();
 	}
 
 	public void clickOnHideAllRateplans() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(hideRateplanButton));
 		hideRateplanButton.click();
 	}
 
 	public void clickOnExpandRoomButton() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(expandRoomButton));
 		expandRoomButton.click();
 	}
 
 	public void clickOnCollapseRoomButton() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(collapseRoomButton));
 		collapseRoomButton.click();
 	}
 
 	public void selectTodaysDate() {
 
+		wait.until(ExpectedConditions.visibilityOf(calenderInput));
 		LocalDate today = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		String todayDate = today.format(formatter);
@@ -172,6 +179,7 @@ public class RateAndInventoryPage extends BasePage {
 
 	public void selectDateOfCalenderChart() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(calenderInput));
 		String customdate = BaseClass.getProperties().getProperty("DateOfRateAndInventory");
 //		calenderInput.sendKeys(customdate);
 
@@ -184,31 +192,37 @@ public class RateAndInventoryPage extends BasePage {
 
 	public void clickOnBackButtonOfCalenderChart() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(backCalenderChartButton));
 		backCalenderChartButton.click();
 	}
 
 	public void clickOnNextButtonOfCalenderChart() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(nextCalenderChartButton));
 		nextCalenderChartButton.click();
 	}
 
 	public void clickOnBulkUpdateButton() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(bulkUpdateButton));
 		bulkUpdateButton.click();
 	}
 
 	public void clickOnInventoryButton() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(inventoryButton));
 		inventoryButton.click();
 	}
 
 	public void clickOnRateButton() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(rateButton));
 		rateButton.click();
 	}
 
 	public void selectFromDateAsToday() {
 
+		wait.until(ExpectedConditions.visibilityOf(fromDateInput));
 		LocalDate today = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		String todayDate = today.format(formatter);
@@ -217,12 +231,14 @@ public class RateAndInventoryPage extends BasePage {
 
 	public void selectFromDate() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(fromDateInput));
 		String customdate = BaseClass.getProperties().getProperty("FromDateOfRateAndInventory");
 		fromDateInput.sendKeys(customdate);
 	}
 
 	public void selectToDate() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(toDateInput));
 		String todate = BaseClass.getProperties().getProperty("ToDateOfRateAndInventory");
 //		toDateInput.sendKeys(todate);
 
@@ -235,12 +251,17 @@ public class RateAndInventoryPage extends BasePage {
 	}
 
 	public void selectRoomTypeAsTestRoom() {
+		
+		wait.until(ExpectedConditions.visibilityOf(roomTypeDropdown));
 		roomTypeDropdown.click();
+		
+		wait.until(ExpectedConditions.visibilityOf(testRoom));
 		testRoom.click();
 	}
 
 	public void enterNumberOfRoomsToSell() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(numberOfRoomsToSellInput));
 		String numberofrooms = BaseClass.getProperties().getProperty("NumberOfRoomsToSellInput");
 		numberOfRoomsToSellInput.sendKeys(numberofrooms);
 	}
@@ -257,30 +278,37 @@ public class RateAndInventoryPage extends BasePage {
 
 		if (monday.equalsIgnoreCase("no")) {
 
+			wait.until(ExpectedConditions.elementToBeClickable(mondayButton));
 			mondayButton.click();
 		}
 		if (tuesday.equalsIgnoreCase("no")) {
 
+			wait.until(ExpectedConditions.elementToBeClickable(tuesdayButton));
 			tuesdayButton.click();
 		}
 		if (wednesday.equalsIgnoreCase("no")) {
 
+			wait.until(ExpectedConditions.elementToBeClickable(wednesdayButton));
 			wednesdayButton.click();
 		}
 		if (thursday.equalsIgnoreCase("no")) {
 
+			wait.until(ExpectedConditions.elementToBeClickable(thursdayButton));
 			thursdayButton.click();
 		}
 		if (friday.equalsIgnoreCase("no")) {
 
+			wait.until(ExpectedConditions.elementToBeClickable(fridayButton));
 			fridayButton.click();
 		}
 		if (saturday.equalsIgnoreCase("no")) {
 
+			wait.until(ExpectedConditions.elementToBeClickable(saturdayButton));
 			saturdayButton.click();
 		}
 		if (sunday.equalsIgnoreCase("no")) {
 
+			wait.until(ExpectedConditions.elementToBeClickable(sundayButton));
 			sundayButton.click();
 		}
 
@@ -288,20 +316,25 @@ public class RateAndInventoryPage extends BasePage {
 
 	public void selectRatePlanType() throws IOException {
 
+		wait.until(ExpectedConditions.elementToBeClickable(rateplanTypeDropdown));
 		rateplanTypeDropdown.click();
 		String rateplan = BaseClass.getProperties().getProperty("RatePlan");
 
 		if (rateplan.equalsIgnoreCase("EP")) {
 
+			wait.until(ExpectedConditions.elementToBeClickable(epRateplan));
 			epRateplan.click();
 		} else if (rateplan.equalsIgnoreCase("CP")) {
 
+			wait.until(ExpectedConditions.elementToBeClickable(cpRateplan));
 			cpRateplan.click();
 		} else if (rateplan.equalsIgnoreCase("MAP")) {
 
+			wait.until(ExpectedConditions.elementToBeClickable(mapRateplan));
 			mapRateplan.click();
 		} else if (rateplan.equalsIgnoreCase("AP")) {
 
+			wait.until(ExpectedConditions.elementToBeClickable(apRateplan));
 			apRateplan.click();
 		} else {
 			System.out.println("Rateplan is invalid");
@@ -310,47 +343,55 @@ public class RateAndInventoryPage extends BasePage {
 
 	public void enterRateForFirstOccupancy() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(firstOccupancyInput));
 		String firstoccupancy = BaseClass.getProperties().getProperty("FirstOccupancyRate");
 		firstOccupancyInput.sendKeys(firstoccupancy);
 	}
 
 	public void enterRateForSecondOccupancy() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(secondOccupancyInput));
 		String secondoccupancy = BaseClass.getProperties().getProperty("SecondOccupancyRate");
 		secondOccupancyInput.sendKeys(secondoccupancy);
 	}
 
 	public void enterRateForThirdOccupancy() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(thirdOccupancyInput));
 		String thirdoccupancy = BaseClass.getProperties().getProperty("ThirdOccupancyRate");
 		thirdOccupancyInput.sendKeys(thirdoccupancy);
 	}
 
 	public void enterRateForFourthtOccupancy() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(fourthOccupancyInput));
 		String fourthoccupancy = BaseClass.getProperties().getProperty("FourthOccupancyRate");
 		fourthOccupancyInput.sendKeys(fourthoccupancy);
 	}
 
 	public void enterExtraAdultRate() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(extraAdultRateInput));
 		String extraadult = BaseClass.getProperties().getProperty("ExtraAdultRate");
 		extraAdultRateInput.sendKeys(extraadult);
 	}
 
 	public void enterExtraChildRate() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(extraChildRateInput));
 		String extrachild = BaseClass.getProperties().getProperty("ExtraChildRate");
 		extraChildRateInput.sendKeys(extrachild);
 	}
 
 	public void clickOnCancelButton() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(cancelButton));
 		cancelButton.click();
 	}
 
 	public void clickOnSubmitButton() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(submitButton));
 		submitButton.click();
 	}
 }

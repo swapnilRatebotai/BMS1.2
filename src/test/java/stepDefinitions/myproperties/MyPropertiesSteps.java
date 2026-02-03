@@ -1,5 +1,7 @@
 package stepDefinitions.myproperties;
 
+import java.io.IOException;
+
 import org.junit.Assert;
 
 import factory.BaseClass;
@@ -32,10 +34,10 @@ public class MyPropertiesSteps {
 	}
 
 	@When("user selects property from the property list")
-	public void user_selects_property_from_the_property_list() throws InterruptedException {
+	public void user_selects_property_from_the_property_list() throws InterruptedException, IOException {
 
 		Thread.sleep(1000);
-		myPropertiesPage.clickOnPropertyHiltonStays();
+		myPropertiesPage.clickOnProperty();
 		
 	}
 

@@ -23,7 +23,7 @@ public class UserProfilePage extends BasePage{
 	
 	//Elements
 	@FindBy(xpath="//h1[@class='user-page-header'][text()='User Profile']")
-	WebElement userProfilePageConf;
+	WebElement userProfilePageConfirmation;
 	
 	@FindBy(xpath="//button[@type='button'][text()='Edit Profile']")
 	WebElement editProfileButton;
@@ -52,9 +52,10 @@ public class UserProfilePage extends BasePage{
 	
 	//Actions
 	public boolean userProfilePageConfirmation() throws InterruptedException {
-		wait.until(ExpectedConditions.visibilityOf(userProfilePageConf));
+		
+		wait.until(ExpectedConditions.visibilityOf(userProfilePageConfirmation));
 		Thread.sleep(800);
-		return userProfilePageConf.isDisplayed();
+		return userProfilePageConfirmation.isDisplayed();
 	}
 	
 	public void clickOnEditProfileButton() {
@@ -64,34 +65,46 @@ public class UserProfilePage extends BasePage{
 	}
 	
 	public void enterFirstName() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(firstNameInput));
 		firstNameInput.clear();
 		String firstName = BaseClass.getProperties().getProperty("FirstName");
 		firstNameInput.sendKeys(firstName);
 	}
 	
 	public void enterLastName() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(lastNameInput));
 		lastNameInput.clear();
 		String lastName = BaseClass.getProperties().getProperty("LastName");
 		lastNameInput.sendKeys(lastName);
 	}
 	
 	public void enterPrimaryNumber() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(primaryNumberInput));
 		primaryNumberInput.clear();
 		String primaryNumber = BaseClass.getProperties().getProperty("PrimaryNumber");
 		primaryNumberInput.sendKeys(primaryNumber);
 	}
 	
 	public void enterSecondaryNumber() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(secondaryNumberInput));
 		secondaryNumberInput.clear();
 		String secondaryNumber = BaseClass.getProperties().getProperty("SecondaryNumber");
 		secondaryNumberInput.sendKeys(secondaryNumber);
 	}
 	
 	public void clickOnSaveChangesButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(saveChangesButton));
 		saveChangesButton.click();
 	}
 	
 	public void clickOnCancelButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(cancelButton));
 		cancelButton.click();
 	}
 	

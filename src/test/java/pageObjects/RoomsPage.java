@@ -25,7 +25,7 @@ public class RoomsPage extends BasePage {
 
 	// Elements
 	@FindBy(xpath = "//div[text()='Rooms'][@class='form-header']")
-	WebElement roomsPageConf;
+	WebElement roomsPageConfirmation;
 
 	@FindBy(xpath = "//button[normalize-space()='Create New Room']")
 	WebElement createNewRoomButton;
@@ -126,15 +126,19 @@ public class RoomsPage extends BasePage {
 	// Actions
 	public boolean roomsPageConfirmation() {
 
-		return roomsPageConf.isDisplayed();
+		wait.until(ExpectedConditions.visibilityOf(roomsPageConfirmation));
+		return roomsPageConfirmation.isDisplayed();
 	}
 
 	public void clickOnCreateNewRoomButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(createNewRoomButton));
 		createNewRoomButton.click();
 	}
 
 	public void updateDisplayName() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(displayNameInput));
 		displayNameInput.click();
 		displayNameInput.sendKeys(Keys.CONTROL + "a");
 		displayNameInput.sendKeys(Keys.DELETE);
@@ -144,6 +148,7 @@ public class RoomsPage extends BasePage {
 
 	public void updateDescription() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(descriptionInput));
 		descriptionInput.clear();
 		String description = BaseClass.getProperties().getProperty("Description");
 		descriptionInput.sendKeys(description);
@@ -151,6 +156,7 @@ public class RoomsPage extends BasePage {
 
 	public void updateNumberOfRooms() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(numberOfRoomsInput));
 		numberOfRoomsInput.clear();
 		String numberOfRooms = BaseClass.getProperties().getProperty("NumberOfRooms");
 		numberOfRoomsInput.sendKeys(numberOfRooms);
@@ -158,6 +164,7 @@ public class RoomsPage extends BasePage {
 
 	public void updateRoomType() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(roomTypeDropDown));
 		roomTypeDropDown.clear();
 
 		String roomType = BaseClass.getProperties().getProperty("RoomType");
@@ -169,6 +176,7 @@ public class RoomsPage extends BasePage {
 
 	public void updateRoomView() throws IOException {
 
+		wait.until(ExpectedConditions.visibilityOf(roomViewDropDown));
 		roomViewDropDown.clear();
 
 		String roomView = BaseClass.getProperties().getProperty("RoomView");
@@ -179,6 +187,7 @@ public class RoomsPage extends BasePage {
 
 	public void updateBedType() throws IOException {
 		
+		wait.until(ExpectedConditions.visibilityOf(bedTypeDropDown));
 		bedTypeDropDown.clear();
 
 		String bedType = BaseClass.getProperties().getProperty("BedType");
@@ -188,6 +197,8 @@ public class RoomsPage extends BasePage {
 	}
 	
 	public void updateExtraBedType() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(extraBedTypeDropDown));
 		extraBedTypeDropDown.clear();
 
 		String extraBedType = BaseClass.getProperties().getProperty("ExtraBedType");
@@ -197,44 +208,60 @@ public class RoomsPage extends BasePage {
 	}
 
 	public void updateBaseAdults() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(baseAdultsInput));
 		baseAdultsInput.clear();
 		String baseAdults = BaseClass.getProperties().getProperty("BaseAdults");
 		baseAdultsInput.sendKeys(baseAdults);
 	}
 
 	public void updateMaximumAdults() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(maxAdultsInput));
 		maxAdultsInput.clear();
 		String maximumAdults = BaseClass.getProperties().getProperty("MaximumAdults");
 		maxAdultsInput.sendKeys(maximumAdults);
 	}
 
 	public void updateChildBase() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(childBaseInput));
 		childBaseInput.clear();
 		String childBase = BaseClass.getProperties().getProperty("ChildBase");
 		childBaseInput.sendKeys(childBase);
 	}
 
 	public void updateMaximumChildren() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(maxChildrenInput));
 		maxChildrenInput.clear();
 		String maximumChildren = BaseClass.getProperties().getProperty("MaximumChildren");
 		maxChildrenInput.sendKeys(maximumChildren);
 	}
 
 	public void updateMaxPax() throws IOException {
+		
+		wait.until(ExpectedConditions.visibilityOf(maxPaxInput));
 		maxPaxInput.clear();
 		String maxPax = BaseClass.getProperties().getProperty("MaxPax");
 		maxPaxInput.sendKeys(maxPax);
 	}
 
 	public void clickOnCancelRoomButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(cancelRoomButton));
 		cancelRoomButton.click();
 	}
 
 	public void clickOnCreateRoomButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(createRoomSubmitButton));
 		createRoomSubmitButton.click();
 	}
 
 	public void clickOnUpdateRoomButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(updateRoomButton));
 		updateRoomButton.click();
 	}
 	
@@ -255,20 +282,26 @@ public class RoomsPage extends BasePage {
 	}
 
 	public void clickOnRoomStatusToggle() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(testRoomStatusToggle));
 		testRoomStatusToggle.click();
 	}
 
 	public void clickOnEditRoomButton() {
 
+		wait.until(ExpectedConditions.elementToBeClickable(editTestRoomButton));
 		editTestRoomButton.click();
 	}
 
 	public void clickOnCreateRateplanButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(createTestRatePlanButton));
 		createTestRatePlanButton.click();
 	}
 	
 	public void selectMealPlan() throws IOException {
 		
+		wait.until(ExpectedConditions.visibilityOf(mealPlanDropDown));
 		String mealPlan = BaseClass.getProperties().getProperty("MealPlan");
 		mealPlanDropDown.sendKeys(mealPlan);
 		mealPlanDropDown.sendKeys(Keys.DOWN);
@@ -277,6 +310,7 @@ public class RoomsPage extends BasePage {
 
 	public void updateRatePlanName() throws IOException {
 		
+		wait.until(ExpectedConditions.visibilityOf(ratePlanNameInput));
 		ratePlanNameInput.click();
 		ratePlanNameInput.sendKeys(Keys.CONTROL + "a");
 		ratePlanNameInput.sendKeys(Keys.DELETE);
@@ -285,10 +319,14 @@ public class RoomsPage extends BasePage {
 	}
 
 	public void clickOnCancelRateplanButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(cancelRateplanButton));
 		cancelRateplanButton.click();
 	}
 
 	public void clickOnCreateRateplanSubmitButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(createRatePlanSubmitButton));
 		createRatePlanSubmitButton.click();
 	}
 	
@@ -299,18 +337,26 @@ public class RoomsPage extends BasePage {
 	}
 
 	public void clickOnShowRateplanButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(showHideTestRatePlansButton));
 		showHideTestRatePlansButton.click();
 	}
 
 	public void clickOnHideRateplanButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(showHideTestRatePlansButton));
 		showHideTestRatePlansButton.click();
 	}
 
 	public void clickOnEPRateplanStatusToggle() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(epRateplanStatusButton));
 		epRateplanStatusButton.click();
 	}
 
 	public void clickOnCPRateplanStatusToggle() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(cpRateplanStatusButton));
 		cpRateplanStatusButton.click();
 	}
 
@@ -321,6 +367,8 @@ public class RoomsPage extends BasePage {
 	}
 
 	public void clickOnCPRateplanEditButton() {
+		
+		wait.until(ExpectedConditions.elementToBeClickable(cpRateplanEditButton));
 		cpRateplanEditButton.click();
 	}
 

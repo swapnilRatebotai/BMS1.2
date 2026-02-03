@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import factory.BaseClass;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import pageObjects.LoginPage;
 import pageObjects.MailinatorPage;
 import pageObjects.SignUpPage;
 
@@ -14,12 +15,14 @@ public class SignUpSteps {
 
 	WebDriver driver;
 	
+	LoginPage loginPage  = new LoginPage(BaseClass.getDriver());
 	SignUpPage signUpPage  = new SignUpPage(BaseClass.getDriver());
 	MailinatorPage mailinatorPage  = new MailinatorPage(BaseClass.getDriver());
 	
 	@Given("the user signs up for the BMS application")
 	public void the_user_signs_up_for_the_bms_application() throws IOException {
 	    
+		loginPage.clickOnSignUpPage();
 		signUpPage.enterEmailAddress();
 		signUpPage.enterMobileNumber();
 		signUpPage.enterPassword();
